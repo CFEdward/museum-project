@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Sword : MonoBehaviour
 {
@@ -8,6 +9,11 @@ public class Sword : MonoBehaviour
     private bool isAttacking = false;
     public float attackCooldown = 1f;
     private Animator animator;
+
+    //public void OnAttack(InputAction.CallbackContext context)
+    //{
+    //    isAttacking = context.ReadValueAsButton();
+    //}
 
     private void Start()
     {
@@ -17,7 +23,7 @@ public class Sword : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.JoystickButton0))
         {
             if (canAttack)
             {
