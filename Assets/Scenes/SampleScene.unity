@@ -7643,11 +7643,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ed0aacaa3be22a4ab99f3e3f4c303ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  headerText: {fileID: 2049844329}
+  headerText: {fileID: 1122001711}
   contentText: {fileID: 1670063511}
   catalogueMenu: {fileID: 1890184442}
   pauseMenu: {fileID: 1126123794}
   pauseMenuActive: 0
+  catalogueActive: 0
 --- !u!4 &1661817213
 Transform:
   m_ObjectHideFlags: 0

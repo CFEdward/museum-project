@@ -11,6 +11,7 @@ public class SwordPickup : MonoBehaviour, ICollectible
     public Animator swordAnimator;
     public Transform player, weaponContainer;
     public PickupTextManager textManager;
+    public PauseMenuManager catalogueText;
 
     public void Collect()
     {
@@ -29,5 +30,7 @@ public class SwordPickup : MonoBehaviour, ICollectible
         textManager.UpdatePickupText("Sword Text", "Sword test test test test test test test test");
         textManager.TextOnPickup();
 
+        catalogueText = GameObject.Find("Pause_Menu_Manager").GetComponent<PauseMenuManager>();
+        catalogueText.UpdateCatalogue("Sword Text Catalogue", "Sword Catalogue TestTestTestTestTestTestTestTestTestTestTestTestTestTest");
     }
 }
