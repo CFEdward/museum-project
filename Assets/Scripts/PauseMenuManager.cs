@@ -43,9 +43,9 @@ public class PauseMenuManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (!catalogueActive)
         {
-            if (!catalogueActive)
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
                 if (!pauseMenuActive)
                 {
@@ -60,6 +60,13 @@ public class PauseMenuManager : MonoBehaviour
                     pauseMenu.SetActive(false);
                     Time.timeScale = 1f;
                 }
+            }
+        }
+        else if (catalogueActive)
+        {
+            if (Input.GetKeyDown (KeyCode.Escape))
+            {
+                CatalogueClose();
             }
         }
     }
