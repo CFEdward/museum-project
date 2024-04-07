@@ -10,6 +10,7 @@ public class SwordPickup : MonoBehaviour, ICollectible
     public Sword swordScript;
     public Animator swordAnimator;
     public Transform player, weaponContainer;
+    public PickupTextManager textManager;
 
     public void Collect()
     {
@@ -23,5 +24,10 @@ public class SwordPickup : MonoBehaviour, ICollectible
 
         Debug.Log("Sword collected.");
         OnSwordPickedUp?.Invoke();
+
+        textManager = GameObject.Find("Pickup_Text_Manager").GetComponent<PickupTextManager>();
+        textManager.UpdatePickupText("Sword Text", "Sword test test test test test test test test");
+        textManager.TextOnPickup();
+
     }
 }
