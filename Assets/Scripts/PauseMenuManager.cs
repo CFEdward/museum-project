@@ -78,9 +78,4 @@ public class PauseMenuManager : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    public void ExitGame()
-    {
-        Application.Quit();
-        Debug.Log("Tried to Quit the Game!");
-    }
 }

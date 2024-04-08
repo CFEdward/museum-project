@@ -31,7 +31,7 @@ public class TimeTravelTest : MonoBehaviour
 
     void Update()
     {
-       if(interactTextActive && Input.GetKeyDown(KeyCode.F))
+       if(interactTextActive && (Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.Joyst)
         {
             levelSelectCanvas.SetActive(true);
             canvasActive = true;
