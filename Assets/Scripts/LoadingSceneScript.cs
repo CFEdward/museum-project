@@ -12,6 +12,7 @@ public class LoadingSceneScript : MonoBehaviour
     public Slider loadingBar;
     public TMP_Text loadingBarText;
 
+
     public void LoadScene(int sceneId)
     {
         StartCoroutine(LoadSceneAsync(sceneId));
