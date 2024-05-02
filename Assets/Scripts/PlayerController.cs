@@ -46,14 +46,14 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            if (joystickLook.x == 0 && joystickLook.y  == 0)
-            {
+           if (joystickLook.x == 0 && joystickLook.y  == 0)
+           {
                 movePlayer();
-            }
-            else
-            {
-                movePlayerWithAim();
-            }
+           }
+           else
+           {
+               movePlayerWithAim();
+           }
         }
     }
 
