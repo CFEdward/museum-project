@@ -14,9 +14,13 @@ public class EnemyManager : MonoBehaviour
 {
     public float fov;
     [Range(0f, 360f)] public float fovAngle;    // in degrees
+    public float peripheralFOV;
+    [Range(0f, 360f)] public float peripheralFOVAngle;
 
     public AlertStage alertStage;
     [Range(0f, 100f)] public float alertLevel;  // 0: Peaceful, 100: Alerted
+
+    public Transform target;
 
     private void Awake()
     {
@@ -28,13 +32,28 @@ public class EnemyManager : MonoBehaviour
     {
         bool playerInFOV = false;
         Collider[] targetsInFOV = Physics.OverlapSphere(transform.position, fov);
+        Collider[] targetsInPeripheralFOV = Physics.OverlapSphere(transform.position, peripheralFOV);
 
+        if (!playerInFOV)
         foreach (Collider c in targetsInFOV)
         {
             if (c.CompareTag("Player"))
             {
+                target = c.transform;
                 float signedAngle = Vector3.Angle(transform.forward, c.transform.position - transform.position);
                 if (Mathf.Abs(signedAngle) < fovAngle / 2f) playerInFOV = true;
+
+                break;
+            }
+        }
+        if (!playerInFOV)
+        foreach (Collider c2 in targetsInPeripheralFOV)
+        {
+            if (c2.CompareTag("Player"))
+            {
+                target = c2.transform;
+                float signedAngle = Vector3.Angle(transform.forward, c2.transform.position - transform.position);
+                if (Mathf.Abs(signedAngle) < peripheralFOVAngle / 2f) playerInFOV = true;
 
                 break;
             }
