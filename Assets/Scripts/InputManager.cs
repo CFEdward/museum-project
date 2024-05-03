@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
-    PlayerControls playerControls;
+    private PlayerControls playerControls;
 
-    public Vector2 movementInput;
+    [SerializeField] private Vector2 movementInput;
+    [SerializeField] private Vector2 cameraInput;
+
+    public float cameraInputX;
+    public float cameraInputY;
+
     public float verticalInput;
     public float horizontalInput;
 
@@ -17,6 +22,7 @@ public class InputManager : MonoBehaviour
             playerControls = new PlayerControls();
 
             playerControls.PlayerMovement.Movement.performed += i => movementInput = i.ReadValue<Vector2>();
+            playerControls.PlayerMovement.Camera.performed += i => cameraInput = i.ReadValue<Vector2>();
         }
 
         playerControls.Enable();
@@ -27,7 +33,7 @@ public class InputManager : MonoBehaviour
         playerControls.Disable();
     }
 
-    public void HandleAllInput()
+    public void HandleAllInputs()
     {
         HandleMovementInput();
         //HandleJumpInput etc.
@@ -36,6 +42,9 @@ public class InputManager : MonoBehaviour
     private void HandleMovementInput()
     {
         verticalInput = movementInput.y;
-        verticalInput = movementInput.x;
+        horizontalInput = movementInput.x;
+
+        cameraInputY = cameraInput.y;
+        cameraInputX = cameraInput.x;
     }
 }

@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class PlayerLocomotion : MonoBehaviour
 {
-    InputManager inputManager;
+    private InputManager inputManager;
 
-    Vector3 moveDirection;
-    Transform cameraObject;
-    Rigidbody playerRigidBody;
+    private Vector3 moveDirection;
+    private Transform cameraObject;
+    private Rigidbody playerRigidbody;
 
-    public float movementSpeed = 7;
-    public float rotationSpeed = 15;
+    [SerializeField] private float movementSpeed = 7f;
+    [SerializeField] private float rotationSpeed = 15f;
 
     private void Awake()
     {
         inputManager = GetComponent<InputManager>();
-        playerRigidBody = GetComponent<Rigidbody>();
+        playerRigidbody = GetComponent<Rigidbody>();
         cameraObject = Camera.main.transform;
     }
 
@@ -31,11 +31,11 @@ public class PlayerLocomotion : MonoBehaviour
         moveDirection = cameraObject.forward * inputManager.verticalInput;
         moveDirection = moveDirection + cameraObject.right * inputManager.horizontalInput;
         moveDirection.Normalize();
-        moveDirection.y = 0;
+        moveDirection.y = 0f;
         moveDirection = moveDirection * movementSpeed;
 
         Vector3 movemenetVelocity = moveDirection;
-        playerRigidBody.velocity = movemenetVelocity;
+        playerRigidbody.velocity = movemenetVelocity;
     }
 
     private void HandleRotation()
@@ -45,7 +45,7 @@ public class PlayerLocomotion : MonoBehaviour
         targetDirection = cameraObject.forward * inputManager.verticalInput;
         targetDirection = targetDirection + cameraObject.right * inputManager.horizontalInput;
         targetDirection.Normalize();
-        targetDirection.y = 0;
+        targetDirection.y = 0f;
 
         if (targetDirection == Vector3.zero) targetDirection = transform.forward;
 

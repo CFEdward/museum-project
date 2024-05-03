@@ -29,7 +29,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             ""actions"": [
                 {
                     ""name"": ""Movement"",
-                    ""type"": ""Value"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""50f3ee13-31ab-4fe2-b93d-ff181ddb06a5"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
@@ -37,8 +37,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""mouseLook"",
-                    ""type"": ""Value"",
+                    ""name"": ""Camera"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""f3545266-844a-491f-a3e0-e3ef0ccd9c3f"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
@@ -121,7 +121,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""2D Vector"",
+                    ""name"": ""Left Stick"",
                     ""id"": ""d4757c17-dac8-4d61-9d11-ef1ca7834074"",
                     ""path"": ""2DVector(mode=2)"",
                     ""interactions"": """",
@@ -178,13 +178,68 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""92af353d-debc-4baa-8b73-a3ff707978c7"",
-                    ""path"": ""<Mouse>/position"",
+                    ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""mouseLook"",
+                    ""action"": ""Camera"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Right Stick"",
+                    ""id"": ""ee69846d-5a67-4fcb-8a0f-2fa374ceb90f"",
+                    ""path"": ""2DVector(mode=2)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Camera"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""f8e946aa-a4ec-457e-80a7-98a3e356121f"",
+                    ""path"": ""<Gamepad>/rightStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Camera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""d6a6d630-08d0-4a00-8f2f-3092ca6c9c6e"",
+                    ""path"": ""<Gamepad>/rightStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Camera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""61a8765a-98a2-47ba-85e2-056196abf267"",
+                    ""path"": ""<Gamepad>/rightStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Camera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""c2c7035a-3885-4544-b537-98d08eb0488f"",
+                    ""path"": ""<Gamepad>/rightStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Camera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 },
                 {
                     ""name"": """",
@@ -216,7 +271,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         // PlayerMovement
         m_PlayerMovement = asset.FindActionMap("PlayerMovement", throwIfNotFound: true);
         m_PlayerMovement_Movement = m_PlayerMovement.FindAction("Movement", throwIfNotFound: true);
-        m_PlayerMovement_mouseLook = m_PlayerMovement.FindAction("mouseLook", throwIfNotFound: true);
+        m_PlayerMovement_Camera = m_PlayerMovement.FindAction("Camera", throwIfNotFound: true);
         m_PlayerMovement_joystickLook = m_PlayerMovement.FindAction("joystickLook", throwIfNotFound: true);
         m_PlayerMovement_Submit = m_PlayerMovement.FindAction("Submit", throwIfNotFound: true);
     }
@@ -281,7 +336,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_PlayerMovement;
     private List<IPlayerMovementActions> m_PlayerMovementActionsCallbackInterfaces = new List<IPlayerMovementActions>();
     private readonly InputAction m_PlayerMovement_Movement;
-    private readonly InputAction m_PlayerMovement_mouseLook;
+    private readonly InputAction m_PlayerMovement_Camera;
     private readonly InputAction m_PlayerMovement_joystickLook;
     private readonly InputAction m_PlayerMovement_Submit;
     public struct PlayerMovementActions
@@ -289,7 +344,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         private @PlayerControls m_Wrapper;
         public PlayerMovementActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_PlayerMovement_Movement;
-        public InputAction @mouseLook => m_Wrapper.m_PlayerMovement_mouseLook;
+        public InputAction @Camera => m_Wrapper.m_PlayerMovement_Camera;
         public InputAction @joystickLook => m_Wrapper.m_PlayerMovement_joystickLook;
         public InputAction @Submit => m_Wrapper.m_PlayerMovement_Submit;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMovement; }
@@ -304,9 +359,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Movement.started += instance.OnMovement;
             @Movement.performed += instance.OnMovement;
             @Movement.canceled += instance.OnMovement;
-            @mouseLook.started += instance.OnMouseLook;
-            @mouseLook.performed += instance.OnMouseLook;
-            @mouseLook.canceled += instance.OnMouseLook;
+            @Camera.started += instance.OnCamera;
+            @Camera.performed += instance.OnCamera;
+            @Camera.canceled += instance.OnCamera;
             @joystickLook.started += instance.OnJoystickLook;
             @joystickLook.performed += instance.OnJoystickLook;
             @joystickLook.canceled += instance.OnJoystickLook;
@@ -320,9 +375,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Movement.started -= instance.OnMovement;
             @Movement.performed -= instance.OnMovement;
             @Movement.canceled -= instance.OnMovement;
-            @mouseLook.started -= instance.OnMouseLook;
-            @mouseLook.performed -= instance.OnMouseLook;
-            @mouseLook.canceled -= instance.OnMouseLook;
+            @Camera.started -= instance.OnCamera;
+            @Camera.performed -= instance.OnCamera;
+            @Camera.canceled -= instance.OnCamera;
             @joystickLook.started -= instance.OnJoystickLook;
             @joystickLook.performed -= instance.OnJoystickLook;
             @joystickLook.canceled -= instance.OnJoystickLook;
@@ -349,7 +404,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     public interface IPlayerMovementActions
     {
         void OnMovement(InputAction.CallbackContext context);
-        void OnMouseLook(InputAction.CallbackContext context);
+        void OnCamera(InputAction.CallbackContext context);
         void OnJoystickLook(InputAction.CallbackContext context);
         void OnSubmit(InputAction.CallbackContext context);
     }
