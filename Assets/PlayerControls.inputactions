@@ -24,15 +24,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "joystickLook",
-                    "type": "Value",
-                    "id": "08058a7c-840e-455d-9e10-edde4538db25",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
                     "name": "Submit",
                     "type": "Button",
                     "id": "cd44ef11-b137-45e9-b0ae-9ab11bebfebf",
@@ -218,17 +209,6 @@
                     "action": "Camera",
                     "isComposite": false,
                     "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "27340f5d-6a62-4142-9740-27f5bd6fb744",
-                    "path": "<Gamepad>/rightStick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "joystickLook",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 },
                 {
                     "name": "",
