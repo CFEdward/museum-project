@@ -1,7 +1,8 @@
 using CleverCrow.Fluid.BTs.Trees;
+using CleverCrow.Fluid.BTs.Tasks;
 using UnityEngine;
 
-public class FluidAI : MonoBehaviour
+public class BT_Enemy : MonoBehaviour
 {
     [SerializeField] private BehaviorTree tree;
     [SerializeField] private Transform[] waypoints;
@@ -17,22 +18,22 @@ public class FluidAI : MonoBehaviour
         tree = new BehaviorTreeBuilder(gameObject)
             .Selector()
                 .Sequence()
-                    .NewCheckDetection("Check Detection", enemyManager)
-                    .NewInvestigate("Investigate", enemyManager)
-                    .NewGoToTarget("Chase", enemyManager, speed)
+                    .C_CheckDetection("Check Detection", enemyManager)
+                    .A_Investigate("Investigate", enemyManager)
+                    .A_ChasePlayer("Chase", enemyManager, speed)
                 .End()
                 .Decorator("Check Detection", child =>
                 {
                     child.Update();
                     if (enemyManager.alertStage != AlertStage.Peaceful)
                     {
-                        return CleverCrow.Fluid.BTs.Tasks.TaskStatus.Failure;
+                        return TaskStatus.Failure;
                     }
-                    return CleverCrow.Fluid.BTs.Tasks.TaskStatus.Continue;
+                    return TaskStatus.Continue;
                 })
                     .Sequence()
+                        .A_Patrol("Patrol", waypoints, speed)
                         .WaitTime(1f)
-                        .NewPatrol("Patrol", waypoints, speed)
                     .End()
                 .End()
             .End()

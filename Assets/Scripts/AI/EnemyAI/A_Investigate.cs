@@ -2,7 +2,7 @@ using UnityEngine;
 using CleverCrow.Fluid.BTs.Tasks;
 using CleverCrow.Fluid.BTs.Tasks.Actions;
 
-public class NewInvestigate : ActionBase
+public class A_Investigate : ActionBase
 {
     private Transform self;
     public EnemyManager enemyManager;

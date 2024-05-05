@@ -25,6 +25,8 @@ public class EnemyManager : MonoBehaviour
 
     public Transform target;
 
+    [SerializeField] private AttributesManager attributes;
+
     private void Awake()
     {
         alertStage = AlertStage.Peaceful;
@@ -63,6 +65,8 @@ public class EnemyManager : MonoBehaviour
         }
 
         UpdateAlertState(playerInFOV);
+
+        ShouldDie();
     }
 
     private void UpdateAlertState(bool playerInFOV)
@@ -95,6 +99,14 @@ public class EnemyManager : MonoBehaviour
                 }
                 else alertTimer = 0f;
                 break;
+        }
+    }
+
+    private void ShouldDie()
+    {
+        if (attributes != null && attributes.health <= 0)
+        {
+            Destroy(gameObject);
         }
     }
 }

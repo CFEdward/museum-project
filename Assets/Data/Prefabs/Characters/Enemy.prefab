@@ -10,11 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7661405039351639113}
   - component: {fileID: 3346658118080687890}
-  - component: {fileID: 2366626237123568933}
-  - component: {fileID: 6655708999945409362}
-  - component: {fileID: 5580310053146214446}
   - component: {fileID: 8437963401107273287}
-  - component: {fileID: 2010723638202713244}
+  - component: {fileID: 2366626237123568933}
+  - component: {fileID: 5580310053146214446}
+  - component: {fileID: 3565113017875794091}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Untagged
@@ -66,54 +65,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &2366626237123568933
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3168416770509853418}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6310e3c10406c4542a2739e50099609b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fov: 10
-  fovAngle: 60
-  peripheralFOV: 4.5
-  peripheralFOVAngle: 120
-  alertStage: 0
-  alertLevel: 0
-  detectionSpeed: 0.25
-  target: {fileID: 0}
---- !u!114 &6655708999945409362
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3168416770509853418}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61866721789be0c4f9718c7317d2c3bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attributes: {fileID: 5580310053146214446}
---- !u!114 &5580310053146214446
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3168416770509853418}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 137777317b362054aa35ec42ccdd7769, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthMax: 0
-  health: 50
-  attack: 0
 --- !u!136 &8437963401107273287
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -137,7 +88,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &2010723638202713244
+--- !u!114 &2366626237123568933
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -146,7 +97,43 @@ MonoBehaviour:
   m_GameObject: {fileID: 3168416770509853418}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c49ab5881e2c0d447a8adc1abbe57a1e, type: 3}
+  m_Script: {fileID: 11500000, guid: 6310e3c10406c4542a2739e50099609b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fov: 10
+  fovAngle: 60
+  peripheralFOV: 4.5
+  peripheralFOVAngle: 120
+  alertStage: 0
+  alertLevel: 0
+  detectionSpeed: 0.25
+  target: {fileID: 0}
+  attributes: {fileID: 5580310053146214446}
+--- !u!114 &5580310053146214446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3168416770509853418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 137777317b362054aa35ec42ccdd7769, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthMax: 0
+  health: 50
+  attack: 0
+--- !u!114 &3565113017875794091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3168416770509853418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 514f02c59098d9740a6edf2cf2a8b695, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   waypoints:

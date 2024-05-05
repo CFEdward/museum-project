@@ -2,7 +2,7 @@ using UnityEngine;
 using CleverCrow.Fluid.BTs.Tasks;
 using CleverCrow.Fluid.BTs.Tasks.Actions;
 
-public class NewPatrol : ActionBase
+public class A_Patrol : ActionBase
 {
     private Transform self;
     private int currentWaypointIndex = 0;

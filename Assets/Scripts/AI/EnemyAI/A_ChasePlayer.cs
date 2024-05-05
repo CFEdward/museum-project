@@ -2,7 +2,7 @@ using UnityEngine;
 using CleverCrow.Fluid.BTs.Tasks;
 using CleverCrow.Fluid.BTs.Tasks.Actions;
 
-public class NewGoToTarget : ActionBase
+public class A_ChasePlayer : ActionBase
 {
     private Transform self;
     private Transform target;
