@@ -5,12 +5,11 @@ using CleverCrow.Fluid.BTs.Tasks.Actions;
 public class NewInvestigate : ActionBase
 {
     private Transform self;
-    private EnemyManager enemyManager;
+    public EnemyManager enemyManager;
 
     protected override void OnInit()
     {
         self = Owner.transform;
-        enemyManager = Owner.GetComponent<EnemyManager>();
     }
 
     protected override TaskStatus OnUpdate()

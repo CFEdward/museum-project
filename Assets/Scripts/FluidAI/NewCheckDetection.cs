@@ -1,14 +1,11 @@
-using UnityEngine;
 using CleverCrow.Fluid.BTs.Tasks;
 
+// We check detection twice, here and in the Decorator. This check is needed to make sure the
+// enemyManager.target is assigned before proceeding to Investigate
+// otherwise we will get an error
 public class NewCheckDetection : ConditionBase
 {
-    private EnemyManager enemyManager;
-
-    protected override void OnInit()
-    {
-        enemyManager = Owner.GetComponent<EnemyManager>();
-    }
+    public EnemyManager enemyManager;
 
     protected override bool OnUpdate()
     {
