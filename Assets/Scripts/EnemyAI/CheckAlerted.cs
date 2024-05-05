@@ -1,13 +1,13 @@
-using BehaviorTree;
+using BehaviourTree;
 using UnityEngine;
 // TODO: Enable animations once they're ready
-public class CheckEnemyInFOVRange : Node
+public class CheckAlerted : Node
 {
     //private Transform transform;
     private EnemyManager enemyManager;
     //private Animator animator;
 
-    public CheckEnemyInFOVRange(Transform _transform, EnemyManager _enemyManager)
+    public CheckAlerted(Transform _transform, EnemyManager _enemyManager)
     {
         enemyManager = _enemyManager;
         //animator = _transform.GetComponent<Animator>();

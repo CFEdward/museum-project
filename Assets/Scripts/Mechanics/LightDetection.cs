@@ -47,25 +47,25 @@ public class LightDetection : MonoBehaviour
     {
         while (true)
         {
-            //Set the target texture of the cam.
+            // Set the target texture of the cam.
             camLightScan.targetTexture = texTemp;
-            //Render into the set target texture.
+            // Render into the set target texture.
             camLightScan.Render();
 
-            //Set the target texture as the active rendered texture.
+            // Set the target texture as the active rendered texture.
             RenderTexture.active = texTemp;
             //Read the active rendered texture.
             texLight.ReadPixels(rectLight, 0, 0);
 
-            //Reset the active rendered texture.
+            // Reset the active rendered texture.
             RenderTexture.active = null;
             //Reset the target texture of the cam.
             camLightScan.targetTexture = null;
 
-            //Read the pixel in middle of the texture.
+            // Read the pixel in middle of the texture.
             lightPixel = texLight.GetPixel(textureSize / 2, textureSize / 2);
 
-            //Calculate light value, based on color intensity (from 0f to 1f).
+            // Calculate light value, based on color intensity (from 0f to 1f).
             lightValue = (lightPixel.r + lightPixel.g + lightPixel.b) / 3f;
 
             if (bLogLightValue)

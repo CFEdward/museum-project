@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using BehaviorTree;
+using BehaviourTree;
 // TODO: Enable animations once they're ready
 public class TaskPatrol : Node
 {

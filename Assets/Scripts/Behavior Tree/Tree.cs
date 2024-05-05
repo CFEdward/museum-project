@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace BehaviorTree
+namespace BehaviourTree
 {
 
     public abstract class Tree : MonoBehaviour

@@ -1,4 +1,4 @@
-using BehaviorTree;
+using BehaviourTree;
 using UnityEngine;
 
 public class TaskGoToTarget : Node
@@ -12,6 +12,7 @@ public class TaskGoToTarget : Node
 
     public override NodeState Evaluate()
     {
+        //Debug.Log("Evaluating GoToTarget");
         Transform target = (Transform)GetData("target");
 
         if (Vector3.Distance(transform.position, target.position) > 1.5f)

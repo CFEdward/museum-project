@@ -20,6 +20,8 @@ public class EnemyManager : MonoBehaviour
     public AlertStage alertStage;
     [Range(0f, 100f)] public float alertLevel;  // 0: Peaceful, 100: Alerted
 
+    [SerializeField] private float detectionSpeed = 0.25f;
+
     public Transform target;
 
     private void Awake()
@@ -73,12 +75,12 @@ public class EnemyManager : MonoBehaviour
             case AlertStage.Intrigued:
                 if (playerInFOV)
                 {
-                    alertLevel++;
+                    alertLevel = alertLevel + detectionSpeed;
                     if (alertLevel >= 100f) alertStage = AlertStage.Alerted;
                 }
                 else
                 {
-                    alertLevel--;
+                    alertLevel = alertLevel - detectionSpeed;
                     if (alertLevel <= 0f) alertStage = AlertStage.Peaceful;
                 }
                 break;
