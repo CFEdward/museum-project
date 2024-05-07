@@ -21,7 +21,7 @@ public class EnemyManager : MonoBehaviour
     [Range(0f, 100f)] public float alertLevel;  // 0: Peaceful, 100: Alerted
     private float alertTimer = 0f;
 
-    [SerializeField] private float detectionSpeed = 0.25f;
+    [SerializeField] private float detectionSpeed = 20f;
 
     public Transform target;
 
@@ -81,12 +81,12 @@ public class EnemyManager : MonoBehaviour
                 alertTimer = 0f;
                 if (playerInFOV)
                 {
-                    alertLevel = alertLevel + detectionSpeed;
+                    alertLevel = alertLevel + detectionSpeed * Time.deltaTime;
                     if (alertLevel >= 100f) alertStage = AlertStage.Alerted;
                 }
                 else
                 {
-                    alertLevel = alertLevel - detectionSpeed;
+                    alertLevel = alertLevel - detectionSpeed * Time.deltaTime;
                     if (alertLevel <= 0f) alertStage = AlertStage.Peaceful;
                 }
                 break;

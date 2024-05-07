@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.RenderGraphModule;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.HighDefinition;
 
 public class LightDetection : MonoBehaviour
 {
@@ -32,7 +35,7 @@ public class LightDetection : MonoBehaviour
     private void StartLightDetection()
     {
         texLight = new Texture2D(textureSize, textureSize, TextureFormat.RGB24, false);
-        texTemp = new RenderTexture(textureSize, textureSize, 24);
+        texTemp = new RenderTexture(textureSize, textureSize, 24, RenderTextureFormat.DefaultHDR);
         rectLight = new Rect(0f, 0f, textureSize, textureSize);
 
         StartCoroutine(LightDetectionUpdate(updateTime));
