@@ -106,7 +106,7 @@ MonoBehaviour:
   peripheralFOVAngle: 120
   alertStage: 0
   alertLevel: 0
-  detectionSpeed: 0.25
+  detectionSpeed: 25
   target: {fileID: 0}
   attributes: {fileID: 5580310053146214446}
 --- !u!114 &5580310053146214446
