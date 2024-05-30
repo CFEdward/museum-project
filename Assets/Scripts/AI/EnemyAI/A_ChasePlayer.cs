@@ -14,6 +14,7 @@ public class A_ChasePlayer : ActionBase
     {
         self = Owner.transform;
         target = enemyManager.target;
+        moveSpeed = 5f;
     }
 
     protected override TaskStatus OnUpdate()

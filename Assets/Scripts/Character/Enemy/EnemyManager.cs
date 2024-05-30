@@ -9,20 +9,13 @@ public enum AlertStage
 
 public class EnemyManager : MonoBehaviour
 {
-    //public float fov;
-    //[Range(0f, 360f)] public float fovAngle;    // in degrees
-    //public float peripheralFOV;
-    //[Range(0f, 360f)] public float peripheralFOVAngle;
-
     public AlertStage alertStage;
     [Range(0f, 100f)] public float alertLevel;  // 0: Peaceful, 100: Alerted
     private float alertTimer = 0f;
-
     [SerializeField] private float detectionSpeed = 20f;
 
     public Transform target;
-    public GameObject outline;
-    public GameObject lastLocation;
+    public bool canSeePlayer;
 
     //[SerializeField] private AttributesManager attributes;
     private FieldOfView fieldOfView;
@@ -36,6 +29,7 @@ public class EnemyManager : MonoBehaviour
 
     private void Update()
     {
+        /*
         //bool playerInFOV = false;
         //Collider[] targetsInFOV = Physics.OverlapSphere(transform.position, fov);
         //Collider[] targetsInPeripheralFOV = Physics.OverlapSphere(transform.position, peripheralFOV);
@@ -64,8 +58,10 @@ public class EnemyManager : MonoBehaviour
         //        break;
         //    }
         //}
+        */
 
-        UpdateAlertState(fieldOfView.canSeePlayer);
+        canSeePlayer = fieldOfView.canSeePlayer;
+        UpdateAlertState(canSeePlayer);
         target = fieldOfView.target;
 
         //ShouldDie();
@@ -89,7 +85,6 @@ public class EnemyManager : MonoBehaviour
                 else
                 {
                     alertLevel = alertLevel - detectionSpeed * Time.deltaTime;
-                    //lastLocation = Instantiate(outline, target.transform.position, Quaternion.identity);
                     if (alertLevel <= 0f) alertStage = AlertStage.Peaceful;
                 }
                 break;

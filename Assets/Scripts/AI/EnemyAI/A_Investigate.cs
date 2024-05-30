@@ -14,17 +14,24 @@ public class A_Investigate : ActionBase
 
     protected override TaskStatus OnUpdate()
     {
-        Debug.Log(self);
-        Debug.Log(enemyManager.alertStage);
-        if (enemyManager.alertStage == AlertStage.Intrigued)
+        //Debug.Log(self);
+        //Debug.Log(enemyManager.alertStage);
+        if (enemyManager.alertStage == AlertStage.Intrigued && enemyManager.canSeePlayer)
         {
             self.LookAt(enemyManager.target);
             return TaskStatus.Continue;
         }
-        else
+        else if (enemyManager.alertStage == AlertStage.Intrigued && !enemyManager.canSeePlayer)
         {
-            enemyManager.lastLocation = GameObject.Instantiate(enemyManager.outline, enemyManager.target.transform.position, enemyManager.target.transform.rotation);
+            Debug.Log("TaskSuccess");
             return TaskStatus.Success;
         }
+        else { Debug.Log("TaskFailure"); return TaskStatus.Failure; }
+
+    }
+
+    protected override void OnExit()
+    {
+        //enemyManager.lastLocation = GameObject.Instantiate(enemyManager.outline, enemyManager.target.transform.position, enemyManager.target.transform.rotation);
     }
 }

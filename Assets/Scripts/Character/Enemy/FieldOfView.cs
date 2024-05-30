@@ -16,6 +16,8 @@ public class FieldOfView : MonoBehaviour
     public GameObject playerRef;
 
     public bool canSeePlayer;
+    public GameObject outline;
+    public GameObject lastLocation;
     public Transform target;
 
     private void Start()
@@ -55,7 +57,11 @@ public class FieldOfView : MonoBehaviour
                     float distanceToTarget = Vector3.Distance(transform.position, target.position);
                     if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
                         canSeePlayer = true;
-                    else canSeePlayer = false;
+                    else
+                    {
+                        canSeePlayer = false;
+                        if (GameObject.FindGameObjectWithTag("Outline") == null) lastLocation = Instantiate(outline, target.position, target.rotation);
+                    }
                 }
                 break;
             }
@@ -73,7 +79,11 @@ public class FieldOfView : MonoBehaviour
                     float distanceToTarget = Vector3.Distance(transform.position, target.position);
                     if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
                         canSeePlayer = true;
-                    else canSeePlayer = false;
+                    else
+                    {
+                        canSeePlayer = false;
+                        if (GameObject.FindGameObjectWithTag("Outline") == null) lastLocation = Instantiate(outline, target.position, target.rotation);
+                    }
                 }
                 break;
             }
