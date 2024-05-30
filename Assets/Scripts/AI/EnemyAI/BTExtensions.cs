@@ -8,14 +8,14 @@ public static class BehaviorTreeBuilderExtensions
         return builder.AddNode(new C_CheckDetection { Name = name, enemyManager = _enemyManager });
     }
 
-    public static BehaviorTreeBuilder A_ChasePlayer(this BehaviorTreeBuilder builder, string name, EnemyManager _enemyManager, float _speed)
+    public static BehaviorTreeBuilder A_ChasePlayer(this BehaviorTreeBuilder builder, string name, EnemyManager _enemyManager, float _moveSpeed)
     {
-        return builder.AddNode(new A_ChasePlayer { Name = name, enemyManager = _enemyManager, speed = _speed });
+        return builder.AddNode(new A_ChasePlayer { Name = name, enemyManager = _enemyManager, moveSpeed = _moveSpeed });
     }
 
-    public static BehaviorTreeBuilder A_Patrol(this BehaviorTreeBuilder builder, string name, Transform[] _waypoints, float _speed)
+    public static BehaviorTreeBuilder A_Patrol(this BehaviorTreeBuilder builder, string name, Transform[] _waypoints, float _moveSpeed)
     {
-        return builder.AddNode(new A_Patrol { Name = name, waypoints = _waypoints, speed = _speed });
+        return builder.AddNode(new A_Patrol { Name = name, waypoints = _waypoints, moveSpeed = _moveSpeed });
     }
 
     public static BehaviorTreeBuilder A_Investigate(this BehaviorTreeBuilder builder, string name, EnemyManager _enemyManager)

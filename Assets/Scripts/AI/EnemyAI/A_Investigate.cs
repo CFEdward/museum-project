@@ -22,6 +22,9 @@ public class A_Investigate : ActionBase
             return TaskStatus.Continue;
         }
         else
-        return TaskStatus.Success;
+        {
+            enemyManager.lastLocation = GameObject.Instantiate(enemyManager.outline, enemyManager.target.transform.position, enemyManager.target.transform.rotation);
+            return TaskStatus.Success;
+        }
     }
 }

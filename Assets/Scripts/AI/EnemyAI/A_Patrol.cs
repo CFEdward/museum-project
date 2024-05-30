@@ -8,7 +8,7 @@ public class A_Patrol : ActionBase
     private int currentWaypointIndex = 0;
 
     public Transform[] waypoints;
-    public float speed;
+    public float moveSpeed;
 
     protected override void OnInit()
     {
@@ -26,7 +26,7 @@ public class A_Patrol : ActionBase
         }
         else
         {
-            self.position = Vector3.MoveTowards(self.position, wp.position, speed * Time.deltaTime);
+            self.position = Vector3.MoveTowards(self.position, wp.position, moveSpeed * Time.deltaTime);
             self.LookAt(wp.position);
 
             return TaskStatus.Continue;

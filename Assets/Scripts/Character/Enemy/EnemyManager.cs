@@ -9,10 +9,10 @@ public enum AlertStage
 
 public class EnemyManager : MonoBehaviour
 {
-    public float fov;
-    [Range(0f, 360f)] public float fovAngle;    // in degrees
-    public float peripheralFOV;
-    [Range(0f, 360f)] public float peripheralFOVAngle;
+    //public float fov;
+    //[Range(0f, 360f)] public float fovAngle;    // in degrees
+    //public float peripheralFOV;
+    //[Range(0f, 360f)] public float peripheralFOVAngle;
 
     public AlertStage alertStage;
     [Range(0f, 100f)] public float alertLevel;  // 0: Peaceful, 100: Alerted
@@ -21,49 +21,54 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private float detectionSpeed = 20f;
 
     public Transform target;
+    public GameObject outline;
+    public GameObject lastLocation;
 
-    [SerializeField] private AttributesManager attributes;
+    //[SerializeField] private AttributesManager attributes;
+    private FieldOfView fieldOfView;
 
     private void Awake()
     {
+        fieldOfView = GetComponent<FieldOfView>();
         alertStage = AlertStage.Peaceful;
         alertLevel = 0f;
     }
 
     private void Update()
     {
-        bool playerInFOV = false;
-        Collider[] targetsInFOV = Physics.OverlapSphere(transform.position, fov);
-        Collider[] targetsInPeripheralFOV = Physics.OverlapSphere(transform.position, peripheralFOV);
+        //bool playerInFOV = false;
+        //Collider[] targetsInFOV = Physics.OverlapSphere(transform.position, fov);
+        //Collider[] targetsInPeripheralFOV = Physics.OverlapSphere(transform.position, peripheralFOV);
 
-        if (!playerInFOV)
-        foreach (Collider c in targetsInFOV)
-        {
-            if (c.CompareTag("Player"))
-            {
-                target = c.transform;
-                float signedAngle = Vector3.Angle(transform.forward, c.transform.position - transform.position);
-                if (Mathf.Abs(signedAngle) < fovAngle / 2f) playerInFOV = true;
+        //if (!playerInFOV)
+        //foreach (Collider c in targetsInFOV)
+        //{
+        //    if (c.CompareTag("Player"))
+        //    {
+        //        target = c.transform;
+        //        float signedAngle = Vector3.Angle(transform.forward, c.transform.position - transform.position);
+        //        if (Mathf.Abs(signedAngle) < fovAngle / 2f) playerInFOV = true;
 
-                break;
-            }
-        }
-        if (!playerInFOV)
-        foreach (Collider c2 in targetsInPeripheralFOV)
-        {
-            if (c2.CompareTag("Player"))
-            {
-                target = c2.transform;
-                float signedAngle = Vector3.Angle(transform.forward, c2.transform.position - transform.position);
-                if (Mathf.Abs(signedAngle) < peripheralFOVAngle / 2f) playerInFOV = true;
+        //        break;
+        //    }
+        //}
+        //if (!playerInFOV)
+        //foreach (Collider c2 in targetsInPeripheralFOV)
+        //{
+        //    if (c2.CompareTag("Player"))
+        //    {
+        //        target = c2.transform;
+        //        float signedAngle = Vector3.Angle(transform.forward, c2.transform.position - transform.position);
+        //        if (Mathf.Abs(signedAngle) < peripheralFOVAngle / 2f) playerInFOV = true;
 
-                break;
-            }
-        }
+        //        break;
+        //    }
+        //}
 
-        UpdateAlertState(playerInFOV);
+        UpdateAlertState(fieldOfView.canSeePlayer);
+        target = fieldOfView.target;
 
-        ShouldDie();
+        //ShouldDie();
     }
 
     private void UpdateAlertState(bool playerInFOV)
@@ -84,6 +89,7 @@ public class EnemyManager : MonoBehaviour
                 else
                 {
                     alertLevel = alertLevel - detectionSpeed * Time.deltaTime;
+                    //lastLocation = Instantiate(outline, target.transform.position, Quaternion.identity);
                     if (alertLevel <= 0f) alertStage = AlertStage.Peaceful;
                 }
                 break;
@@ -99,11 +105,11 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    private void ShouldDie()
-    {
-        if (attributes != null && attributes.health <= 0)
-        {
-            Destroy(gameObject);
-        }
-    }
+    //private void ShouldDie()
+    //{
+    //    if (attributes != null && attributes.health <= 0)
+    //    {
+    //        Destroy(gameObject);
+    //    }
+    //}
 }

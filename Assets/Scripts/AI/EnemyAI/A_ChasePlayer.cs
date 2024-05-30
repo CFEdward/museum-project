@@ -8,7 +8,7 @@ public class A_ChasePlayer : ActionBase
     private Transform target;
 
     public EnemyManager enemyManager;
-    public float speed;
+    public float moveSpeed;
 
     protected override void OnInit()
     {
@@ -20,7 +20,7 @@ public class A_ChasePlayer : ActionBase
     {
         if (Vector3.Distance(self.position, target.position) > 1.5f)
         {
-            self.position = Vector3.MoveTowards(self.position, target.position, speed * Time.deltaTime);
+            self.position = Vector3.MoveTowards(self.position, target.position, moveSpeed * Time.deltaTime);
             self.LookAt(target.position);
 
             // TODO: Give player chance to escape
