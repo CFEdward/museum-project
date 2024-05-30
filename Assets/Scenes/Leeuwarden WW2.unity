@@ -347,6 +347,11 @@ PrefabInstance:
       propertyPath: detectionSpeed
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 2478365009210771601, guid: 824f19ec1e6b6c74087df84d0908f248,
+        type: 3}
+      propertyPath: Cam
+      value: 
+      objectReference: {fileID: 1708143547}
     - target: {fileID: 3168416770509853418, guid: 824f19ec1e6b6c74087df84d0908f248,
         type: 3}
       propertyPath: m_Name
@@ -8470,6 +8475,11 @@ PrefabInstance:
       propertyPath: detectionSpeed
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 2478365009210771601, guid: 824f19ec1e6b6c74087df84d0908f248,
+        type: 3}
+      propertyPath: Cam
+      value: 
+      objectReference: {fileID: 1708143547}
     - target: {fileID: 3168416770509853418, guid: 824f19ec1e6b6c74087df84d0908f248,
         type: 3}
       propertyPath: m_Name
@@ -17438,6 +17448,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2478365009210771601, guid: 824f19ec1e6b6c74087df84d0908f248,
+        type: 3}
+      propertyPath: Cam
+      value: 
+      objectReference: {fileID: 1708143547}
     - target: {fileID: 3168416770509853418, guid: 824f19ec1e6b6c74087df84d0908f248,
         type: 3}
       propertyPath: m_Name
