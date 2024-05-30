@@ -21,13 +21,9 @@ public class A_Investigate : ActionBase
             self.LookAt(enemyManager.target);
             return TaskStatus.Continue;
         }
-        else if (enemyManager.alertStage == AlertStage.Intrigued && !enemyManager.canSeePlayer)
-        {
-            Debug.Log("TaskSuccess");
-            return TaskStatus.Success;
-        }
-        else { Debug.Log("TaskFailure"); return TaskStatus.Failure; }
+        if (enemyManager.alertStage == AlertStage.Peaceful) return TaskStatus.Failure;
 
+        return TaskStatus.Success;
     }
 
     protected override void OnExit()

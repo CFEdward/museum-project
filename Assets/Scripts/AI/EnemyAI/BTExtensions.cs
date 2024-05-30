@@ -22,4 +22,9 @@ public static class BehaviorTreeBuilderExtensions
     {
         return builder.AddNode(new A_Investigate { Name = name, enemyManager = _enemyManager });
     }
+
+    public static BehaviorTreeBuilder A_Search(this BehaviorTreeBuilder builder, string name, EnemyManager _enemyManager)
+    {
+        return builder.AddNode(new A_Search { Name = name, enemyManager = _enemyManager });
+    }
 }

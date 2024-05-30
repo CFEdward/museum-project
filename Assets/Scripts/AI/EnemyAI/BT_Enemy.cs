@@ -20,6 +20,7 @@ public class BT_Enemy : MonoBehaviour
                 .Sequence()
                     .C_CheckDetection("Check Detection", enemyManager)
                     .A_Investigate("Investigate", enemyManager)
+                    .A_Search("Search", enemyManager)
                     .A_ChasePlayer("Chase", enemyManager, moveSpeed)
                 .End()
                 .Decorator("Check Detection", child =>

@@ -1,6 +1,7 @@
 using UnityEngine;
 using CleverCrow.Fluid.BTs.Tasks;
 using CleverCrow.Fluid.BTs.Tasks.Actions;
+using UnityEngine.AI;
 
 public class A_ChasePlayer : ActionBase
 {
@@ -9,24 +10,27 @@ public class A_ChasePlayer : ActionBase
 
     public EnemyManager enemyManager;
     public float moveSpeed;
+    public NavMeshAgent agent;
 
     protected override void OnInit()
     {
         self = Owner.transform;
+        agent = Owner.GetComponent<NavMeshAgent>();
         target = enemyManager.target;
         moveSpeed = 5f;
     }
 
     protected override TaskStatus OnUpdate()
     {
-        if (Vector3.Distance(self.position, target.position) > 1.5f)
+        if (enemyManager.alertStage == AlertStage.Alerted)
         {
-            self.position = Vector3.MoveTowards(self.position, target.position, moveSpeed * Time.deltaTime);
-            self.LookAt(target.position);
-
-            // TODO: Give player chance to escape
+            agent.SetDestination(target.transform.position);
+            return TaskStatus.Continue;
         }
-
-        return TaskStatus.Success;
+        else
+        {
+            agent.enabled = false;
+            return TaskStatus.Failure;
+        }
     }
 }

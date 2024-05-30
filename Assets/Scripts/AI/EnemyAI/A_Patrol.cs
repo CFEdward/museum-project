@@ -18,7 +18,7 @@ public class A_Patrol : ActionBase
     protected override TaskStatus OnUpdate()
     {
         Transform wp = waypoints[currentWaypointIndex];
-        if (Vector3.Distance(self.position, wp.position) < 0.01f)
+        if (Vector3.Distance(self.position, wp.position) < 0.1f)
         {
             self.position = wp.position;
 

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum AlertStage
 {
@@ -10,15 +11,16 @@ public enum AlertStage
 public class EnemyManager : MonoBehaviour
 {
     public AlertStage alertStage;
-    [Range(0f, 100f)] public float alertLevel;  // 0: Peaceful, 100: Alerted
+    [Range(0f, 100f)] public float alertLevel = 0f;  // 0: Peaceful, 100: Alerted
     private float alertTimer = 0f;
+    private float alertCooldown = 5f;
     [SerializeField] private float detectionSpeed = 20f;
 
     public Transform target;
     public bool canSeePlayer;
 
     //[SerializeField] private AttributesManager attributes;
-    private FieldOfView fieldOfView;
+    public FieldOfView fieldOfView;
 
     private void Awake()
     {
@@ -72,6 +74,7 @@ public class EnemyManager : MonoBehaviour
         switch (alertStage)
         {
             case AlertStage.Peaceful:
+                if (GameObject.FindGameObjectWithTag("Outline") != null) Destroy(fieldOfView.lastLocation);
                 if (playerInFOV) alertStage = AlertStage.Intrigued;
                 break;
 
@@ -84,16 +87,23 @@ public class EnemyManager : MonoBehaviour
                 }
                 else
                 {
-                    alertLevel = alertLevel - detectionSpeed * Time.deltaTime;
-                    if (alertLevel <= 0f) alertStage = AlertStage.Peaceful;
+                    if (GameObject.FindGameObjectWithTag("Outline") == null) fieldOfView.lastLocation = Instantiate(fieldOfView.outline, target.position, target.rotation);
+                    alertCooldown -= Time.deltaTime;
+                    if (alertCooldown <= 0f) alertLevel = alertLevel - detectionSpeed * Time.deltaTime;
+                    if (alertLevel <= 0f)
+                    {
+                        alertCooldown = 3f;
+                        alertStage = AlertStage.Peaceful;
+                    }
                 }
                 break;
 
             case AlertStage.Alerted:
+                if (GameObject.FindGameObjectWithTag("Outline") != null) Destroy(fieldOfView.lastLocation);
                 if (!playerInFOV)
                 {
                     alertTimer += Time.deltaTime;
-                    if (alertTimer >= 5f) alertStage = AlertStage.Intrigued;
+                    if (alertTimer >= 5f) { alertCooldown = 3f; alertStage = AlertStage.Intrigued; }
                 }
                 else alertTimer = 0f;
                 break;
