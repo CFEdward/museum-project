@@ -7,6 +7,7 @@ public class PlayerLocomotion : MonoBehaviour
     private Vector3 moveDirection;
     private Transform cameraObject;
     private Rigidbody playerRigidbody;
+    private Animator animator;
 
     [SerializeField] private float movementSpeed = 7f;
     [SerializeField] private float rotationSpeed = 15f;
@@ -16,6 +17,7 @@ public class PlayerLocomotion : MonoBehaviour
         inputManager = GetComponent<InputManager>();
         playerRigidbody = GetComponent<Rigidbody>();
         cameraObject = Camera.main.transform;
+        animator = GetComponentInChildren<Animator>();
     }
 
     public void HandleAllMovement()
@@ -32,8 +34,10 @@ public class PlayerLocomotion : MonoBehaviour
         moveDirection.y = 0f;
         moveDirection = moveDirection * movementSpeed;
 
-        Vector3 movemenetVelocity = moveDirection;
-        playerRigidbody.velocity = movemenetVelocity;
+        Vector3 movementVelocity = moveDirection;
+        if (movementVelocity != Vector3.zero) animator.SetBool("bMoving", true);
+        else animator.SetBool("bMoving", false);
+        playerRigidbody.velocity = movementVelocity;
     }
 
     private void HandleRotation()
