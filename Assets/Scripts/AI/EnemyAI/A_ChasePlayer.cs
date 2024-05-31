@@ -5,19 +5,15 @@ using UnityEngine.AI;
 
 public class A_ChasePlayer : ActionBase
 {
-    private Transform self;
     private Transform target;
+    private NavMeshAgent agent;
 
     public EnemyManager enemyManager;
-    public float moveSpeed;
-    public NavMeshAgent agent;
 
     protected override void OnInit()
     {
-        self = Owner.transform;
         agent = Owner.GetComponent<NavMeshAgent>();
         target = enemyManager.target;
-        moveSpeed = 5f;
     }
 
     protected override TaskStatus OnUpdate()
@@ -25,11 +21,12 @@ public class A_ChasePlayer : ActionBase
         if (enemyManager.alertStage == AlertStage.Alerted)
         {
             agent.SetDestination(target.transform.position);
+            agent.speed = 4.5f;
             return TaskStatus.Continue;
         }
         else
         {
-            agent.enabled = false;
+            agent.speed = 3.5f;
             return TaskStatus.Failure;
         }
     }
