@@ -9,8 +9,6 @@ public class BT_Enemy : MonoBehaviour
 
     private EnemyManager enemyManager;
 
-    [SerializeField] private float moveSpeed = 3f;
-
     private void Awake()
     {
         enemyManager = GetComponentInParent<EnemyManager>();
@@ -21,7 +19,7 @@ public class BT_Enemy : MonoBehaviour
                     .C_CheckDetection("Check Detection", enemyManager)
                     .A_Investigate("Investigate", enemyManager)
                     .A_Search("Search", enemyManager)
-                    .A_ChasePlayer("Chase", enemyManager, moveSpeed)
+                    .A_ChasePlayer("Chase", enemyManager)
                 .End()
                 .Decorator("Check Detection", child =>
                 {
@@ -33,8 +31,8 @@ public class BT_Enemy : MonoBehaviour
                     return TaskStatus.Continue;
                 })
                     .Sequence()
-                        .A_Patrol("Patrol", waypoints, moveSpeed)
-                        .WaitTime(1f)
+                        .A_Patrol("Patrol", waypoints)
+                        .WaitTime(2.5f)
                     .End()
                 .End()
             .End()

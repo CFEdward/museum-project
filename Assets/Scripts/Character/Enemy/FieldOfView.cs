@@ -14,6 +14,7 @@ public class FieldOfView : MonoBehaviour
     public LayerMask obstructionMask;
 
     public GameObject playerRef;
+    //private LightDetection lightDetectionRef;
 
     public bool canSeePlayer;
     public GameObject outline;
@@ -23,6 +24,7 @@ public class FieldOfView : MonoBehaviour
     private void Start()
     {
         playerRef = GameObject.FindGameObjectWithTag("Player");
+        //lightDetectionRef = playerRef.GetComponentInChildren<LightDetection>();
         StartCoroutine(FOVRoutine());
     }
 
@@ -52,7 +54,7 @@ public class FieldOfView : MonoBehaviour
                 target = c.transform;
                 Vector3 directionToTarget = (target.position - transform.position).normalized;
                 float signedAngle = Vector3.Angle(transform.forward, directionToTarget);
-                if (Mathf.Abs(signedAngle) < fovAngle / 2f)
+                if ((Mathf.Abs(signedAngle) < fovAngle / 2f) && (LightDetection.lightValue >= 0.2f))
                 {
                     float distanceToTarget = Vector3.Distance(transform.position, target.position);
                     if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
@@ -60,7 +62,8 @@ public class FieldOfView : MonoBehaviour
                     else
                     {
                         canSeePlayer = false;
-                        if (GameObject.FindGameObjectWithTag("Outline") == null) lastLocation = Instantiate(outline, target.position, target.rotation);
+                        if ((GameObject.FindGameObjectWithTag("Outline") == null) && (GetComponentInParent<EnemyManager>().alertStage != AlertStage.Alerted))
+                            lastLocation = Instantiate(outline, target.position, target.rotation);
                     }
                 }
                 break;
@@ -82,7 +85,8 @@ public class FieldOfView : MonoBehaviour
                     else
                     {
                         canSeePlayer = false;
-                        if (GameObject.FindGameObjectWithTag("Outline") == null) lastLocation = Instantiate(outline, target.position, target.rotation);
+                        if ((GameObject.FindGameObjectWithTag("Outline") == null) && (GetComponentInParent<EnemyManager>().alertStage != AlertStage.Alerted))
+                            lastLocation = Instantiate(outline, target.position, target.rotation);
                     }
                 }
                 break;

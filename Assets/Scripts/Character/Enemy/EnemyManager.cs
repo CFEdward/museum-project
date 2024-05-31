@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public enum AlertStage
 {
@@ -13,7 +12,7 @@ public class EnemyManager : MonoBehaviour
     public AlertStage alertStage;
     [Range(0f, 100f)] public float alertLevel = 0f;  // 0: Peaceful, 100: Alerted
     private float alertTimer = 0f;
-    private float alertCooldown = 5f;
+    private float alertCooldown = 12f;
     [SerializeField] private float detectionSpeed = 20f;
 
     public Transform target;
@@ -92,7 +91,7 @@ public class EnemyManager : MonoBehaviour
                     if (alertCooldown <= 0f) alertLevel = alertLevel - detectionSpeed * Time.deltaTime;
                     if (alertLevel <= 0f)
                     {
-                        alertCooldown = 3f;
+                        alertCooldown = 12f;
                         alertStage = AlertStage.Peaceful;
                     }
                 }
@@ -103,7 +102,7 @@ public class EnemyManager : MonoBehaviour
                 if (!playerInFOV)
                 {
                     alertTimer += Time.deltaTime;
-                    if (alertTimer >= 5f) { alertCooldown = 3f; alertStage = AlertStage.Intrigued; }
+                    if (alertTimer >= 5f) { alertCooldown = 12f; alertStage = AlertStage.Intrigued; }
                 }
                 else alertTimer = 0f;
                 break;
