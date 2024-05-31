@@ -9,6 +9,9 @@ public enum AlertStage
 
 public class EnemyManager : MonoBehaviour
 {
+
+    public GameObject EnemyCanvas;
+
     public float fov;
     [Range(0f, 360f)] public float fovAngle;    // in degrees
     public float peripheralFOV;
@@ -64,6 +67,16 @@ public class EnemyManager : MonoBehaviour
         UpdateAlertState(playerInFOV);
 
         ShouldDie();
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        EnemyCanvas.SetActive(true);
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        EnemyCanvas.SetActive(false);
     }
 
     private void UpdateAlertState(bool playerInFOV)

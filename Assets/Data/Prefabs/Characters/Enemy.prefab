@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2366626237123568933}
   - component: {fileID: 5580310053146214446}
   - component: {fileID: 3565113017875794091}
+  - component: {fileID: 6261700269219424219}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Untagged
@@ -101,6 +102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6310e3c10406c4542a2739e50099609b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnemyCanvas: {fileID: 8049152606625239580}
   fov: 10
   fovAngle: 60
   peripheralFOV: 4.5
@@ -142,6 +144,27 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+--- !u!135 &6261700269219424219
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3168416770509853418}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 10
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5169684407479369590
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,7 +447,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &564030513617312053
 RectTransform:
   m_ObjectHideFlags: 0
