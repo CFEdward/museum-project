@@ -22,11 +22,23 @@ public class EnemyManager : MonoBehaviour
     //[SerializeField] private AttributesManager attributes;
     public FieldOfView fieldOfView;
 
+    public GameObject EnemyCanvas;
+
     private void Awake()
     {
         fieldOfView = GetComponent<FieldOfView>();
         alertStage = AlertStage.Peaceful;
         alertLevel = 0f;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        EnemyCanvas.SetActive(true);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        EnemyCanvas.SetActive(false);
     }
 
     private void Update()
