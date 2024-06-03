@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public enum AlertStage
 {
@@ -21,11 +22,16 @@ public class EnemyManager : MonoBehaviour
     //[SerializeField] private AttributesManager attributes;
     public FieldOfView fieldOfView;
 
+    private Animator animator;
+    private NavMeshAgent agent;
+
     private void Awake()
     {
         fieldOfView = GetComponent<FieldOfView>();
         alertStage = AlertStage.Peaceful;
         alertLevel = 0f;
+        animator = GetComponentInChildren<Animator>();
+        agent = GetComponent<NavMeshAgent>();
     }
 
     private void Update()
@@ -73,11 +79,17 @@ public class EnemyManager : MonoBehaviour
         switch (alertStage)
         {
             case AlertStage.Peaceful:
+                if (animator != null) animator.SetInteger("State", 0);
+                if (animator && agent && agent.hasPath) animator.SetBool("isIdle", false);
+                if (animator && agent && !agent.hasPath) animator.SetBool("isIdle", true);
                 if (GameObject.FindGameObjectWithTag("Outline") != null) Destroy(fieldOfView.lastLocation);
                 if (playerInFOV) alertStage = AlertStage.Intrigued;
                 break;
 
             case AlertStage.Intrigued:
+                if (animator != null) animator.SetInteger("State", 1);
+                if (animator && agent && !agent.hasPath) animator.SetBool("isSearching", false);
+                if (animator && agent && agent.hasPath) animator.SetBool("isSearching", true);
                 alertTimer = 0f;
                 if (playerInFOV)
                 {
@@ -98,6 +110,7 @@ public class EnemyManager : MonoBehaviour
                 break;
 
             case AlertStage.Alerted:
+                if (animator != null) animator.SetInteger("State", 2);
                 if (GameObject.FindGameObjectWithTag("Outline") != null) Destroy(fieldOfView.lastLocation);
                 if (!playerInFOV)
                 {
