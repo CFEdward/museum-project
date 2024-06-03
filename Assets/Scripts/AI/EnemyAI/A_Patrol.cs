@@ -20,6 +20,7 @@ public class A_Patrol : ActionBase
     protected override void OnStart()
     {
         agent.SetDestination(waypoints[currentWaypointIndex].position);
+        agent.speed = 1.5f;
     }
 
     protected override TaskStatus OnUpdate()

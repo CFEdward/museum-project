@@ -32,7 +32,7 @@ public class BT_Enemy : MonoBehaviour
                 })
                     .Sequence()
                         .A_Patrol("Patrol", waypoints)
-                        .WaitTime(12.5f)
+                        .WaitTime(3f)
                     .End()
                 .End()
             .End()

@@ -26,7 +26,7 @@ public class A_ChasePlayer : ActionBase
         }
         else
         {
-            agent.speed = 3.5f;
+            agent.speed = 2.5f;
             return TaskStatus.Failure;
         }
     }
