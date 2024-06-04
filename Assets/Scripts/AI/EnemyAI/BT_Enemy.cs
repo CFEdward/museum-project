@@ -41,6 +41,6 @@ public class BT_Enemy : MonoBehaviour
 
     private void Update()
     {
-        tree.Tick();
+        if (!enemyManager.isDead) tree.Tick();
     }
 }

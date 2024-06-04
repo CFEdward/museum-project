@@ -21,7 +21,7 @@ public class A_ChasePlayer : ActionBase
         if (enemyManager.alertStage == AlertStage.Alerted)
         {
             agent.SetDestination(target.transform.position);
-            agent.speed = 4.5f;
+            agent.speed = 7f;
             return TaskStatus.Continue;
         }
         else

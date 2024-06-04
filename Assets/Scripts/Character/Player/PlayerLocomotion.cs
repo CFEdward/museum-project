@@ -7,9 +7,11 @@ public class PlayerLocomotion : MonoBehaviour
     private Vector3 moveDirection;
     private Transform cameraObject;
     private Rigidbody playerRigidbody;
-    private Animator animator;
+    public Animator animator;
 
-    [SerializeField] private float movementSpeed = 7f;
+    [SerializeField] private float sneakMoveSpeed = 6f;
+    [SerializeField] private float pursuedMoveSpeed = 12f;
+    private float movementSpeed;
     [SerializeField] private float rotationSpeed = 15f;
 
     private void Awake()
@@ -18,6 +20,7 @@ public class PlayerLocomotion : MonoBehaviour
         playerRigidbody = GetComponent<Rigidbody>();
         cameraObject = Camera.main.transform;
         animator = GetComponentInChildren<Animator>();
+        movementSpeed = sneakMoveSpeed;
     }
 
     public void HandleAllMovement()
@@ -28,6 +31,12 @@ public class PlayerLocomotion : MonoBehaviour
 
     private void HandleMovement()
     {
+        if (TryGetComponent(out PlayerManager playerManager))
+        {
+            if (playerManager.isPursued) movementSpeed = pursuedMoveSpeed;
+            else movementSpeed = sneakMoveSpeed;
+        }
+
         moveDirection = cameraObject.forward * inputManager.verticalInput;
         moveDirection = moveDirection + cameraObject.right * inputManager.horizontalInput;
         moveDirection.Normalize();

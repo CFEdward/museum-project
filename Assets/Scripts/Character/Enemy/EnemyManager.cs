@@ -18,6 +18,7 @@ public class EnemyManager : MonoBehaviour
 
     public Transform target;
     public bool canSeePlayer;
+    public bool isDead;
 
     //[SerializeField] private AttributesManager attributes;
     public FieldOfView fieldOfView;
@@ -27,6 +28,7 @@ public class EnemyManager : MonoBehaviour
 
     private void Awake()
     {
+        isDead = false;
         fieldOfView = GetComponent<FieldOfView>();
         alertStage = AlertStage.Peaceful;
         alertLevel = 0f;
@@ -82,6 +84,7 @@ public class EnemyManager : MonoBehaviour
                 if (animator != null) animator.SetInteger("State", 0);
                 if (animator && agent && agent.hasPath) animator.SetBool("isIdle", false);
                 if (animator && agent && !agent.hasPath) animator.SetBool("isIdle", true);
+                if (target != null) target.GetComponent<PlayerManager>().isPursued = false;
                 if (GameObject.FindGameObjectWithTag("Outline") != null) Destroy(fieldOfView.lastLocation);
                 if (playerInFOV) alertStage = AlertStage.Intrigued;
                 break;
@@ -90,6 +93,7 @@ public class EnemyManager : MonoBehaviour
                 if (animator != null) animator.SetInteger("State", 1);
                 if (animator && agent && !agent.hasPath) animator.SetBool("isSearching", false);
                 if (animator && agent && agent.hasPath) animator.SetBool("isSearching", true);
+                if (target != null) target.GetComponent<PlayerManager>().isPursued = false;
                 alertTimer = 0f;
                 if (playerInFOV)
                 {
@@ -111,6 +115,7 @@ public class EnemyManager : MonoBehaviour
 
             case AlertStage.Alerted:
                 if (animator != null) animator.SetInteger("State", 2);
+                if (target != null) target.GetComponent<PlayerManager>().isPursued = true;
                 if (GameObject.FindGameObjectWithTag("Outline") != null) Destroy(fieldOfView.lastLocation);
                 if (!playerInFOV)
                 {
@@ -120,6 +125,11 @@ public class EnemyManager : MonoBehaviour
                 else alertTimer = 0f;
                 break;
         }
+    }
+
+    public void KnockDown()
+    {
+        Destroy(gameObject);
     }
 
     //private void ShouldDie()
