@@ -62,7 +62,7 @@ public class FieldOfView : MonoBehaviour
                     else
                     {
                         canSeePlayer = false;
-                        if ((GameObject.FindGameObjectWithTag("Outline") == null) && (GetComponentInParent<EnemyManager>().alertStage != AlertStage.Alerted))
+                        if ((GameObject.FindGameObjectWithTag("Outline") == null) && (GetComponentInParent<EnemyManager>().alertStage == AlertStage.Intrigued))
                             lastLocation = Instantiate(outline, target.position, target.rotation);
                     }
                 }
@@ -85,7 +85,7 @@ public class FieldOfView : MonoBehaviour
                     else
                     {
                         canSeePlayer = false;
-                        if ((GameObject.FindGameObjectWithTag("Outline") == null) && (GetComponentInParent<EnemyManager>().alertStage != AlertStage.Alerted))
+                        if ((GameObject.FindGameObjectWithTag("Outline") == null) && (GetComponentInParent<EnemyManager>().alertStage == AlertStage.Intrigued))
                             lastLocation = Instantiate(outline, target.position, target.rotation);
                     }
                 }

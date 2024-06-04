@@ -102,7 +102,8 @@ public class EnemyManager : MonoBehaviour
                 }
                 else
                 {
-                    if (GameObject.FindGameObjectWithTag("Outline") == null) fieldOfView.lastLocation = Instantiate(fieldOfView.outline, target.position, target.rotation);
+                    if (GameObject.FindGameObjectWithTag("Outline") == null)
+                        fieldOfView.lastLocation = Instantiate(fieldOfView.outline, target.position, target.rotation);
                     alertCooldown -= Time.deltaTime;
                     if (alertCooldown <= 0f) alertLevel = alertLevel - detectionSpeed * Time.deltaTime;
                     if (alertLevel <= 0f)

@@ -984,9 +984,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fovRadius: 20
-  fovPerRadius: 10
+  fovPerRadius: 9
   fovAngle: 50
-  fovPerAngle: 65
+  fovPerAngle: 100
   targetMask:
     serializedVersion: 2
     m_Bits: 256
@@ -1665,7 +1665,7 @@ Transform:
   m_GameObject: {fileID: 4424194718102734982}
   serializedVersion: 2
   m_LocalRotation: {x: -0.46543592, y: 0.29670188, z: -0.6409488, w: 0.53340614}
-  m_LocalPosition: {x: -0.00149, y: -0.00008, z: -0.00034}
+  m_LocalPosition: {x: -0.0008, y: -0.0001, z: -0.00034}
   m_LocalScale: {x: 0.0066948347, y: 0.006694833, z: 0.006694837}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1683,10 +1683,10 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 600
+  m_Intensity: 445.54712
   m_Range: 10
-  m_SpotAngle: 50
-  m_InnerSpotAngle: 5
+  m_SpotAngle: 100
+  m_InnerSpotAngle: 1
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -1731,7 +1731,7 @@ Light:
   m_BoundingSphereOverride: {x: 0, y: 0, z: 5, w: 5.0124846}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
-  m_ShadowRadius: 0.25
+  m_ShadowRadius: 0.025
   m_ShadowAngle: 0
 --- !u!114 &5318832896498057430
 MonoBehaviour:
@@ -1745,10 +1745,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a68c43fe1f2a47cfa234b5eeaa98012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Intensity: 600
+  m_Intensity: 1000
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
-  m_InnerSpotPercent: 30
+  m_InnerSpotPercent: 35
   m_SpotIESCutoffPercent: 100
   m_LightDimmer: 1
   m_VolumetricDimmer: 1
@@ -1764,7 +1764,7 @@ MonoBehaviour:
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
   m_UseCustomSpotLightShadowCone: 0
-  m_CustomSpotLightShadowCone: 5
+  m_CustomSpotLightShadowCone: 1
   m_MaxSmoothness: 0.99
   m_ApplyRangeAttenuation: 1
   m_DisplayAreaLightEmissiveMesh: 0
