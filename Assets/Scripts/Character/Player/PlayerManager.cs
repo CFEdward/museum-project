@@ -20,7 +20,7 @@ public class PlayerManager : MonoBehaviour
     {
         inputManager.HandleAllInputs();
 
-        playerLocomotion.animator.SetBool("isPursued", isPursued);
+        playerLocomotion.animator.SetBool("bIsPursued", isPursued);
 
         if (Input.GetKeyDown(KeyCode.F))
         {
