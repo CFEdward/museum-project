@@ -6,6 +6,7 @@ public class InputManager : MonoBehaviour
 
     [SerializeField] private Vector2 movementInput;
     [SerializeField] private Vector2 cameraInput;
+    //[SerializeField] private 
 
     public float cameraInputX;
     public float cameraInputY;
@@ -21,6 +22,7 @@ public class InputManager : MonoBehaviour
 
             playerControls.PlayerMovement.Movement.performed += i => movementInput = i.ReadValue<Vector2>();
             playerControls.PlayerMovement.Camera.performed += i => cameraInput = i.ReadValue<Vector2>();
+            //playerControls.PlayerMovement.Interact.performed += i => 
         }
 
         playerControls.Enable();

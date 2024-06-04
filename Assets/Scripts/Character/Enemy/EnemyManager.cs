@@ -72,7 +72,6 @@ public class EnemyManager : MonoBehaviour
         canSeePlayer = fieldOfView.canSeePlayer;
         UpdateAlertState(canSeePlayer);
         target = fieldOfView.target;
-
         //ShouldDie();
     }
 
