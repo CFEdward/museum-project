@@ -6,11 +6,27 @@ using UnityEngine.UI;
 public class WatchHUD : MonoBehaviour
 {
     [SerializeField] private Image progressImage;
+    [SerializeField] private Image lightningBolt;
     [SerializeField] private float defaultSpeed;
     //[SerializeField] private UnityEvent<float> onProgress;
     [SerializeField] private UnityEvent onCompleted;
 
     private Coroutine animationCoroutine;
+
+    private void Update()
+    {
+        if (animationCoroutine == null && progressImage.fillAmount < 1f)
+        {
+            SetProgress(1f);
+        }
+    }
+
+    public void ResetCooldown()
+    {
+        progressImage.fillAmount = 0f;
+        lightningBolt.enabled = false;
+        animationCoroutine = StartCoroutine(AnimateProgress(1f, defaultSpeed));
+    }
 
     public void SetProgress(float progress)
     {
@@ -18,13 +34,13 @@ public class WatchHUD : MonoBehaviour
     }
     public void SetProgress(float progress, float speed)
     {
-        if (progress < 0 || progress >1)
+        if (progress < 0f || progress > 1f)
         {
             progress = Mathf.Clamp01(progress);
         }
         if (progress != progressImage.fillAmount)
         {
-            if (animationCoroutine != null)
+            if (animationCoroutine != null && progressImage.fillAmount >= 1f)
             {
                 StopCoroutine(animationCoroutine);
             }
@@ -47,6 +63,7 @@ public class WatchHUD : MonoBehaviour
             yield return null;
         }
 
+        lightningBolt.enabled = true;
         progressImage.fillAmount = progress;
         //onProgress?.Invoke(progress);
         onCompleted?.Invoke();

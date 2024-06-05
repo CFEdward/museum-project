@@ -21,19 +21,6 @@ public class PlayerManager : MonoBehaviour
         inputManager.HandleAllInputs();
 
         playerLocomotion.animator.SetBool("bIsPursued", isPursued);
-
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            float interactRange = 2f;
-            Collider[] colliderArray = Physics.OverlapSphere(transform.position, interactRange);
-            foreach (Collider collider in colliderArray)
-            {
-                if (collider.TryGetComponent(out EnemyManager enemyManager))
-                {
-                    enemyManager.KnockDown();
-                }
-            }
-        }
     }
 
     private void FixedUpdate()

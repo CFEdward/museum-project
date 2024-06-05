@@ -6,13 +6,15 @@ public class InputManager : MonoBehaviour
 
     [SerializeField] private Vector2 movementInput;
     [SerializeField] private Vector2 cameraInput;
-    //[SerializeField] private 
+    [SerializeField] private bool interactInput;
 
     public float cameraInputX;
     public float cameraInputY;
 
     public float verticalInput;
     public float horizontalInput;
+
+    private bool stunOnCooldown = true;
 
     private void OnEnable()
     {
@@ -22,7 +24,8 @@ public class InputManager : MonoBehaviour
 
             playerControls.PlayerMovement.Movement.performed += i => movementInput = i.ReadValue<Vector2>();
             playerControls.PlayerMovement.Camera.performed += i => cameraInput = i.ReadValue<Vector2>();
-            //playerControls.PlayerMovement.Interact.performed += i => 
+
+            playerControls.PlayerMovement.Interact.performed += i => interactInput = true;
         }
 
         playerControls.Enable();
@@ -36,6 +39,7 @@ public class InputManager : MonoBehaviour
     public void HandleAllInputs()
     {
         HandleMovementInput();
+        HandleInteractInput();
         //HandleJumpInput etc.
     }
 
@@ -46,5 +50,30 @@ public class InputManager : MonoBehaviour
 
         cameraInputY = cameraInput.y;
         cameraInputX = cameraInput.x;
+    }
+
+    private void HandleInteractInput()
+    {
+        if (interactInput)
+        {
+            interactInput = false;
+            float interactRange = 2f;
+            Collider[] colliderArray = Physics.OverlapSphere(transform.position, interactRange);
+            if (!stunOnCooldown)
+            foreach (Collider collider in colliderArray)
+            {
+                if (collider.TryGetComponent(out EnemyManager enemyManager))
+                {
+                    enemyManager.KnockDown();
+                    FindFirstObjectByType<WatchHUD>().ResetCooldown();
+                    stunOnCooldown = true;
+                }
+            }
+        }
+    }
+
+    public void ResetStunCooldown()
+    {
+        stunOnCooldown = false;
     }
 }

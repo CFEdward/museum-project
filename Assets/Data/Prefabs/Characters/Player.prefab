@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6245497969471722949}
   - component: {fileID: 806936489050434279}
   - component: {fileID: 1694777348731258636}
-  - component: {fileID: 6240003305001615924}
+  - component: {fileID: 3807198068027169778}
   m_Layer: 7
   m_Name: LightScan
   m_TagString: Untagged
@@ -93,7 +93,7 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 884275429807656689}
   m_Enabled: 0
---- !u!114 &6240003305001615924
+--- !u!114 &3807198068027169778
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,7 +141,7 @@ MonoBehaviour:
   invertFaceCulling: 0
   probeLayerMask:
     serializedVersion: 2
-    m_Bits: 247
+    m_Bits: 4294967295
   hasPersistentHistory: 0
   screenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
   screenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
@@ -412,6 +412,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementInput: {x: 0, y: 0}
   cameraInput: {x: 0, y: 0}
+  interactInput: 0
   cameraInputX: 0
   cameraInputY: 0
   verticalInput: 0
