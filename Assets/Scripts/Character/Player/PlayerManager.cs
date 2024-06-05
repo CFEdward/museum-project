@@ -6,16 +6,21 @@ public class PlayerManager : MonoBehaviour
     private CameraManager cameraManager;
     private PlayerLocomotion playerLocomotion;
 
+    public bool isPursued;
+
     private void Awake()
     {
         inputManager = GetComponent<InputManager>();
         cameraManager = FindObjectOfType<CameraManager>();
         playerLocomotion = GetComponent<PlayerLocomotion>();
+        isPursued = false;
     }
 
     private void Update()
     {
         inputManager.HandleAllInputs();
+
+        playerLocomotion.animator.SetBool("bIsPursued", isPursued);
     }
 
     private void FixedUpdate()
