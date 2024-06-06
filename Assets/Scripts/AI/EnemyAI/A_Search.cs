@@ -9,13 +9,13 @@ public class A_Search : ActionBase
 
     private NavMeshAgent agent;
     private float searchRange;   // radius of sphere
-    private Transform centerPoint;   // center of the sphere to be searched
+    private Transform initialCenterPoint;   // center of the sphere to be searched
 
     protected override void OnInit()
     {
         agent = Owner.GetComponent<NavMeshAgent>();
         if (GameObject.FindGameObjectWithTag("Outline") != null)
-            centerPoint = GameObject.FindGameObjectWithTag("Outline").transform;
+            initialCenterPoint = GameObject.FindGameObjectWithTag("Outline").transform;
         searchRange = 10f;
     }
 
@@ -30,6 +30,8 @@ public class A_Search : ActionBase
         if (enemyManager.alertStage == AlertStage.Alerted)
         {
             agent.ResetPath();
+            enemyManager.alertLevel = 100f;
+            //enemyManager.alertStage = AlertStage.Alerted;
             return TaskStatus.Success;
         }
         if (enemyManager.alertStage == AlertStage.Peaceful)
@@ -37,13 +39,15 @@ public class A_Search : ActionBase
             //return TaskStatus.Failure;
         }
 
-        centerPoint = GameObject.FindGameObjectWithTag("Outline").transform;
+        Transform centerPoint = GameObject.FindGameObjectWithTag("Outline").transform;
+        //initialCenterPoint = GameObject.FindGameObjectWithTag("Outline").transform;
+        if (initialCenterPoint != centerPoint) { agent.ResetPath(); initialCenterPoint = centerPoint; }
         if (enemyManager.alertStage == AlertStage.Intrigued)
         {
             if (agent.remainingDistance <= agent.stoppingDistance) // done with path
             {
                 Vector3 point;
-                if (RandomPoint(centerPoint.position, searchRange, out point))
+                if (RandomPoint(initialCenterPoint.position, searchRange, out point))
                 {
                     Debug.DrawRay(point, Vector3.up, Color.blue, 1f);
                     agent.SetDestination(point);

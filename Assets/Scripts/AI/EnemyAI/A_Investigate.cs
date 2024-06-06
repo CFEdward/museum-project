@@ -21,11 +21,24 @@ public class A_Investigate : ActionBase
         //Debug.Log(enemyManager.alertStage);
         if (enemyManager.alertStage == AlertStage.Intrigued && enemyManager.canSeePlayer)
         {
+            if (PlayerData.bIsPursued)
+            {
+                enemyManager.alertLevel = 100f;
+                enemyManager.alertStage = AlertStage.Alerted;
+                return TaskStatus.Success;
+            }
             agent.ResetPath();
             self.LookAt(enemyManager.target);
             return TaskStatus.Continue;
         }
         if (enemyManager.alertStage == AlertStage.Peaceful) return TaskStatus.Failure;
+
+        //if (PlayerData.bIsPursued)
+        //{
+        //    enemyManager.alertLevel = 100f;
+        //    enemyManager.alertStage = AlertStage.Alerted;
+        //    return TaskStatus.Success;
+        //}
 
         return TaskStatus.Success;
     }

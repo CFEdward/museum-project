@@ -20,12 +20,17 @@ public class A_ChasePlayer : ActionBase
     {
         if (enemyManager.alertStage == AlertStage.Alerted)
         {
+            enemyManager.alertStage = AlertStage.Alerted;
+            enemyManager.alertLevel = 100f;
             agent.SetDestination(target.transform.position);
             agent.speed = 7f;
             return TaskStatus.Continue;
         }
         else
         {
+            enemyManager.alertCooldown = 17f;
+            enemyManager.alertStage = AlertStage.Intrigued;
+            PlayerData.bIsPursued = false;
             agent.speed = 2.5f;
             return TaskStatus.Failure;
         }

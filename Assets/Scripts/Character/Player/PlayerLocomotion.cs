@@ -33,7 +33,7 @@ public class PlayerLocomotion : MonoBehaviour
     {
         if (TryGetComponent(out PlayerManager playerManager))
         {
-            if (playerManager.isPursued) movementSpeed = pursuedMoveSpeed;
+            if (PlayerData.bIsPursued) movementSpeed = pursuedMoveSpeed;
             else movementSpeed = sneakMoveSpeed;
         }
 
