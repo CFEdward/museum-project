@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class WatchHUD : MonoBehaviour
 {
-    [SerializeField] private Image progressImage;
+    public Image progressImage;
     [SerializeField] private Image lightningBolt;
     [SerializeField] private float defaultSpeed;
     //[SerializeField] private UnityEvent<float> onProgress;
@@ -56,6 +56,7 @@ public class WatchHUD : MonoBehaviour
 
         while (time < 1f)
         {
+            //if (InputManager.isPaused) continue;
             progressImage.fillAmount = Mathf.Lerp(initialProgress, progress, time);
             time += Time.deltaTime * speed;
 

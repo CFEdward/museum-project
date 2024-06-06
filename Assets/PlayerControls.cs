@@ -264,6 +264,45 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Menu"",
+            ""id"": ""e984ed2d-67d8-43e5-82b6-aa9b55a4360f"",
+            ""actions"": [
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""7dd84041-493c-47a0-b180-0ae1a9a59650"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""3733239c-a738-4100-b792-2d04310b3e1d"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e59973d3-2e96-46ff-8e8e-6e254a851a94"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -274,6 +313,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_PlayerMovement_Camera = m_PlayerMovement.FindAction("Camera", throwIfNotFound: true);
         m_PlayerMovement_Submit = m_PlayerMovement.FindAction("Submit", throwIfNotFound: true);
         m_PlayerMovement_Interact = m_PlayerMovement.FindAction("Interact", throwIfNotFound: true);
+        // Menu
+        m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
+        m_Menu_Pause = m_Menu.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -401,11 +443,61 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         }
     }
     public PlayerMovementActions @PlayerMovement => new PlayerMovementActions(this);
+
+    // Menu
+    private readonly InputActionMap m_Menu;
+    private List<IMenuActions> m_MenuActionsCallbackInterfaces = new List<IMenuActions>();
+    private readonly InputAction m_Menu_Pause;
+    public struct MenuActions
+    {
+        private @PlayerControls m_Wrapper;
+        public MenuActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Pause => m_Wrapper.m_Menu_Pause;
+        public InputActionMap Get() { return m_Wrapper.m_Menu; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MenuActions set) { return set.Get(); }
+        public void AddCallbacks(IMenuActions instance)
+        {
+            if (instance == null || m_Wrapper.m_MenuActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_MenuActionsCallbackInterfaces.Add(instance);
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
+        }
+
+        private void UnregisterCallbacks(IMenuActions instance)
+        {
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
+        }
+
+        public void RemoveCallbacks(IMenuActions instance)
+        {
+            if (m_Wrapper.m_MenuActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IMenuActions instance)
+        {
+            foreach (var item in m_Wrapper.m_MenuActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_MenuActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public MenuActions @Menu => new MenuActions(this);
     public interface IPlayerMovementActions
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnCamera(InputAction.CallbackContext context);
         void OnSubmit(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+    }
+    public interface IMenuActions
+    {
+        void OnPause(InputAction.CallbackContext context);
     }
 }

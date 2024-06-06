@@ -7,6 +7,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] private Vector2 movementInput;
     [SerializeField] private Vector2 cameraInput;
     [SerializeField] private bool interactInput;
+    [SerializeField] private bool pauseInput;
 
     public float cameraInputX;
     public float cameraInputY;
@@ -14,7 +15,7 @@ public class InputManager : MonoBehaviour
     public float verticalInput;
     public float horizontalInput;
 
-    private bool stunOnCooldown = true;
+    public static bool isPaused = false;
 
     private void OnEnable()
     {
@@ -26,6 +27,7 @@ public class InputManager : MonoBehaviour
             playerControls.PlayerMovement.Camera.performed += i => cameraInput = i.ReadValue<Vector2>();
 
             playerControls.PlayerMovement.Interact.performed += i => interactInput = true;
+            playerControls.Menu.Pause.performed += i => pauseInput = true;
         }
 
         playerControls.Enable();
@@ -40,16 +42,25 @@ public class InputManager : MonoBehaviour
     {
         HandleMovementInput();
         HandleInteractInput();
+        HandlePauseInput();
         //HandleJumpInput etc.
     }
 
     private void HandleMovementInput()
     {
-        verticalInput = movementInput.y;
-        horizontalInput = movementInput.x;
+        if (!isPaused)
+        {
+            verticalInput = movementInput.y;
+            horizontalInput = movementInput.x;
 
-        cameraInputY = cameraInput.y;
-        cameraInputX = cameraInput.x;
+            cameraInputY = cameraInput.y;
+            cameraInputX = cameraInput.x;
+        }
+        else
+        {
+            cameraInputY = 0f;
+            cameraInputX = 0f;
+        }
     }
 
     private void HandleInteractInput()
@@ -57,16 +68,16 @@ public class InputManager : MonoBehaviour
         if (interactInput)
         {
             interactInput = false;
-            float interactRange = 2f;
+            float interactRange = 3f;
             Collider[] colliderArray = Physics.OverlapSphere(transform.position, interactRange);
-            if (!stunOnCooldown)
+            if (!PlayerManager.stunOnCooldown)
             foreach (Collider collider in colliderArray)
             {
                 if (collider.TryGetComponent(out EnemyManager enemyManager))
                 {
                     enemyManager.KnockDown();
                     FindFirstObjectByType<WatchHUD>().ResetCooldown();
-                    stunOnCooldown = true;
+                    PlayerManager.stunOnCooldown = true;
                 }
             }
         }
@@ -74,6 +85,19 @@ public class InputManager : MonoBehaviour
 
     public void ResetStunCooldown()
     {
-        stunOnCooldown = false;
+        PlayerManager.stunOnCooldown = false;
+    }
+
+    private void HandlePauseInput()
+    {
+        if (pauseInput)
+        {
+            pauseInput = false;
+            if (GameObject.FindGameObjectWithTag("HUD").TryGetComponent<PauseMenu>(out PauseMenu pauseMenu))
+            {
+                if (!isPaused) pauseMenu.Pause();
+                else pauseMenu.Resume();
+            }
+        }
     }
 }

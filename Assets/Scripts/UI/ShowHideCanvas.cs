@@ -2,22 +2,17 @@ using UnityEngine;
 
 public class ShowHideCanvas : MonoBehaviour
 {
-    private Canvas canvas;
-
-    private void Awake()
-    {
-        canvas = GetComponent<Canvas>();
-    }
+    [SerializeField] private GameObject canvas;
 
     private void Update()
     {
-        float range = 2f;
+        float range = 3f;
         Collider[] colliderArray = Physics.OverlapSphere(transform.position, range);
         foreach (Collider collider in colliderArray)
         {
-            if (collider.TryGetComponent(out PlayerManager playerManager))
-                canvas.enabled = true;
-            else canvas.enabled = false;
+            if (collider.TryGetComponent(out PlayerManager playerManager) && !PlayerManager.stunOnCooldown)
+            { canvas.SetActive(true); break; }
+            else canvas.SetActive(false);
         }
     }
 }

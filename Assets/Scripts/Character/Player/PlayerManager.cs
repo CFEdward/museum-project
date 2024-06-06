@@ -6,6 +6,7 @@ public class PlayerManager : MonoBehaviour
     private CameraManager cameraManager;
     private PlayerLocomotion playerLocomotion;
 
+    public static bool stunOnCooldown = true;
     public bool isPursued;
 
     private void Awake()
