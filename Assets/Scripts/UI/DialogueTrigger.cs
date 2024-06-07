@@ -25,5 +25,20 @@ public class Dialogue
 public class DialogueTrigger : MonoBehaviour
 {
     public Dialogue dialogue;
+    private bool alreadyTriggered = false;
 
+    public void TriggerDialogue()
+    {
+        DialogueManager.Instance.StartDialogue(dialogue);
+    }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.tag == "Player" && !alreadyTriggered)
+        {
+            TriggerDialogue();
+        }
+
+        alreadyTriggered = true;
+    }
 }

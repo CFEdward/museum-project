@@ -8,6 +8,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] private Vector2 cameraInput;
     [SerializeField] private bool interactInput;
     [SerializeField] private bool pauseInput;
+    [SerializeField] private bool nextDialogueInput;
 
     public float cameraInputX;
     public float cameraInputY;
@@ -28,6 +29,7 @@ public class InputManager : MonoBehaviour
 
             playerControls.PlayerMovement.Interact.performed += i => interactInput = true;
             playerControls.Menu.Pause.performed += i => pauseInput = true;
+            playerControls.Menu.NextDialogue.performed += i => nextDialogueInput = true;
         }
 
         playerControls.Enable();
@@ -43,6 +45,7 @@ public class InputManager : MonoBehaviour
         HandleMovementInput();
         HandleInteractInput();
         HandlePauseInput();
+        HandleNextDialogueInput();
         //HandleJumpInput etc.
     }
 
@@ -98,6 +101,15 @@ public class InputManager : MonoBehaviour
                 if (!isPaused) pauseMenu.Pause();
                 else pauseMenu.Resume();
             }
+        }
+    }
+
+    private void HandleNextDialogueInput()
+    {
+        if (nextDialogueInput)
+        {
+            nextDialogueInput = false;
+            DialogueManager.Instance.DisplayNextDialogueLine();
         }
     }
 }

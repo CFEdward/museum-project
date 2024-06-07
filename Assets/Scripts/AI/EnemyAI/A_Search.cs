@@ -34,10 +34,6 @@ public class A_Search : ActionBase
             //enemyManager.alertStage = AlertStage.Alerted;
             return TaskStatus.Success;
         }
-        if (enemyManager.alertStage == AlertStage.Peaceful)
-        {
-            //return TaskStatus.Failure;
-        }
 
         Transform centerPoint = GameObject.FindGameObjectWithTag("Outline").transform;
         //initialCenterPoint = GameObject.FindGameObjectWithTag("Outline").transform;

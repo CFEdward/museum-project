@@ -58,7 +58,10 @@ public class FieldOfView : MonoBehaviour
                 {
                     float distanceToTarget = Vector3.Distance(transform.position, target.position);
                     if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
+                    {
                         canSeePlayer = true;
+                        if (GameObject.FindGameObjectWithTag("Outline") != null) Destroy(lastLocation);
+                    }
                     else
                     {
                         canSeePlayer = false;
@@ -81,7 +84,10 @@ public class FieldOfView : MonoBehaviour
                 {
                     float distanceToTarget = Vector3.Distance(transform.position, target.position);
                     if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
+                    {
                         canSeePlayer = true;
+                        if (GameObject.FindGameObjectWithTag("Outline") != null) Destroy(lastLocation);
+                    }
                     else
                     {
                         canSeePlayer = false;

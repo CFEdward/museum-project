@@ -414,6 +414,8 @@ MonoBehaviour:
   movementInput: {x: 0, y: 0}
   cameraInput: {x: 0, y: 0}
   interactInput: 0
+  pauseInput: 0
+  nextDialogueInput: 0
   cameraInputX: 0
   cameraInputY: 0
   verticalInput: 0
@@ -430,7 +432,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 963ae5c045bbb0240a79e8d03983586d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPursued: 0
 --- !u!114 &8652150717140085823
 MonoBehaviour:
   m_ObjectHideFlags: 0

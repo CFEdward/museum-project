@@ -874,7 +874,7 @@ GameObject:
   - component: {fileID: 3565113017875794091}
   - component: {fileID: 7826419915658360806}
   - component: {fileID: 5894307085814886706}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -964,6 +964,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alertStage: 0
   alertLevel: 0
+  alertCooldown: 12
   detectionSpeed: 40
   target: {fileID: 0}
   canSeePlayer: 0
