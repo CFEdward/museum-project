@@ -6978,6 +6978,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dialogue Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 635417305125872020, guid: b40fc337dfb06df4fb4414ffebecb69d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1110420051819193375, guid: b40fc337dfb06df4fb4414ffebecb69d,
         type: 3}
       propertyPath: m_Enabled
@@ -26666,6 +26671,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HUD Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 170664588777485463, guid: d01cec484754b1c46a6924fb104d210e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 170664588777485463, guid: d01cec484754b1c46a6924fb104d210e,
         type: 3}

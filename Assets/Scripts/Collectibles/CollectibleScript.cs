@@ -5,8 +5,10 @@ using UnityEngine;
 public class CollectibleScript : MonoBehaviour
 {
 
-    public GameObject collectibleCanvas;
-    public GameObject collectiblePickUpCanvas;
+    [SerializeField] private GameObject collectibleCanvas;
+    [SerializeField] private GameObject collectiblePickUpCanvas;
+    [SerializeField] private GameObject watch;
+    private float remainingCooldown;
     private bool canvasActive = false;
     private bool pickupCanvasActive = false;
 
@@ -31,11 +33,7 @@ public class CollectibleScript : MonoBehaviour
     {
         if (pickupCanvasActive && Input.GetMouseButtonDown(0))
         {
-            Time.timeScale = 1f;
-            collectiblePickUpCanvas.SetActive(false);
-            pickupCanvasActive = false;
-            Debug.Log("Ready to move on");
-            Destroy(gameObject);
+            ResumeAfterPickUp();
         }
     }
 
@@ -53,12 +51,28 @@ public class CollectibleScript : MonoBehaviour
 
     private void PickUpCollectible()
     {
+        remainingCooldown = watch.GetComponent<WatchHUD>().progressImage.fillAmount;
+        watch.SetActive(false);
         scoreManager.Collectibles += 1;
         Time.timeScale = 0f;
-        Debug.Log("Method works");
+        Debug.Log("Pause Baby");
         collectibleCanvas.SetActive(false);
         collectiblePickUpCanvas.SetActive(true);
         pickupCanvasActive = true;
+        InputManager.isPaused = true;
         canvasActive = false;
+    }
+
+    private void ResumeAfterPickUp()
+    {
+        collectiblePickUpCanvas.SetActive(false);
+        watch.SetActive(true);
+        watch.GetComponent<WatchHUD>().progressImage.fillAmount = remainingCooldown;
+        if (remainingCooldown < 1f) watch.GetComponent<WatchHUD>().SetProgress(1f);
+        Time.timeScale = 1f;
+        InputManager.isPaused = false;
+        pickupCanvasActive = false;
+        Debug.Log("Ready to move on");
+        Destroy(gameObject);
     }
 }
