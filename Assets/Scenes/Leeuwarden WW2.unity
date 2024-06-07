@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.02867842, g: 0.039140705, b: 0.07147915, a: 1}
+  m_IndirectSpecularColor: {r: 0.028957907, g: 0.03987858, b: 0.07353682, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6986,7 +6986,7 @@ PrefabInstance:
     - target: {fileID: 1110420051819193375, guid: b40fc337dfb06df4fb4414ffebecb69d,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7916557112591671324, guid: b40fc337dfb06df4fb4414ffebecb69d,
         type: 3}
@@ -26429,6 +26429,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CollectibleTest
       objectReference: {fileID: 0}
+    - target: {fileID: 7292326631857492053, guid: b4241b60f9e9a4a4fa6272a5e5ffdae1,
+        type: 3}
+      propertyPath: watch
+      value: 
+      objectReference: {fileID: 1515237181790620402}
     - target: {fileID: 7976780270194656545, guid: b4241b60f9e9a4a4fa6272a5e5ffdae1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -26689,6 +26694,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2310496768941596346, guid: d01cec484754b1c46a6924fb104d210e,
         type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2310496768941596346, guid: d01cec484754b1c46a6924fb104d210e,
+        type: 3}
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
@@ -26800,7 +26810,7 @@ PrefabInstance:
     - target: {fileID: 4809000835026137419, guid: d01cec484754b1c46a6924fb104d210e,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4809000835026137419, guid: d01cec484754b1c46a6924fb104d210e,
         type: 3}
@@ -26812,6 +26822,11 @@ PrefabInstance:
       propertyPath: onCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 537887552}
+    - target: {fileID: 8069283837913852192, guid: d01cec484754b1c46a6924fb104d210e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
