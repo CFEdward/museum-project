@@ -16,10 +16,12 @@ public class InputManager : MonoBehaviour
     public float verticalInput;
     public float horizontalInput;
 
-    public static bool isPaused = false;
+    public static bool isPaused;
 
     private void OnEnable()
     {
+        isPaused = false;
+
         if (playerControls == null)
         {
             playerControls = new PlayerControls();

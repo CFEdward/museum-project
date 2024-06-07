@@ -85,6 +85,8 @@ public class EnemyManager : MonoBehaviour, IDataPersistence
     public void LoadData(GameData data)
     {
         data.enemiesStunned.TryGetValue(id, out isStunned);
+        if (data.enemiesPositions.TryGetValue(id, out Vector3 loadedPosition))
+        this.transform.position = loadedPosition;
         if (isStunned)
         {
             HandleStun();
@@ -98,6 +100,11 @@ public class EnemyManager : MonoBehaviour, IDataPersistence
             data.enemiesStunned.Remove(id);
         }
         data.enemiesStunned.Add(id, isStunned);
+        if (data.enemiesPositions.ContainsKey(id))
+        {
+            data.enemiesPositions.Remove(id);
+        }
+        data.enemiesPositions.Add(id, this.transform.position);
     }
 
     private void UpdateAlertState(bool playerInFOV)

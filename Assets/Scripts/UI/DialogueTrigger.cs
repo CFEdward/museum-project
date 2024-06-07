@@ -22,10 +22,31 @@ public class Dialogue
     public List<DialogueLine> dialogueLines = new List<DialogueLine>();
 }
 
-public class DialogueTrigger : MonoBehaviour
+public class DialogueTrigger : MonoBehaviour, IDataPersistence
 {
     public Dialogue dialogue;
     private bool alreadyTriggered = false;
+
+    [SerializeField] private string id;
+    [ContextMenu("Generate guid for id")]
+    private void GenerateGuid()
+    {
+        id = System.Guid.NewGuid().ToString();
+    }
+
+    public void LoadData(GameData data)
+    {
+        data.dialoguesTriggered.TryGetValue(id, out alreadyTriggered);
+    }
+
+    public void SaveData(GameData data)
+    {
+        if (data.dialoguesTriggered.ContainsKey(id))
+        {
+            data.dialoguesTriggered.Remove(id);
+        }
+        data.dialoguesTriggered.Add(id, alreadyTriggered);
+    }
 
     public void TriggerDialogue()
     {
