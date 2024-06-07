@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class WatchHUD : MonoBehaviour
+public class WatchHUD : MonoBehaviour, IDataPersistence
 {
     public Image progressImage;
     [SerializeField] private Image lightningBolt;
@@ -19,6 +19,16 @@ public class WatchHUD : MonoBehaviour
         {
             SetProgress(1f);
         }
+    }
+
+    public void LoadData(GameData data)
+    {
+        this.progressImage.fillAmount = data.stunBarFillAmount;
+    }
+
+    public void SaveData(GameData data)
+    {
+        data.stunBarFillAmount = this.progressImage.fillAmount;
     }
 
     public void ResetCooldown()

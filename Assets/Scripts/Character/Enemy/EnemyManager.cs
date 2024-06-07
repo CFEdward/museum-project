@@ -8,7 +8,7 @@ public enum AlertStage
     Alerted
 }
 
-public class EnemyManager : MonoBehaviour
+public class EnemyManager : MonoBehaviour, IDataPersistence
 {
     public AlertStage alertStage;
     [Range(0f, 100f)] public float alertLevel = 0f;  // 0: Peaceful, 100: Alerted
@@ -18,7 +18,7 @@ public class EnemyManager : MonoBehaviour
 
     public Transform target;
     public bool canSeePlayer;
-    public bool isDead;
+    public bool isStunned;
 
     //[SerializeField] private AttributesManager attributes;
     public FieldOfView fieldOfView;
@@ -26,9 +26,16 @@ public class EnemyManager : MonoBehaviour
     private Animator animator;
     private NavMeshAgent agent;
 
+    [SerializeField] private string id;
+    [ContextMenu("Generate guid for id")]
+    private void GenerateGuid()
+    {
+        id = System.Guid.NewGuid().ToString();
+    }
+
     private void Awake()
     {
-        isDead = false;
+        isStunned = false;
         fieldOfView = GetComponent<FieldOfView>();
         alertStage = AlertStage.Peaceful;
         alertLevel = 0f;
@@ -73,6 +80,24 @@ public class EnemyManager : MonoBehaviour
         UpdateAlertState(canSeePlayer);
         target = fieldOfView.target;
         //ShouldDie();
+    }
+
+    public void LoadData(GameData data)
+    {
+        data.enemiesStunned.TryGetValue(id, out isStunned);
+        if (isStunned)
+        {
+            HandleStun();
+        }
+    }
+
+    public void SaveData(GameData data)
+    {
+        if (data.enemiesStunned.ContainsKey(id))
+        {
+            data.enemiesStunned.Remove(id);
+        }
+        data.enemiesStunned.Add(id, isStunned);
     }
 
     private void UpdateAlertState(bool playerInFOV)
@@ -129,7 +154,12 @@ public class EnemyManager : MonoBehaviour
 
     public void KnockDown()
     {
-        //Destroy(gameObject);
+        isStunned = true;
+        HandleStun();
+    }
+
+    private void HandleStun()
+    {
         agent.enabled = false;
         fieldOfView.enabled = false;
         this.enabled = false;
