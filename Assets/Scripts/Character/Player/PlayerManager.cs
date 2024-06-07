@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerManager : MonoBehaviour
+public class PlayerManager : MonoBehaviour, IDataPersistence
 {
     private InputManager inputManager;
     private CameraManager cameraManager;
@@ -19,6 +19,17 @@ public class PlayerManager : MonoBehaviour
     {
         inputManager.HandleAllInputs();
         CheckPursuit();
+    }
+
+    public void LoadData(GameData data)
+    {
+        this.transform.position = data.playerPosition;
+        Physics.SyncTransforms();
+    }
+
+    public void SaveData(GameData data)
+    {
+        data.playerPosition = this.transform.position;
     }
 
     private void CheckPursuit()
