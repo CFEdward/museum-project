@@ -8,6 +8,7 @@ public class CollectibleScript : MonoBehaviour
     public GameObject collectibleCanvas;
     public GameObject collectiblePickUpCanvas;
     private bool canvasActive = false;
+    private bool pickupCanvasActive = false;
 
     public ScoreManager scoreManager;
  
@@ -22,8 +23,19 @@ public class CollectibleScript : MonoBehaviour
     {
        if (canvasActive && Input.GetKeyDown(KeyCode.F)) 
         {
-            Destroy(gameObject);
+            PickUpCollectible();
+        }
+    }
 
+    private void LateUpdate()
+    {
+        if (pickupCanvasActive && Input.GetMouseButtonDown(0))
+        {
+            Time.timeScale = 1f;
+            collectiblePickUpCanvas.SetActive(false);
+            pickupCanvasActive = false;
+            Debug.Log("Ready to move on");
+            Destroy(gameObject);
         }
     }
 
@@ -41,9 +53,12 @@ public class CollectibleScript : MonoBehaviour
 
     private void PickUpCollectible()
     {
-        collectibleCanvas.SetActive(false);
         scoreManager.Collectibles += 1;
-        collectiblePickUpCanvas.SetActive(true);
         Time.timeScale = 0f;
+        Debug.Log("Method works");
+        collectibleCanvas.SetActive(false);
+        collectiblePickUpCanvas.SetActive(true);
+        pickupCanvasActive = true;
+        canvasActive = false;
     }
 }
