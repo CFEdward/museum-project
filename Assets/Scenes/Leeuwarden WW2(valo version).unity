@@ -5779,10 +5779,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2366626237123568933, guid: 824f19ec1e6b6c74087df84d0908f248,
         type: 3}
+      propertyPath: id
+      value: 64b6396e-9955-4097-9904-2aaf591f8706
+      objectReference: {fileID: 0}
+    - target: {fileID: 2366626237123568933, guid: 824f19ec1e6b6c74087df84d0908f248,
+        type: 3}
       propertyPath: outline
       value: 
       objectReference: {fileID: 2531323656059955313, guid: b8fab69b0052c8c449cc6b5b46761a2d,
         type: 3}
+    - target: {fileID: 2366626237123568933, guid: 824f19ec1e6b6c74087df84d0908f248,
+        type: 3}
+      propertyPath: gameOverCanvas
+      value: 
+      objectReference: {fileID: 1339244401}
     - target: {fileID: 2475592418359922771, guid: 824f19ec1e6b6c74087df84d0908f248,
         type: 3}
       propertyPath: m_Layer
@@ -7193,7 +7203,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1515237181790620403}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: Quit
         m_Mode: 1
@@ -10678,22 +10688,22 @@ MonoBehaviour:
     dialogueLines:
     - character:
         name: Marcus
-        icon: {fileID: 21300000, guid: 50f74e5505e9cfd44844675991b1347f, type: 3}
+        icon: {fileID: 21300000, guid: 6cf26de1307fa0e409b3934f7ee99042, type: 3}
       line: Euhm... Hello? Is this thing working?...
     - character:
         name: Marcus
-        icon: {fileID: 21300000, guid: 50f74e5505e9cfd44844675991b1347f, type: 3}
+        icon: {fileID: 21300000, guid: 6cf26de1307fa0e409b3934f7ee99042, type: 3}
       line: Ah yes. I seem to have put some guards on high alert after pulling my
         little stunt...
     - character:
         name: Marcus
-        icon: {fileID: 21300000, guid: 50f74e5505e9cfd44844675991b1347f, type: 3}
+        icon: {fileID: 21300000, guid: 6cf26de1307fa0e409b3934f7ee99042, type: 3}
       line: Your objective is to get to the suitcase without them catching you...
     - character:
         name: Marcus
-        icon: {fileID: 21300000, guid: 50f74e5505e9cfd44844675991b1347f, type: 3}
+        icon: {fileID: 21300000, guid: 6cf26de1307fa0e409b3934f7ee99042, type: 3}
       line: Use WASD to move around and sneak past the guards without alerting them!
-  id: 
+  id: 92d01cd9-f68c-42fb-84ec-ec72ee1a7909
 --- !u!65 &734120211
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14889,6 +14899,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2531323656059955313, guid: b8fab69b0052c8c449cc6b5b46761a2d,
         type: 3}
+    - target: {fileID: 2366626237123568933, guid: 824f19ec1e6b6c74087df84d0908f248,
+        type: 3}
+      propertyPath: gameOverCanvas
+      value: 
+      objectReference: {fileID: 1339244401}
     - target: {fileID: 2475592418359922771, guid: 824f19ec1e6b6c74087df84d0908f248,
         type: 3}
       propertyPath: m_Layer
@@ -16987,6 +17002,74 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!1001 &1206748172
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 862843874303847043, guid: ed5ca67e5bfb50e4196c8598f05adc08,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 314.73096
+      objectReference: {fileID: 0}
+    - target: {fileID: 862843874303847043, guid: ed5ca67e5bfb50e4196c8598f05adc08,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.000011444092
+      objectReference: {fileID: 0}
+    - target: {fileID: 862843874303847043, guid: ed5ca67e5bfb50e4196c8598f05adc08,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 424.4862
+      objectReference: {fileID: 0}
+    - target: {fileID: 862843874303847043, guid: ed5ca67e5bfb50e4196c8598f05adc08,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 862843874303847043, guid: ed5ca67e5bfb50e4196c8598f05adc08,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 862843874303847043, guid: ed5ca67e5bfb50e4196c8598f05adc08,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 862843874303847043, guid: ed5ca67e5bfb50e4196c8598f05adc08,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 862843874303847043, guid: ed5ca67e5bfb50e4196c8598f05adc08,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 862843874303847043, guid: ed5ca67e5bfb50e4196c8598f05adc08,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 862843874303847043, guid: ed5ca67e5bfb50e4196c8598f05adc08,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7460834104637493859, guid: ed5ca67e5bfb50e4196c8598f05adc08,
+        type: 3}
+      propertyPath: m_Name
+      value: DataPersistenceManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ed5ca67e5bfb50e4196c8598f05adc08, type: 3}
 --- !u!1 &1212012367
 GameObject:
   m_ObjectHideFlags: 0
@@ -18348,6 +18431,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1339244401 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7727657295816927174, guid: d01cec484754b1c46a6924fb104d210e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1515237181790620399}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1341196707
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20811,22 +20900,22 @@ MonoBehaviour:
     dialogueLines:
     - character:
         name: Marcus
-        icon: {fileID: 21300000, guid: 50f74e5505e9cfd44844675991b1347f, type: 3}
+        icon: {fileID: 21300000, guid: 6cf26de1307fa0e409b3934f7ee99042, type: 3}
       line: Watch out! Don't get caught!
     - character:
         name: Marcus
-        icon: {fileID: 21300000, guid: 50f74e5505e9cfd44844675991b1347f, type: 3}
+        icon: {fileID: 21300000, guid: 6cf26de1307fa0e409b3934f7ee99042, type: 3}
       line: Though I might have a trick up my sleeve, or actually... up your sleeve...
     - character:
         name: Marcus
-        icon: {fileID: 21300000, guid: 3b2e9ae85271c134486dffcce6971f46, type: 3}
+        icon: {fileID: 21300000, guid: 358b9b8ab9a3a9844840d57ac961887e, type: 3}
       line: When you get close enough to a guard and you see the LIGHTNING symbol,
         press F to use the gauntlet on your wrist to electrocute them!
     - character:
         name: Marcus
-        icon: {fileID: 21300000, guid: 50f74e5505e9cfd44844675991b1347f, type: 3}
+        icon: {fileID: 21300000, guid: 6cf26de1307fa0e409b3934f7ee99042, type: 3}
       line: If you do use it, be aware that it needs time to recharge afterwards.
-  id: 
+  id: d77f207e-fe23-4cd9-893c-17ba73ef01c9
 --- !u!65 &1562436861
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25662,7 +25751,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1515237181790620403}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: Resume
         m_Mode: 1
@@ -27976,6 +28065,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33668685d18ba4b45be0f02a9c9629f9, type: 3}
+--- !u!114 &1996869568 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1590924058793675563, guid: ed5ca67e5bfb50e4196c8598f05adc08,
+    type: 3}
+  m_PrefabInstance: {fileID: 1206748172}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21f3ff10ecb1eba4db220756182d59cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2001036775
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30470,6 +30571,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2960717246190028562, guid: d01cec484754b1c46a6924fb104d210e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1996869568}
+    - target: {fileID: 2960717246190028562, guid: d01cec484754b1c46a6924fb104d210e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SaveGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 2960717246190028562, guid: d01cec484754b1c46a6924fb104d210e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DataPersistenceManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 4809000835026137419, guid: d01cec484754b1c46a6924fb104d210e,
         type: 3}
       propertyPath: m_Camera
@@ -30492,11 +30608,7 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 639150569}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 170664588777485463, guid: d01cec484754b1c46a6924fb104d210e,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1515237181790620403}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d01cec484754b1c46a6924fb104d210e, type: 3}
 --- !u!224 &1515237181790620400 stripped
 RectTransform:
@@ -30504,34 +30616,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1515237181790620399}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1515237181790620401 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 170664588777485463, guid: d01cec484754b1c46a6924fb104d210e,
-    type: 3}
-  m_PrefabInstance: {fileID: 1515237181790620399}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1515237181790620402 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2310496768941596346, guid: d01cec484754b1c46a6924fb104d210e,
-    type: 3}
-  m_PrefabInstance: {fileID: 1515237181790620399}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1515237181790620403
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1515237181790620401}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da68a7858f4fdbb44bf27ce4ba44852c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 639150568}
-  watch: {fileID: 1515237181790620402}
-  notificationText: {fileID: 0}
-  loadGameButton: {fileID: 0}
 --- !u!1001 &1862381582621399442
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31268,6 +31352,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2366626237123568933, guid: 824f19ec1e6b6c74087df84d0908f248,
+        type: 3}
+      propertyPath: id
+      value: 17b25a6e-8798-4fd5-8e3f-ef77a5cdc8df
+      objectReference: {fileID: 0}
+    - target: {fileID: 2366626237123568933, guid: 824f19ec1e6b6c74087df84d0908f248,
+        type: 3}
+      propertyPath: gameOverCanvas
+      value: 
+      objectReference: {fileID: 1339244401}
     - target: {fileID: 3168416770509853418, guid: 824f19ec1e6b6c74087df84d0908f248,
         type: 3}
       propertyPath: m_Name
@@ -32126,3 +32220,4 @@ SceneRoots:
   - {fileID: 271801737}
   - {fileID: 1446338901}
   - {fileID: 1636481496}
+  - {fileID: 1206748172}

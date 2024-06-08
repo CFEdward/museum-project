@@ -44,4 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21f3ff10ecb1eba4db220756182d59cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initializeDataIfNull: 1
   fileName: data.game
