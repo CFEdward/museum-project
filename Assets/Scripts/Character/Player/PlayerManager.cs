@@ -9,6 +9,8 @@ public class PlayerManager : MonoBehaviour, IDataPersistence
     public static Vector3 lastCheckpoint = Vector3.zero;
     public static bool stunOnCooldown = true;
 
+    [SerializeField] private GameObject searchingImage;
+
     private void Awake()
     {
         inputManager = GetComponent<InputManager>();
@@ -61,6 +63,14 @@ public class PlayerManager : MonoBehaviour, IDataPersistence
         for (int enemyIndex = 0; enemyIndex < enemies.Length; enemyIndex++)
         {
             EnemyManager enemy = enemies[enemyIndex];
+            if (enemy.alertStage == AlertStage.Intrigued)
+            {
+                searchingImage.SetActive(true);
+            }
+            else
+            {
+
+            }
             if (enemy.alertStage == AlertStage.Alerted)
             {
                 PlayerData.bIsPursued = true;
