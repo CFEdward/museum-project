@@ -39,14 +39,20 @@ public class CollectibleScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        collectibleCanvas.SetActive(true);
-        canvasActive = true;
+        if (other.tag == "Player")
+        {
+            collectibleCanvas.SetActive(true);
+            canvasActive = true;
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        collectibleCanvas.SetActive(false);
-        canvasActive = false;
+        if (other.tag == "Player")
+        {
+            collectibleCanvas.SetActive(false);
+            canvasActive = false;
+        }
     }
 
     private void PickUpCollectible()

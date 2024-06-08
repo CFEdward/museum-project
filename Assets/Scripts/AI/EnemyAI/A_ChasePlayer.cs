@@ -32,6 +32,11 @@ public class A_ChasePlayer : ActionBase
             enemyManager.alertLevel = 100f;
             agent.SetDestination(target.transform.position);
             agent.speed = 7f;
+            if (agent.remainingDistance <= 1f)
+            {
+                agent.enabled = false;
+                enemyManager.GameOver();
+            }
             return TaskStatus.Continue;
         }
         else

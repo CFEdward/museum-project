@@ -26,6 +26,8 @@ public class EnemyManager : MonoBehaviour, IDataPersistence
     private Animator animator;
     private NavMeshAgent agent;
 
+    [SerializeField] private GameObject gameOverCanvas;
+
     [SerializeField] private string id;
     [ContextMenu("Generate guid for id")]
     private void GenerateGuid()
@@ -157,6 +159,15 @@ public class EnemyManager : MonoBehaviour, IDataPersistence
                 else alertTimer = 0f;
                 break;
         }
+    }
+
+    public void GameOver()
+    {
+        Time.timeScale = 0f;
+        Cursor.visible = true;
+        InputManager.isPaused = true;
+        PlayerData.livesLeft--;
+        gameOverCanvas.SetActive(true);
     }
 
     public void KnockDown()

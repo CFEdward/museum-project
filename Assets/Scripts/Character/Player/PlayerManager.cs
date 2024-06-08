@@ -6,6 +6,7 @@ public class PlayerManager : MonoBehaviour, IDataPersistence
     private CameraManager cameraManager;
     private PlayerLocomotion playerLocomotion;
 
+    public static Vector3 lastCheckpoint = Vector3.zero;
     public static bool stunOnCooldown = true;
 
     private void Awake()
@@ -13,6 +14,19 @@ public class PlayerManager : MonoBehaviour, IDataPersistence
         inputManager = GetComponent<InputManager>();
         cameraManager = FindObjectOfType<CameraManager>();
         playerLocomotion = GetComponent<PlayerLocomotion>();
+        cameraManager.transform.position = this.transform.position;
+        if (lastCheckpoint != Vector3.zero)
+        {
+            this.transform.position = lastCheckpoint;
+            cameraManager.transform.position = lastCheckpoint;
+            Physics.SyncTransforms();
+        }
+    }
+
+    private void Start()
+    {
+        PlayerData.InitPlayer();
+        PlayerData.isRespawning = false;
     }
 
     private void Update()
@@ -23,13 +37,22 @@ public class PlayerManager : MonoBehaviour, IDataPersistence
 
     public void LoadData(GameData data)
     {
-        this.transform.position = data.playerPosition;
-        Physics.SyncTransforms();
+        if (!PlayerData.isRespawning)
+        {
+            this.transform.position = data.playerPosition;
+            cameraManager.transform.position = data.playerPosition;
+            Physics.SyncTransforms();
+            PlayerData.livesLeft = data.livesLeft;
+        }
     }
 
     public void SaveData(GameData data)
     {
-        data.playerPosition = this.transform.position;
+        if (!PlayerData.isRespawning)
+        {
+            data.playerPosition = this.transform.position;
+            data.livesLeft = PlayerData.livesLeft;
+        }
     }
 
     private void CheckPursuit()

@@ -968,8 +968,10 @@ MonoBehaviour:
   detectionSpeed: 40
   target: {fileID: 0}
   canSeePlayer: 0
-  isDead: 0
+  isStunned: 0
   fieldOfView: {fileID: 0}
+  gameOverCanvas: {fileID: 0}
+  id: e0b3dd49-4e32-43dc-9122-3da991723b1c
 --- !u!114 &2706808850146624078
 MonoBehaviour:
   m_ObjectHideFlags: 0

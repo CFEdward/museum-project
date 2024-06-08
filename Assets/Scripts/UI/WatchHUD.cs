@@ -24,11 +24,13 @@ public class WatchHUD : MonoBehaviour, IDataPersistence
     public void LoadData(GameData data)
     {
         this.progressImage.fillAmount = data.stunBarFillAmount;
+        this.lightningBolt.enabled = data.hudLightningEnabled;
     }
 
     public void SaveData(GameData data)
     {
         data.stunBarFillAmount = this.progressImage.fillAmount;
+        data.hudLightningEnabled = this.lightningBolt.enabled;
     }
 
     public void ResetCooldown()
@@ -66,7 +68,6 @@ public class WatchHUD : MonoBehaviour, IDataPersistence
 
         while (time < 1f)
         {
-            //if (InputManager.isPaused) continue;
             progressImage.fillAmount = Mathf.Lerp(initialProgress, progress, time);
             time += Time.deltaTime * speed;
 

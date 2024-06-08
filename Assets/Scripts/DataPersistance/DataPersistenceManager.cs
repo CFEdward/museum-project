@@ -13,7 +13,7 @@ public class DataPersistenceManager : MonoBehaviour
 
     private GameData gameData;
     private List<IDataPersistence> dataPersistenceObjects;
-    private FileDataHandler dataHandler;
+    public FileDataHandler dataHandler;
 
     public static DataPersistenceManager Instance {  get; private set; }
 
@@ -52,17 +52,18 @@ public class DataPersistenceManager : MonoBehaviour
 
     public void OnSceneUnloaded(Scene scene)
     {
-        SaveGame();
+        //SaveGame();
     }
 
     public void NewGame()
     {
+        dataHandler.DeleteSave();
         this.gameData = new GameData();
     }
 
     public void LoadGame()
     {
-        // Load any saved data from a file using the data handler
+        // Load any saved data from a file using the data handler if it's not Game Over
         this.gameData = dataHandler.Load();
 
         // start a new game if the data is null and we're configured to initialize data for debugging purposes

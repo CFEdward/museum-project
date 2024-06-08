@@ -1,13 +1,27 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject watch;
-    [SerializeField] private TextMeshProUGUI savingText;
+    [SerializeField] private TextMeshProUGUI notificationText;
+    [SerializeField] private Button loadGameButton;
     private float remainingCooldown;
+
+    private void Update()
+    {
+        if (!DataPersistenceManager.Instance.dataHandler.CheckSaveExists())
+        {
+            loadGameButton.interactable = false;
+        }
+        else
+        {
+            loadGameButton.interactable = true;
+        }
+    }
 
     public void Pause()
     {
@@ -15,7 +29,6 @@ public class PauseMenu : MonoBehaviour
         watch.SetActive(false);
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
-        //Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
         InputManager.isPaused = true;
     }
@@ -23,7 +36,7 @@ public class PauseMenu : MonoBehaviour
     public void Resume()
     {
         pauseMenu.SetActive(false);
-        savingText.enabled = false;
+        notificationText.gameObject.SetActive(false);
         watch.SetActive(true);
         watch.GetComponent<WatchHUD>().progressImage.fillAmount = remainingCooldown;
         if (remainingCooldown < 1f) watch.GetComponent<WatchHUD>().SetProgress(1f);
@@ -32,21 +45,25 @@ public class PauseMenu : MonoBehaviour
         InputManager.isPaused = false;
     }
 
-    public void LoadGame()
+    public void OnSaveGameClicked()
     {
-        //BT_Enemy[] enemies = FindObjectsOfType<BT_Enemy>();
-        //foreach (BT_Enemy enemy in enemies)
-        //{
-            //enemy.enabled = false;
-        //    enemy.gameObject.SetActive(false);
-        //}
-        //FindObjectOfType<PlayerManager>().gameObject.SetActive(false);
-        //StopAllCoroutines();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        //FindFirstObjectByType<DataPersistenceManager>().LoadGame();
+        DataPersistenceManager.Instance.SaveGame();
+        notificationText.text = "Save Succesful!";
     }
 
-    public void Quit()
+    public void OnLoadGameClicked()
+    {
+        //DataPersistenceManager.Instance.SaveGame();
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void OnMainMenuClicked()
+    {
+        DataPersistenceManager.Instance.SaveGame();
+        SceneManager.LoadSceneAsync(0);
+    }
+
+    public void OnQuitClicked()
     {
         Application.Quit();
     }
