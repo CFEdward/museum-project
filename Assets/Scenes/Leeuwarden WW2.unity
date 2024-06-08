@@ -17300,6 +17300,79 @@ Transform:
   m_Children: []
   m_Father: {fileID: 805010049}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1479155844
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 6461c8495ed9284499fb35eb065579c8,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 271.92093
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6461c8495ed9284499fb35eb065579c8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.00005340576
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6461c8495ed9284499fb35eb065579c8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 436.85254
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6461c8495ed9284499fb35eb065579c8,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6461c8495ed9284499fb35eb065579c8,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6461c8495ed9284499fb35eb065579c8,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6461c8495ed9284499fb35eb065579c8,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6461c8495ed9284499fb35eb065579c8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6461c8495ed9284499fb35eb065579c8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6461c8495ed9284499fb35eb065579c8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6461c8495ed9284499fb35eb065579c8,
+        type: 3}
+      propertyPath: m_Name
+      value: Nazi solder
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 6461c8495ed9284499fb35eb065579c8,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: b9ecb17bfe3e81049a3f961ff6b16ff2, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6461c8495ed9284499fb35eb065579c8, type: 3}
 --- !u!1001 &1480886471
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17775,8 +17848,8 @@ MonoBehaviour:
   minimumCollisionOffset: 0.2
   cameraCollisionRadius: 0.2
   cameraFollowSpeed: 0.2
-  cameraLookSpeed: 1
-  cameraPivotSpeed: 1
+  cameraLookSpeed: 0.09
+  cameraPivotSpeed: 0.09
   minimumPivotAngle: -35
   maximumPivotAngle: 35
 --- !u!1 &1524179229
@@ -27786,3 +27859,4 @@ SceneRoots:
   - {fileID: 6720357434116992227}
   - {fileID: 1602513992}
   - {fileID: 458544117}
+  - {fileID: 1479155844}
