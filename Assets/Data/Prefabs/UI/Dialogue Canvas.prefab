@@ -177,8 +177,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281389273
-  m_fontColor: {r: 0.8490566, g: 0.81628096, b: 0.18823424, a: 1}
+    rgba: 4290864128
+  m_fontColor: {r: 0, g: 0.3921569, b: 0.7568628, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -773,9 +773,9 @@ RectTransform:
   - {fileID: 3830970199299338430}
   m_Father: {fileID: 7916557112591671324}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 329.7, y: -285.3}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 329.7, y: -39}
   m_SizeDelta: {x: 1000, y: 222}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &245620864450208649

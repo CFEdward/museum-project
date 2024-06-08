@@ -23,18 +23,30 @@ public class CollectibleScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if (canvasActive && Input.GetKeyDown(KeyCode.F)) 
-       {
-            PickUpCollectible();
-       }
+        Interact();
+    }
+
+    private void Interact()
+    {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            if (canvasActive)
+            {
+                PickUpCollectible();
+            }
+            else if (pickupCanvasActive)
+            {
+                ResumeAfterPickUp();
+            }
+        }
     }
 
     private void LateUpdate()
     {
-        if (pickupCanvasActive && Input.GetMouseButtonDown(0))
-        {
-            ResumeAfterPickUp();
-        }
+        //if (pickupCanvasActive && Input.GetMouseButtonDown(0))
+        //{
+        //    ResumeAfterPickUp();
+        //}
     }
 
     private void OnTriggerEnter(Collider other)

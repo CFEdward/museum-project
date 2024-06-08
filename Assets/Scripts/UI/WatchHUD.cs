@@ -11,6 +11,10 @@ public class WatchHUD : MonoBehaviour, IDataPersistence
     //[SerializeField] private UnityEvent<float> onProgress;
     [SerializeField] private UnityEvent onCompleted;
 
+    [SerializeField] private GameObject life1;
+    [SerializeField] private GameObject life2;
+    [SerializeField] private GameObject life3;
+
     private Coroutine animationCoroutine;
 
     private void Update()
@@ -18,6 +22,32 @@ public class WatchHUD : MonoBehaviour, IDataPersistence
         if (animationCoroutine == null && progressImage.fillAmount < 1f)
         {
             SetProgress(1f);
+        }
+        switch (PlayerData.livesLeft)
+        {
+            case 0:
+                life1.SetActive(false);
+                life2.SetActive(false);
+                life3.SetActive(false);
+                break;
+            case 1:
+                life1.SetActive(true);
+                life2.SetActive(false);
+                life3.SetActive(false);
+                break;
+            case 2:
+                life1.SetActive(true);
+                life2.SetActive(true);
+                life3.SetActive(false);
+                break;
+            case 3:
+                life1.SetActive(true);
+                life2.SetActive(true);
+                life3.SetActive(true);
+                break;
+            default:
+                Debug.LogWarning("Cannot set lives HUD");
+                break;
         }
     }
 
