@@ -81,6 +81,7 @@ public class WatchHUD : MonoBehaviour, IDataPersistence
     public void LoadData(GameData data)
     {
         this.progressImage.fillAmount = data.stunBarFillAmount;
+        if (progressImage.fillAmount == 1f) PlayerManager.stunOnCooldown = false;
         this.lightningBolt.enabled = data.hudLightningEnabled;
     }
 

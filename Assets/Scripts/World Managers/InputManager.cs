@@ -74,15 +74,17 @@ public class InputManager : MonoBehaviour
         {
             interactInput = false;
             float interactRange = 3f;
-            Collider[] colliderArray = Physics.OverlapSphere(transform.position, interactRange);
-            if (!PlayerManager.stunOnCooldown)
-            foreach (Collider collider in colliderArray)
+            if (!PlayerManager.stunOnCooldown && !PlayerData.bIsPursued)
             {
-                if (collider.TryGetComponent(out EnemyManager enemyManager))
+                Collider[] colliderArray = Physics.OverlapSphere(transform.position, interactRange);
+                foreach (Collider collider in colliderArray)
                 {
-                    enemyManager.KnockDown();
-                    FindFirstObjectByType<WatchHUD>().ResetCooldown();
-                    PlayerManager.stunOnCooldown = true;
+                    if (collider.TryGetComponent(out EnemyManager enemyManager))
+                    {
+                        enemyManager.KnockDown();
+                        FindFirstObjectByType<WatchHUD>().ResetCooldown();
+                        PlayerManager.stunOnCooldown = true;
+                    }
                 }
             }
         }

@@ -75,7 +75,7 @@ public class EnemyManager : MonoBehaviour, IDataPersistence
         }
         data.enemiesStunned.Add(id, isStunned);
         
-        if (!PlayerData.isRespawning)
+        if (!PlayerData.isRespawning || !isStunned)
         {
             if (data.enemiesPositions.ContainsKey(id))
             {
@@ -156,6 +156,10 @@ public class EnemyManager : MonoBehaviour, IDataPersistence
     {
         agent.enabled = false;
         fieldOfView.enabled = false;
+        GetComponent<CapsuleCollider>().enabled = false;
+        GetComponent<ShowHideCanvas>().canvas.SetActive(false);
+        GetComponent<ShowHideCanvas>().enabled = false;
+        animator.Play("KnockOut");
         this.enabled = false;
     }
 
