@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.028969709, g: 0.03990114, b: 0.07359261, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6683,10 +6683,40 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 376026913766998632, guid: b40fc337dfb06df4fb4414ffebecb69d,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.78431374
+      objectReference: {fileID: 0}
+    - target: {fileID: 514896035130181017, guid: b40fc337dfb06df4fb4414ffebecb69d,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.78431374
+      objectReference: {fileID: 0}
     - target: {fileID: 635417305125872020, guid: b40fc337dfb06df4fb4414ffebecb69d,
         type: 3}
       propertyPath: m_Name
       value: Dialogue Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 1603810709877362381, guid: b40fc337dfb06df4fb4414ffebecb69d,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 325.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1603810709877362381, guid: b40fc337dfb06df4fb4414ffebecb69d,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1603810709877362381, guid: b40fc337dfb06df4fb4414ffebecb69d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 187.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1603810709877362381, guid: b40fc337dfb06df4fb4414ffebecb69d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 104.1
       objectReference: {fileID: 0}
     - target: {fileID: 7916557112591671324, guid: b40fc337dfb06df4fb4414ffebecb69d,
         type: 3}
@@ -6790,8 +6820,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 5018201208778963821, guid: b40fc337dfb06df4fb4414ffebecb69d,
+        type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 1734774052}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2945477000020604857, guid: b40fc337dfb06df4fb4414ffebecb69d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1157605578}
   m_SourcePrefab: {fileID: 100100000, guid: b40fc337dfb06df4fb4414ffebecb69d, type: 3}
 --- !u!1 &463640175
 GameObject:
@@ -6898,6 +6936,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 805010049}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!224 &469292851 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5018201208778963821, guid: b40fc337dfb06df4fb4414ffebecb69d,
+    type: 3}
+  m_PrefabInstance: {fileID: 458544117}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &482439784
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9147,20 +9191,20 @@ MonoBehaviour:
     dialogueLines:
     - character:
         name: Marcus
-        icon: {fileID: 21300000, guid: 50f74e5505e9cfd44844675991b1347f, type: 3}
+        icon: {fileID: 21300000, guid: 6cf26de1307fa0e409b3934f7ee99042, type: 3}
       line: Euhm... Hello? Is this thing working?...
     - character:
         name: Marcus
-        icon: {fileID: 21300000, guid: 50f74e5505e9cfd44844675991b1347f, type: 3}
+        icon: {fileID: 21300000, guid: 6cf26de1307fa0e409b3934f7ee99042, type: 3}
       line: Ah yes. I seem to have put some guards on high alert after pulling my
         little stunt...
     - character:
         name: Marcus
-        icon: {fileID: 21300000, guid: 50f74e5505e9cfd44844675991b1347f, type: 3}
+        icon: {fileID: 21300000, guid: 6cf26de1307fa0e409b3934f7ee99042, type: 3}
       line: Your objective is to get to the suitcase without them catching you...
     - character:
         name: Marcus
-        icon: {fileID: 21300000, guid: 50f74e5505e9cfd44844675991b1347f, type: 3}
+        icon: {fileID: 21300000, guid: 6cf26de1307fa0e409b3934f7ee99042, type: 3}
       line: Use WASD to move around and sneak past the guards without alerting them!
   id: 10fde488-e89f-4430-95f6-0df8f680a559
 --- !u!65 &734120211
@@ -14426,6 +14470,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 805010049}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1 &1157605574 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2945477000020604857, guid: b40fc337dfb06df4fb4414ffebecb69d,
+    type: 3}
+  m_PrefabInstance: {fileID: 458544117}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1157605578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1157605574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86710e43de46f6f4bac7c8e50813a599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AspectMode: 1
+  m_AspectRatio: 1
 --- !u!1 &1160065212
 GameObject:
   m_ObjectHideFlags: 0
@@ -18273,11 +18337,11 @@ MonoBehaviour:
     dialogueLines:
     - character:
         name: Marcus
-        icon: {fileID: 21300000, guid: 50f74e5505e9cfd44844675991b1347f, type: 3}
+        icon: {fileID: 21300000, guid: 6cf26de1307fa0e409b3934f7ee99042, type: 3}
       line: Watch out! Don't get caught!
     - character:
         name: Marcus
-        icon: {fileID: 21300000, guid: 50f74e5505e9cfd44844675991b1347f, type: 3}
+        icon: {fileID: 21300000, guid: 6cf26de1307fa0e409b3934f7ee99042, type: 3}
       line: Though I might have a trick up my sleeve, or actually... up your sleeve...
     - character:
         name: Marcus
@@ -18286,7 +18350,7 @@ MonoBehaviour:
         press F to use the gauntlet on your wrist to electrocute them!
     - character:
         name: Marcus
-        icon: {fileID: 21300000, guid: 50f74e5505e9cfd44844675991b1347f, type: 3}
+        icon: {fileID: 21300000, guid: 6cf26de1307fa0e409b3934f7ee99042, type: 3}
       line: If you do use it, be aware that it needs time to recharge afterwards.
   id: adcba609-1619-49e0-9647-172241aa2534
 --- !u!65 &1562436861
@@ -20186,6 +20250,41 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1700521954}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1734774051
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1734774052}
+  m_Layer: 5
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1734774052
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1734774051}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 469292851}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 960, y: 540}
+  m_SizeDelta: {x: 1920, y: 1080}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1738006322
 GameObject:
   m_ObjectHideFlags: 0
@@ -27729,7 +27828,6 @@ SceneRoots:
   - {fileID: 805010049}
   - {fileID: 831969900}
   - {fileID: 337171472}
-  - {fileID: 458544117}
   - {fileID: 1515237181790620399}
   - {fileID: 3779614990943581460}
   - {fileID: 1224053274}
@@ -27741,3 +27839,4 @@ SceneRoots:
   - {fileID: 703356325}
   - {fileID: 6720357434116992227}
   - {fileID: 1602513992}
+  - {fileID: 458544117}
