@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.02895755, g: 0.039877508, b: 0.073534854, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6688,6 +6688,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dialogue Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 5018201208778963821, guid: b40fc337dfb06df4fb4414ffebecb69d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 155
+      objectReference: {fileID: 0}
     - target: {fileID: 7916557112591671324, guid: b40fc337dfb06df4fb4414ffebecb69d,
         type: 3}
       propertyPath: m_Pivot.x
@@ -9070,7 +9075,7 @@ PrefabInstance:
     - target: {fileID: 7976780270194656545, guid: b4241b60f9e9a4a4fa6272a5e5ffdae1,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.8476978
       objectReference: {fileID: 0}
     - target: {fileID: 7976780270194656545, guid: b4241b60f9e9a4a4fa6272a5e5ffdae1,
         type: 3}
@@ -9080,7 +9085,7 @@ PrefabInstance:
     - target: {fileID: 7976780270194656545, guid: b4241b60f9e9a4a4fa6272a5e5ffdae1,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.53047955
       objectReference: {fileID: 0}
     - target: {fileID: 7976780270194656545, guid: b4241b60f9e9a4a4fa6272a5e5ffdae1,
         type: 3}
@@ -9095,7 +9100,7 @@ PrefabInstance:
     - target: {fileID: 7976780270194656545, guid: b4241b60f9e9a4a4fa6272a5e5ffdae1,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 64.076
       objectReference: {fileID: 0}
     - target: {fileID: 7976780270194656545, guid: b4241b60f9e9a4a4fa6272a5e5ffdae1,
         type: 3}
@@ -18077,6 +18082,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07ee570508029ec468fc8c49bdb97659, type: 3}
+--- !u!1 &1544161926 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2825420440104570692, guid: d01cec484754b1c46a6924fb104d210e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1515237181790620399}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1553247962 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6f421b0cb52e30c41a236c5edf5bbb33,
@@ -18342,6 +18353,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e14b9b385728ae2478e9052bda66db50,
     type: 3}
   m_PrefabInstance: {fileID: 12413225}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1586475795 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8430708604545004603, guid: d01cec484754b1c46a6924fb104d210e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1515237181790620399}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1591417742
 GameObject:
@@ -26084,6 +26101,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2825420440104570692, guid: d01cec484754b1c46a6924fb104d210e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2960717246190028562, guid: d01cec484754b1c46a6924fb104d210e,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -26099,6 +26121,21 @@ PrefabInstance:
       propertyPath: onCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 537887552}
+    - target: {fileID: 7213790632477915457, guid: d01cec484754b1c46a6924fb104d210e,
+        type: 3}
+      propertyPath: detectionAlerted
+      value: 
+      objectReference: {fileID: 1544161926}
+    - target: {fileID: 7213790632477915457, guid: d01cec484754b1c46a6924fb104d210e,
+        type: 3}
+      propertyPath: detectionInvestigate
+      value: 
+      objectReference: {fileID: 1586475795}
+    - target: {fileID: 8430708604545004603, guid: d01cec484754b1c46a6924fb104d210e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

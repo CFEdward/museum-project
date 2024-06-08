@@ -32,10 +32,14 @@ public class A_ChasePlayer : ActionBase
             enemyManager.alertLevel = 100f;
             agent.SetDestination(target.transform.position);
             agent.speed = 7f;
-            if (agent.remainingDistance <= 1f)
+            Collider[] colliderArray = Physics.OverlapSphere(Owner.transform.position, 1f);
+            foreach (Collider collider in colliderArray)
             {
-                agent.enabled = false;
-                enemyManager.GameOver();
+                if (collider.TryGetComponent(out PlayerManager playerManager))
+                {
+                    agent.enabled = false;
+                    enemyManager.GameOver();
+                }
             }
             return TaskStatus.Continue;
         }

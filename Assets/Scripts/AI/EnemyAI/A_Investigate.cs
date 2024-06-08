@@ -23,6 +23,7 @@ public class A_Investigate : ActionBase
         {
             if (PlayerData.bIsPursued)
             {
+                agent.ResetPath();
                 enemyManager.alertLevel = 100f;
                 enemyManager.alertStage = AlertStage.Alerted;
                 return TaskStatus.Success;
