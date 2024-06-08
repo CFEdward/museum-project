@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.028950606, g: 0.03986535, b: 0.073501356, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9157,7 +9157,8 @@ MonoBehaviour:
     - character:
         name: Marcus
         icon: {fileID: 21300000, guid: 6cf26de1307fa0e409b3934f7ee99042, type: 3}
-      line: Your objective is to get to the suitcase without them catching you...
+      line: Your objective is to get to the Artefact I left behind, without the guards
+        catching you. The artefact is a Suitcase, so look out for that!
     - character:
         name: Marcus
         icon: {fileID: 21300000, guid: 6cf26de1307fa0e409b3934f7ee99042, type: 3}
@@ -18287,7 +18288,7 @@ MonoBehaviour:
     - character:
         name: Marcus
         icon: {fileID: 21300000, guid: 6cf26de1307fa0e409b3934f7ee99042, type: 3}
-      line: If you do use it, be aware that it needs time to recharge afterwards.
+      line: Be aware that it needs time to recharge afterwards. So use it sparingly!
   id: adcba609-1619-49e0-9647-172241aa2534
 --- !u!65 &1562436861
 BoxCollider:
