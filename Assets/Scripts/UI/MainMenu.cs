@@ -28,6 +28,7 @@ public class MainMenu : MonoBehaviour
         Cursor.visible = false;
         // create a new game - which will initialize our game data
         DataPersistenceManager.Instance.NewGame();
+        DataPersistenceManager.Instance.SaveGame();
         // Load the gameplay scene - which will in turn save the game because of
         // OnSceneUnloaded() in the DataPersistenceManager
         SceneManager.LoadSceneAsync(1);
@@ -37,6 +38,7 @@ public class MainMenu : MonoBehaviour
     {
         DisableMenuButtons();
         Cursor.visible = false;
+        DataPersistenceManager.Instance.SaveGame();
         // Load the gameplay scene - which will in turn save the game because of
         // OnSceneUnloaded() in the DataPersistenceManager
         SceneManager.LoadSceneAsync(1);
