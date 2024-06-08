@@ -31,7 +31,7 @@ public class CollectibleScript : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (pickupCanvasActive && Input.GetMouseButtonDown(0))
+        if (pickupCanvasActive && Input.GetKeyDown(KeyCode.F))
         {
             ResumeAfterPickUp();
         }
