@@ -25,6 +25,7 @@ public class A_Investigate : ActionBase
             {
                 agent.ResetPath();
                 enemyManager.alertLevel = 100f;
+                PlayerData.lastEnemyAlertTimer = 0f;
                 enemyManager.alertStage = AlertStage.Alerted;
                 return TaskStatus.Success;
             }

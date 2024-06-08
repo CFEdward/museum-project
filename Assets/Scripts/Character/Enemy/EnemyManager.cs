@@ -12,7 +12,7 @@ public class EnemyManager : MonoBehaviour, IDataPersistence
 {
     public AlertStage alertStage;
     [Range(0f, 100f)] public float alertLevel = 0f;  // 0: Peaceful, 100: Alerted
-    private float alertTimer = 0f;
+    public float alertTimer = 0f;
     public float alertCooldown = 12f;
     [SerializeField] private float detectionSpeed = 20f;
 
@@ -47,37 +47,6 @@ public class EnemyManager : MonoBehaviour, IDataPersistence
 
     private void Update()
     {
-        /*
-        //bool playerInFOV = false;
-        //Collider[] targetsInFOV = Physics.OverlapSphere(transform.position, fov);
-        //Collider[] targetsInPeripheralFOV = Physics.OverlapSphere(transform.position, peripheralFOV);
-
-        //if (!playerInFOV)
-        //foreach (Collider c in targetsInFOV)
-        //{
-        //    if (c.CompareTag("Player"))
-        //    {
-        //        target = c.transform;
-        //        float signedAngle = Vector3.Angle(transform.forward, c.transform.position - transform.position);
-        //        if (Mathf.Abs(signedAngle) < fovAngle / 2f) playerInFOV = true;
-
-        //        break;
-        //    }
-        //}
-        //if (!playerInFOV)
-        //foreach (Collider c2 in targetsInPeripheralFOV)
-        //{
-        //    if (c2.CompareTag("Player"))
-        //    {
-        //        target = c2.transform;
-        //        float signedAngle = Vector3.Angle(transform.forward, c2.transform.position - transform.position);
-        //        if (Mathf.Abs(signedAngle) < peripheralFOVAngle / 2f) playerInFOV = true;
-
-        //        break;
-        //    }
-        //}
-        */
-
         canSeePlayer = fieldOfView.canSeePlayer;
         UpdateAlertState(canSeePlayer);
         target = fieldOfView.target;
@@ -86,12 +55,15 @@ public class EnemyManager : MonoBehaviour, IDataPersistence
 
     public void LoadData(GameData data)
     {
+        if (!PlayerData.isRespawning && data.enemiesPositions.TryGetValue(id, out Vector3 loadedPosition))
+        {
+            this.transform.position = loadedPosition;
+            Physics.SyncTransforms();
+        }
         data.enemiesStunned.TryGetValue(id, out isStunned);
-        if (data.enemiesPositions.TryGetValue(id, out Vector3 loadedPosition))
-        this.transform.position = loadedPosition;
         if (isStunned)
         {
-            HandleStun();
+            Destroy(gameObject);
         }
     }
 
@@ -102,11 +74,15 @@ public class EnemyManager : MonoBehaviour, IDataPersistence
             data.enemiesStunned.Remove(id);
         }
         data.enemiesStunned.Add(id, isStunned);
-        if (data.enemiesPositions.ContainsKey(id))
+        
+        if (!PlayerData.isRespawning)
         {
-            data.enemiesPositions.Remove(id);
+            if (data.enemiesPositions.ContainsKey(id))
+            {
+                data.enemiesPositions.Remove(id);
+            }
+            data.enemiesPositions.Add(id, this.transform.position);
         }
-        data.enemiesPositions.Add(id, this.transform.position);
     }
 
     private void UpdateAlertState(bool playerInFOV)
@@ -138,7 +114,7 @@ public class EnemyManager : MonoBehaviour, IDataPersistence
                     if (GameObject.FindGameObjectWithTag("Outline") == null)
                     if (!PlayerData.bIsPursued) fieldOfView.lastLocation = Instantiate(fieldOfView.outline, target.position, target.rotation);
                     alertCooldown -= Time.deltaTime;
-                    if (alertCooldown <= 0f) alertLevel = alertLevel - detectionSpeed * Time.deltaTime;
+                    if (alertCooldown <= 0f) alertLevel = alertLevel - (detectionSpeed / 2f) * Time.deltaTime;
                     if (alertLevel <= 0f)
                     {
                         alertCooldown = 12f;

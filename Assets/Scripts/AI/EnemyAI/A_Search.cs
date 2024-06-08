@@ -27,16 +27,24 @@ public class A_Search : ActionBase
 
     protected override TaskStatus OnUpdate()
     {
-        if (enemyManager.alertStage == AlertStage.Alerted)
+        if (enemyManager.alertStage == AlertStage.Alerted || PlayerData.bIsPursued)
         {
             agent.ResetPath();
+            PlayerData.lastEnemyAlertTimer = 0f;
             enemyManager.alertLevel = 100f;
-            //enemyManager.alertStage = AlertStage.Alerted;
+            enemyManager.alertStage = AlertStage.Alerted;
             return TaskStatus.Success;
         }
 
+        if (enemyManager.canSeePlayer)
+        {
+            //if (GameObject.FindGameObjectWithTag("Outline") != null) GameObject.Destroy(GameObject.FindGameObjectWithTag("Outline"));
+            agent.ResetPath();
+            Owner.transform.LookAt(enemyManager.target);
+            return TaskStatus.Continue;
+        }
+
         Transform centerPoint = GameObject.FindGameObjectWithTag("Outline").transform;
-        //initialCenterPoint = GameObject.FindGameObjectWithTag("Outline").transform;
         if (initialCenterPoint != centerPoint) { agent.ResetPath(); initialCenterPoint = centerPoint; }
         if (enemyManager.alertStage == AlertStage.Intrigued)
         {

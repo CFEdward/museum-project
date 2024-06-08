@@ -9,8 +9,6 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject watch;
     [SerializeField] private TextMeshProUGUI notificationText;
     [SerializeField] private Button loadGameButton;
-    [SerializeField] private GameObject detectionInvestigate;
-    [SerializeField] private GameObject detectionAlerted;
     private float remainingCooldown;
 
     private void Update()
@@ -23,9 +21,6 @@ public class PauseMenu : MonoBehaviour
         {
             loadGameButton.interactable = true;
         }
-        if (PlayerData.bIsPursued)
-            detectionAlerted.SetActive(true);
-        else detectionAlerted.SetActive(false);
     }
 
     public void Pause()

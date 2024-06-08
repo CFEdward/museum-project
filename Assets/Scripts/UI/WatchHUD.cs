@@ -15,6 +15,9 @@ public class WatchHUD : MonoBehaviour, IDataPersistence
     [SerializeField] private GameObject life2;
     [SerializeField] private GameObject life3;
 
+    [SerializeField] private GameObject detectionInvestigate;
+    [SerializeField] private GameObject detectionAlerted;
+
     private Coroutine animationCoroutine;
 
     private void Update()
@@ -48,6 +51,30 @@ public class WatchHUD : MonoBehaviour, IDataPersistence
             default:
                 Debug.LogWarning("Cannot set lives HUD");
                 break;
+        }
+
+        CheckDetection();
+    }
+
+    private void CheckDetection()
+    {
+        if (PlayerData.bIsPursued)
+            detectionAlerted.SetActive(true);
+        else detectionAlerted.SetActive(false);
+
+        EnemyManager[] enemies = FindObjectsOfType<EnemyManager>();
+        for (int enemyIndex = 0; enemyIndex < enemies.Length; enemyIndex++)
+        {
+            EnemyManager enemy = enemies[enemyIndex];
+            if (enemy.alertStage == AlertStage.Intrigued && enemy.alertStage != AlertStage.Alerted)
+            {
+                detectionInvestigate.SetActive(true);
+                break;
+            }
+            else if (enemies[enemies.Length - 1].alertStage != AlertStage.Intrigued)
+            {
+                detectionInvestigate.SetActive(false);
+            }
         }
     }
 

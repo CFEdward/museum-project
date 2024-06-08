@@ -8,8 +8,11 @@ public class GameOverScreen : MonoBehaviour
     [SerializeField] private TextMeshProUGUI triesLeftText;
     [SerializeField] private Button tryAgainButton;
 
+    [SerializeField] private GameObject dialogueHUD;
+
     private void Awake()
     {
+        dialogueHUD.SetActive(false);
         triesLeftText.text = "Tries left: " + PlayerData.livesLeft;
     }
 

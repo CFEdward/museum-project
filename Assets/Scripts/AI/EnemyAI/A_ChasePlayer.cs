@@ -20,14 +20,16 @@ public class A_ChasePlayer : ActionBase
     {
         if (enemyManager.alertStage == AlertStage.Alerted)
         {
-            if (!PlayerData.bIsPursued)
-            {
-                enemyManager.alertCooldown = 17f;
-                enemyManager.alertStage = AlertStage.Intrigued;
-                PlayerData.bIsPursued = false;
-                agent.speed = 2.5f;
-                return TaskStatus.Failure;
-            }
+            enemyManager.alertTimer = PlayerData.lastEnemyAlertTimer;
+            //if (!PlayerData.bIsPursued)
+            //{
+            //    enemyManager.alertCooldown = 17f;
+            //    enemyManager.alertStage = AlertStage.Intrigued;
+            //    //PlayerData.bIsPursued = false;
+            //    agent.speed = 2.5f;
+            //    return TaskStatus.Failure;
+            //}
+            if (enemyManager.canSeePlayer) PlayerData.lastEnemyAlertTimer = 0f;
             enemyManager.alertStage = AlertStage.Alerted;
             enemyManager.alertLevel = 100f;
             agent.SetDestination(target.transform.position);
@@ -45,9 +47,10 @@ public class A_ChasePlayer : ActionBase
         }
         else
         {
-            enemyManager.alertCooldown = 17f;
+            enemyManager.alertCooldown = 10f;
+            enemyManager.alertTimer = 0f;
             enemyManager.alertStage = AlertStage.Intrigued;
-            PlayerData.bIsPursued = false;
+            //PlayerData.bIsPursued = false;
             agent.speed = 2.5f;
             return TaskStatus.Failure;
         }
