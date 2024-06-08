@@ -31,6 +31,12 @@ public class PlayerLocomotion : MonoBehaviour
 
     private void HandleMovement()
     {
+        if (PlayerData.disableMovement)
+        {
+            playerRigidbody.velocity = Vector3.zero;
+            return;
+        }
+
         if (TryGetComponent(out PlayerManager playerManager))
         {
             if (PlayerData.bIsPursued) movementSpeed = pursuedMoveSpeed;
@@ -51,6 +57,8 @@ public class PlayerLocomotion : MonoBehaviour
 
     private void HandleRotation()
     {
+        if (PlayerData.disableMovement) return;
+
         Vector3 targetDirection = Vector3.zero;
 
         targetDirection = cameraObject.forward * inputManager.verticalInput;

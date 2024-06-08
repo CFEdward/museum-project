@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class InputManager : MonoBehaviour
@@ -7,6 +8,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] private Vector2 movementInput;
     [SerializeField] private Vector2 cameraInput;
     [SerializeField] private bool interactInput;
+    public event Action Interacted;
     [SerializeField] private bool pauseInput;
     [SerializeField] private bool nextDialogueInput;
 
@@ -73,20 +75,7 @@ public class InputManager : MonoBehaviour
         if (interactInput)
         {
             interactInput = false;
-            float interactRange = 3f;
-            if (!PlayerManager.stunOnCooldown && !PlayerData.bIsPursued)
-            {
-                Collider[] colliderArray = Physics.OverlapSphere(transform.position, interactRange);
-                foreach (Collider collider in colliderArray)
-                {
-                    if (collider.TryGetComponent(out EnemyManager enemyManager))
-                    {
-                        enemyManager.KnockDown();
-                        FindFirstObjectByType<WatchHUD>().ResetCooldown();
-                        PlayerManager.stunOnCooldown = true;
-                    }
-                }
-            }
+            Interacted?.Invoke();
         }
     }
 

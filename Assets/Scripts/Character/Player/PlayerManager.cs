@@ -5,6 +5,8 @@ public class PlayerManager : MonoBehaviour, IDataPersistence
     private InputManager inputManager;
     private CameraManager cameraManager;
     private PlayerLocomotion playerLocomotion;
+    private Animator animator;
+    public EnemyManager target = null;
 
     public static Vector3 lastCheckpoint = Vector3.zero;
     public static bool stunOnCooldown = true;
@@ -14,6 +16,7 @@ public class PlayerManager : MonoBehaviour, IDataPersistence
         inputManager = GetComponent<InputManager>();
         cameraManager = FindObjectOfType<CameraManager>();
         playerLocomotion = GetComponent<PlayerLocomotion>();
+        animator = GetComponentInChildren<Animator>();
         cameraManager.transform.position = this.transform.position;
         if (lastCheckpoint != Vector3.zero)
         {
@@ -27,6 +30,7 @@ public class PlayerManager : MonoBehaviour, IDataPersistence
     {
         PlayerData.InitPlayer();
         PlayerData.isRespawning = false;
+        inputManager.Interacted += StunEnemy;
     }
 
     private void Update()
@@ -76,6 +80,26 @@ public class PlayerManager : MonoBehaviour, IDataPersistence
                 PlayerData.bIsPursued = false;
                 PlayerData.lastEnemyAlertTimer = -15f;
                 playerLocomotion.animator.SetBool("bIsPursued", PlayerData.bIsPursued);
+            }
+        }
+    }
+
+    private void StunEnemy()
+    {
+        float interactRange = 3f;
+        if (!stunOnCooldown && !PlayerData.bIsPursued)
+        {
+            Collider[] colliderArray = Physics.OverlapSphere(transform.position, interactRange);
+            foreach (Collider collider in colliderArray)
+            {
+                if (collider.TryGetComponent(out target))
+                {
+                    PlayerData.disableMovement = true;
+                    animator.Play("MainChar_Stun");
+                    //enemyManager.KnockDown();
+                    FindFirstObjectByType<WatchHUD>().ResetCooldown();
+                    stunOnCooldown = true;
+                }
             }
         }
     }

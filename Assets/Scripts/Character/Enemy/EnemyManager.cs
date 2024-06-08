@@ -63,7 +63,7 @@ public class EnemyManager : MonoBehaviour, IDataPersistence
         data.enemiesStunned.TryGetValue(id, out isStunned);
         if (isStunned)
         {
-            Destroy(gameObject);
+            HandleStun("Stunned");
         }
     }
 
@@ -74,7 +74,7 @@ public class EnemyManager : MonoBehaviour, IDataPersistence
             data.enemiesStunned.Remove(id);
         }
         data.enemiesStunned.Add(id, isStunned);
-        
+
         if (!PlayerData.isRespawning || !isStunned)
         {
             if (data.enemiesPositions.ContainsKey(id))
@@ -149,17 +149,17 @@ public class EnemyManager : MonoBehaviour, IDataPersistence
     public void KnockDown()
     {
         isStunned = true;
-        HandleStun();
+        HandleStun("KnockOut");
     }
 
-    private void HandleStun()
+    private void HandleStun(string animation)
     {
         agent.enabled = false;
         fieldOfView.enabled = false;
         GetComponent<CapsuleCollider>().enabled = false;
         GetComponent<ShowHideCanvas>().canvas.SetActive(false);
         GetComponent<ShowHideCanvas>().enabled = false;
-        animator.Play("KnockOut");
+        animator.Play(animation);
         this.enabled = false;
     }
 
