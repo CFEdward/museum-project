@@ -27,7 +27,7 @@ public class EnemyManager : MonoBehaviour, IDataPersistence
     private NavMeshAgent agent;
 
     [SerializeField] private GameObject gameOverCanvas;
-    [SerializeField] private GameObject searchingImage;
+    //[SerializeField] private GameObject searchingImage;
 
     [SerializeField] private string id;
     [ContextMenu("Generate guid for id")]
@@ -115,7 +115,7 @@ public class EnemyManager : MonoBehaviour, IDataPersistence
         switch (alertStage)
         {
             case AlertStage.Peaceful:
-                searchingImage.SetActive(false);
+                //searchingImage.SetActive(false);
                 if (animator != null) animator.SetInteger("State", 0);
                 if (animator && agent && agent.hasPath) animator.SetBool("isIdle", false);
                 if (animator && agent && !agent.hasPath) animator.SetBool("isIdle", true);
@@ -125,7 +125,7 @@ public class EnemyManager : MonoBehaviour, IDataPersistence
                 break;
 
             case AlertStage.Intrigued:
-                searchingImage.SetActive(true);
+                //searchingImage.SetActive(true);
                 if (animator != null) animator.SetInteger("State", 1);
                 if (animator && agent && !agent.hasPath) animator.SetBool("isSearching", false);
                 if (animator && agent && agent.hasPath) animator.SetBool("isSearching", true);
@@ -151,7 +151,7 @@ public class EnemyManager : MonoBehaviour, IDataPersistence
                 break;
 
             case AlertStage.Alerted:
-                searchingImage.SetActive(false);
+                //searchingImage.SetActive(false);
                 if (animator != null) animator.SetInteger("State", 2);
                 //if (target != null) target.GetComponent<PlayerManager>().isPursued = true;
                 if (GameObject.FindGameObjectWithTag("Outline") != null) Destroy(fieldOfView.lastLocation);
