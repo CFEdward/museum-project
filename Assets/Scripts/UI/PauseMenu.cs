@@ -33,7 +33,7 @@ public class PauseMenu : MonoBehaviour
         InputManager.isPaused = true;
     }
 
-    public void Resume()
+    public void OnResumeGameClicked()
     {
         pauseMenu.SetActive(false);
         notificationText.gameObject.SetActive(false);
@@ -49,6 +49,7 @@ public class PauseMenu : MonoBehaviour
     {
         DataPersistenceManager.Instance.SaveGame();
         notificationText.text = "Save Succesful!";
+        notificationText.gameObject.SetActive(true);
     }
 
     public void OnLoadGameClicked()

@@ -103,7 +103,7 @@ public class InputManager : MonoBehaviour
             if (GameObject.FindGameObjectWithTag("HUD").TryGetComponent<PauseMenu>(out PauseMenu pauseMenu))
             {
                 if (!isPaused) pauseMenu.Pause();
-                else pauseMenu.Resume();
+                else pauseMenu.OnResumeGameClicked();
             }
         }
     }
