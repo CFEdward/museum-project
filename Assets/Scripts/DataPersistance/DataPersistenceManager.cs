@@ -57,8 +57,13 @@ public class DataPersistenceManager : MonoBehaviour
 
     public void NewGame()
     {
-        dataHandler.DeleteSave();
+        DeleteSave();
         this.gameData = new GameData();
+    }
+
+    public void DeleteSave()
+    {
+        dataHandler.DeleteSave();
     }
 
     public void LoadGame()
@@ -107,6 +112,7 @@ public class DataPersistenceManager : MonoBehaviour
 
     private void OnApplicationQuit()
     {
+        if (SceneManager.GetActiveScene().buildIndex != 0)
         SaveGame();
     }
 

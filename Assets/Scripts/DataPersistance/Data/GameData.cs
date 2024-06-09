@@ -11,6 +11,7 @@ public class GameData
     public bool hudLightningEnabled;
     public SerializableDictionary<string, bool> dialoguesTriggered;
     public SerializableDictionary<string, bool> checkpointsReached;
+    public SerializableDictionary<string, bool> collectiblesPickedUp;
 
     // the values defined in this constructor will be the default values
     // the game starts with when there's no data to load
@@ -24,5 +25,6 @@ public class GameData
         hudLightningEnabled = false;
         dialoguesTriggered = new SerializableDictionary<string, bool>();
         checkpointsReached = new SerializableDictionary<string, bool>();
+        collectiblesPickedUp = new SerializableDictionary<string, bool>();
     }
 }

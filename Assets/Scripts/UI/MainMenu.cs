@@ -7,6 +7,8 @@ public class MainMenu : MonoBehaviour
     [Header("Menu Buttons")]
     [SerializeField] private Button newGameButton;
     [SerializeField] private Button resumeGameButton;
+    [SerializeField] private Button deleteSaveButton;
+    [SerializeField] private Button quitButton;
 
     private void Awake()
     {
@@ -19,6 +21,7 @@ public class MainMenu : MonoBehaviour
         if (!DataPersistenceManager.Instance.HasGameData())
         {
             resumeGameButton.interactable = false;
+            deleteSaveButton.interactable = false;
         }
     }
 
@@ -44,9 +47,22 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadSceneAsync(1);
     }
 
+    public void OnDeleteSaveClicked()
+    {
+        DataPersistenceManager.Instance.DeleteSave();
+        resumeGameButton.interactable = false;
+    }
+
     private void DisableMenuButtons()
     {
         newGameButton.interactable = false;
         resumeGameButton.interactable = false;
+        deleteSaveButton.interactable = false;
+        quitButton.interactable = false;
+    }
+
+    public void OnQuitClicked()
+    {
+        Application.Quit();
     }
 }

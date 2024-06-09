@@ -1,43 +1,66 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class CollectibleScript : MonoBehaviour
+public class CollectibleScript : MonoBehaviour, IDataPersistence
 {
 
     [SerializeField] private GameObject collectibleCanvas;
     [SerializeField] private GameObject collectiblePickUpCanvas;
     [SerializeField] private GameObject watch;
+    private InputManager inputManager;
     private float remainingCooldown;
-    private bool canvasActive = false;
-    private bool pickupCanvasActive = false;
+    private bool canvasActive;
+    private bool pickupCanvasActive;
+
+    private bool pickedUp;
 
     //public ScoreManager scoreManager;
- 
+
+    [SerializeField] private string id;
+    [ContextMenu("Generate guid for id")]
+    private void GenerateGuid()
+    {
+        id = System.Guid.NewGuid().ToString();
+    }
+
+    private void Awake()
+    {
+        inputManager = FindObjectOfType<InputManager>();
+        canvasActive = false;
+        pickupCanvasActive = false;
+        pickedUp = false;
+}
+
     // Start is called before the first frame update
     void Start()
     {
         //scoreManager = GameObject.Find("Score_Manager").GetComponent<ScoreManager>();
+        inputManager.Interacted += Interact;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void LoadData(GameData data)
     {
-        Interact();
+        data.collectiblesPickedUp.TryGetValue(id, out pickedUp);
+        if (pickedUp) Destroy(gameObject);
+    }
+
+    public void SaveData(GameData data)
+    {
+        if (data.collectiblesPickedUp.ContainsKey(id))
+        {
+            data.collectiblesPickedUp.Remove(id);
+        }
+        data.collectiblesPickedUp.Add(id, pickedUp);
     }
 
     private void Interact()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (canvasActive)
         {
-            if (canvasActive)
-            {
-                PickUpCollectible();
-            }
-            else if (pickupCanvasActive)
-            {
-                ResumeAfterPickUp();
-            }
+            PickUpCollectible();
+        }
+        else if (pickupCanvasActive)
+        {
+            ResumeAfterPickUp();
         }
     }
 
@@ -91,6 +114,7 @@ public class CollectibleScript : MonoBehaviour
         InputManager.isPaused = false;
         pickupCanvasActive = false;
         Debug.Log("Ready to move on");
+        pickedUp = true;
         Destroy(gameObject);
     }
 }
