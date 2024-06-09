@@ -102,8 +102,8 @@ public class CollectibleScript : MonoBehaviour, IDataPersistence
         //Debug.Log("Pause Baby");
         collectibleCanvas.SetActive(false);
         collectiblePickUpCanvas.SetActive(true);
-        InputManager.isPaused = true;
-        InputManager.canPause = false;
+        InputManager.bIsPaused = true;
+        InputManager.bCanPause = false;
         pickupCanvasActive = true;
         interactCanvasActive = false;
     }
@@ -115,8 +115,8 @@ public class CollectibleScript : MonoBehaviour, IDataPersistence
         watch.GetComponent<WatchHUD>().progressImage.fillAmount = remainingCooldown;
         if (remainingCooldown < 1f) watch.GetComponent<WatchHUD>().SetProgress(1f);
         Time.timeScale = 1f;
-        InputManager.isPaused = false;
-        InputManager.canPause = true;
+        InputManager.bIsPaused = false;
+        InputManager.bCanPause = true;
         pickupCanvasActive = false;
         pickedUp = true;
         //Debug.Log("Ready to move on");

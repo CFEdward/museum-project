@@ -28,7 +28,7 @@ public class GameOverScreen : MonoBehaviour
 
     public void OnTryAgainClicked()
     {
-        PlayerData.isRespawning = true;
+        PlayerData.bIsRespawning = true;
         if (PlayerData.livesLeft == 0)
         {
             PlayerManager.lastCheckpoint = Vector3.zero;

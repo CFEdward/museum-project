@@ -57,7 +57,7 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextDialogueLine()
     {
-        if (InputManager.isPaused) return;
+        if (InputManager.bIsPaused) return;
 
         if (isCoroutineRunning && lastLine != null)
         {

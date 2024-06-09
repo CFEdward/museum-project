@@ -29,7 +29,7 @@ public class PlayerManager : MonoBehaviour, IDataPersistence
     private void Start()
     {
         PlayerData.InitPlayer();
-        PlayerData.isRespawning = false;
+        PlayerData.bIsRespawning = false;
         inputManager.Interacted += StunEnemy;
     }
 
@@ -37,11 +37,12 @@ public class PlayerManager : MonoBehaviour, IDataPersistence
     {
         inputManager.HandleAllInputs();
         CheckPursuit();
+        //Debug.Log(PlayerData.isUsingKBM);
     }
 
     public void LoadData(GameData data)
     {
-        if (!PlayerData.isRespawning)
+        if (!PlayerData.bIsRespawning)
         {
             this.transform.position = data.playerPosition;
             cameraManager.transform.position = data.playerPosition;
@@ -52,7 +53,7 @@ public class PlayerManager : MonoBehaviour, IDataPersistence
 
     public void SaveData(GameData data)
     {
-        if (!PlayerData.isRespawning)
+        if (!PlayerData.bIsRespawning)
         {
             data.playerPosition = this.transform.position;
             data.livesLeft = PlayerData.livesLeft;
@@ -94,7 +95,7 @@ public class PlayerManager : MonoBehaviour, IDataPersistence
             {
                 if (collider.TryGetComponent(out target))
                 {
-                    PlayerData.disableMovement = true;
+                    PlayerData.bDisableMovement = true;
                     animator.Play("MainChar_Stun");
                     //enemyManager.KnockDown();
                     FindFirstObjectByType<WatchHUD>().ResetCooldown();

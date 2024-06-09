@@ -55,7 +55,7 @@ public class EnemyManager : MonoBehaviour, IDataPersistence
 
     public void LoadData(GameData data)
     {
-        if (!PlayerData.isRespawning && data.enemiesPositions.TryGetValue(id, out Vector3 loadedPosition))
+        if (!PlayerData.bIsRespawning && data.enemiesPositions.TryGetValue(id, out Vector3 loadedPosition))
         {
             this.transform.position = loadedPosition;
             Physics.SyncTransforms();
@@ -75,7 +75,7 @@ public class EnemyManager : MonoBehaviour, IDataPersistence
         }
         data.enemiesStunned.Add(id, isStunned);
 
-        if (!PlayerData.isRespawning || !isStunned)
+        if (!PlayerData.bIsRespawning || !isStunned)
         {
             if (data.enemiesPositions.ContainsKey(id))
             {
@@ -141,7 +141,7 @@ public class EnemyManager : MonoBehaviour, IDataPersistence
     {
         Time.timeScale = 0f;
         Cursor.visible = true;
-        InputManager.isPaused = true;
+        InputManager.bIsPaused = true;
         PlayerData.livesLeft--;
         gameOverCanvas.SetActive(true);
     }

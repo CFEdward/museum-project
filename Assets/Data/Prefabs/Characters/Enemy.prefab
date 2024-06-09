@@ -2743,6 +2743,7 @@ GameObject:
   - component: {fileID: 4564967539543777642}
   - component: {fileID: 6219980373248002230}
   - component: {fileID: 2191238740305271481}
+  - component: {fileID: 4087015216289277563}
   m_Layer: 9
   m_Name: Nazi solder
   m_TagString: Untagged
@@ -2903,6 +2904,20 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9017a8ca052ea30439989362994285dd, type: 3}
   - {fileID: 8300000, guid: cff3df04107db3344b12ff9abdfedcca, type: 3}
   - {fileID: 8300000, guid: 62ff675c836f2ed4e8e0cefe51cead73, type: 3}
+--- !u!114 &4087015216289277563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7129754229656232362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcb7f6ece71e9a246b892395ca43975d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  electrocutedSound: {fileID: 0}
+  dyingSound: {fileID: 8300000, guid: 249a4469578b1624a9d93490ab401d7a, type: 3}
 --- !u!1 &7133823748114504887
 GameObject:
   m_ObjectHideFlags: 0

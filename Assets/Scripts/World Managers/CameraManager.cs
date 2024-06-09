@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CameraManager : MonoBehaviour
 {
@@ -16,8 +17,10 @@ public class CameraManager : MonoBehaviour
     [SerializeField] private float minimumCollisionOffset = 0.2f;
     [SerializeField] private float cameraCollisionRadius = 0.2f;
     [SerializeField] private float cameraFollowSpeed = 0.2f;
-    [SerializeField] private float cameraLookSpeed = 2f;
-    [SerializeField] private float cameraPivotSpeed = 2f;
+    [SerializeField] private float cameraMouseLookSpeed = 2f;
+    [SerializeField] private float cameraMousePivotSpeed = 2f;
+    [SerializeField] private float cameraControllerLookSpeed = 2f;
+    [SerializeField] private float cameraControllerPivotSpeed = 2f;
 
     private float lookAngle; // Camera look up-down
     private float pivotAngle;    // Camera look left-right
@@ -30,7 +33,7 @@ public class CameraManager : MonoBehaviour
         targetTransform = FindObjectOfType<PlayerManager>().transform;
         cameraTransform = Camera.main.transform;
         defaultPosition = cameraTransform.localPosition.z;
-    }
+}
 
     public void HandleAllCameraMovement()
     {
@@ -50,6 +53,19 @@ public class CameraManager : MonoBehaviour
     {
         Vector3 rotation;
         Quaternion targetRotation;
+        float cameraLookSpeed;
+        float cameraPivotSpeed;
+
+        if (inputManager.GetComponent<PlayerInput>().currentControlScheme.Equals("Gamepad"))
+        {
+            cameraLookSpeed = cameraControllerLookSpeed;
+            cameraPivotSpeed = cameraControllerPivotSpeed;
+        }
+        else
+        {
+            cameraLookSpeed = cameraMouseLookSpeed;
+            cameraPivotSpeed = cameraMousePivotSpeed;
+        }
 
         lookAngle = lookAngle + (inputManager.cameraInputX * cameraLookSpeed);
         pivotAngle = pivotAngle - (inputManager.cameraInputY * cameraPivotSpeed);

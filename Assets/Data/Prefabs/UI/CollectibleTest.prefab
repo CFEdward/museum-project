@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5884945404225134103}
   - component: {fileID: 8696059465575024565}
   - component: {fileID: 1321415206359507162}
+  - component: {fileID: 7081364504072993868}
   m_Layer: 2
   m_Name: Hold Click Text
   m_TagString: Untagged
@@ -65,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '*Hold Click to Inspect*'
+  m_text: '*Hold <sprite=10> to Inspect*'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -134,6 +135,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &7081364504072993868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15124726180186362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a65167a6aa6860c44bc6493b1a1aa764, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  kbmText: '*Hold <sprite=29> to Inspect*'
+  controllerText: '*Move <sprite=10> to Inspect*'
 --- !u!1 &874440275861559843
 GameObject:
   m_ObjectHideFlags: 0
@@ -455,12 +470,17 @@ PrefabInstance:
     - target: {fileID: 1036268216907635060, guid: cbce43d96798fb34594bf2db9bc80696,
         type: 3}
       propertyPath: m_text
-      value: Press F to Continue
+      value: Press <sprite=26> to Continue
       objectReference: {fileID: 0}
     - target: {fileID: 1036268216907635060, guid: cbce43d96798fb34594bf2db9bc80696,
         type: 3}
       propertyPath: m_fontStyle
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1036268216907635060, guid: cbce43d96798fb34594bf2db9bc80696,
+        type: 3}
+      propertyPath: m_enableWordWrapping
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1386903699312356937, guid: cbce43d96798fb34594bf2db9bc80696,
         type: 3}
@@ -628,7 +648,11 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 5575405891646539458}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4304786286313057328, guid: cbce43d96798fb34594bf2db9bc80696,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7908762573810957098}
   m_SourcePrefab: {fileID: 100100000, guid: cbce43d96798fb34594bf2db9bc80696, type: 3}
 --- !u!1 &5381724912068669432 stripped
 GameObject:
@@ -636,6 +660,26 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6453939585331823025}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7074402442177195393 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4304786286313057328, guid: cbce43d96798fb34594bf2db9bc80696,
+    type: 3}
+  m_PrefabInstance: {fileID: 6453939585331823025}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7908762573810957098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7074402442177195393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a65167a6aa6860c44bc6493b1a1aa764, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  kbmText: Press <sprite=30> F to Continue
+  controllerText: Press <sprite=26> to Continue
 --- !u!224 &7714903196604531516 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3638952819751027341, guid: cbce43d96798fb34594bf2db9bc80696,

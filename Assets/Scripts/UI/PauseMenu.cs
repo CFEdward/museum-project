@@ -35,7 +35,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
         Cursor.visible = true;
-        InputManager.isPaused = true;
+        InputManager.bIsPaused = true;
     }
 
     public void OnResumeGameClicked()
@@ -47,7 +47,7 @@ public class PauseMenu : MonoBehaviour
         if (remainingCooldown < 1f) watch.GetComponent<WatchHUD>().SetProgress(1f);
         Time.timeScale = 1f;
         Cursor.visible = false;
-        InputManager.isPaused = false;
+        InputManager.bIsPaused = false;
     }
 
     public void OnSaveGameClicked()

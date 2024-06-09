@@ -31,7 +31,7 @@ public class PlayerLocomotion : MonoBehaviour
 
     private void HandleMovement()
     {
-        if (PlayerData.disableMovement)
+        if (PlayerData.bDisableMovement)
         {
             playerRigidbody.velocity = Vector3.zero;
             return;
@@ -57,7 +57,7 @@ public class PlayerLocomotion : MonoBehaviour
 
     private void HandleRotation()
     {
-        if (PlayerData.disableMovement) return;
+        if (PlayerData.bDisableMovement) return;
 
         Vector3 targetDirection = Vector3.zero;
 
