@@ -1,14 +1,22 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CollectibleScript : MonoBehaviour, IDataPersistence
 {
+    public enum Collectibles
+    {
+        medal,
+        placeholder
+    }
 
+    public Collectibles collectibleToRender;
     [SerializeField] private GameObject collectibleCanvas;
     [SerializeField] private GameObject collectiblePickUpCanvas;
-    [SerializeField] private GameObject watch;
+    [SerializeField] private Transform UIRender;
+    private GameObject watch;
     private InputManager inputManager;
     private float remainingCooldown;
-    private bool canvasActive;
+    private bool interactCanvasActive;
     private bool pickupCanvasActive;
 
     private bool pickedUp;
@@ -25,10 +33,11 @@ public class CollectibleScript : MonoBehaviour, IDataPersistence
     private void Awake()
     {
         inputManager = FindObjectOfType<InputManager>();
-        canvasActive = false;
+        watch = FindFirstObjectByType<WatchHUD>().gameObject;
+        interactCanvasActive = false;
         pickupCanvasActive = false;
         pickedUp = false;
-}
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -54,7 +63,7 @@ public class CollectibleScript : MonoBehaviour, IDataPersistence
 
     private void Interact()
     {
-        if (canvasActive)
+        if (interactCanvasActive)
         {
             PickUpCollectible();
         }
@@ -64,20 +73,12 @@ public class CollectibleScript : MonoBehaviour, IDataPersistence
         }
     }
 
-    private void LateUpdate()
-    {
-        //if (pickupCanvasActive && Input.GetMouseButtonDown(0))
-        //{
-        //    ResumeAfterPickUp();
-        //}
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
             collectibleCanvas.SetActive(true);
-            canvasActive = true;
+            interactCanvasActive = true;
         }
     }
 
@@ -86,22 +87,25 @@ public class CollectibleScript : MonoBehaviour, IDataPersistence
         if (other.tag == "Player")
         {
             collectibleCanvas.SetActive(false);
-            canvasActive = false;
+            interactCanvasActive = false;
         }
     }
 
     private void PickUpCollectible()
     {
+        SwitchObjectToRender();
+        transform.GetChild(0).gameObject.SetActive(false);
         remainingCooldown = watch.GetComponent<WatchHUD>().progressImage.fillAmount;
         watch.SetActive(false);
         //scoreManager.Collectibles += 1;
         Time.timeScale = 0f;
-        Debug.Log("Pause Baby");
+        //Debug.Log("Pause Baby");
         collectibleCanvas.SetActive(false);
         collectiblePickUpCanvas.SetActive(true);
-        pickupCanvasActive = true;
         InputManager.isPaused = true;
-        canvasActive = false;
+        InputManager.canPause = false;
+        pickupCanvasActive = true;
+        interactCanvasActive = false;
     }
 
     private void ResumeAfterPickUp()
@@ -112,9 +116,33 @@ public class CollectibleScript : MonoBehaviour, IDataPersistence
         if (remainingCooldown < 1f) watch.GetComponent<WatchHUD>().SetProgress(1f);
         Time.timeScale = 1f;
         InputManager.isPaused = false;
+        InputManager.canPause = true;
         pickupCanvasActive = false;
-        Debug.Log("Ready to move on");
         pickedUp = true;
+        //Debug.Log("Ready to move on");
         Destroy(gameObject);
+    }
+
+    private void SwitchObjectToRender()
+    {
+        for (int i = 0; i < UIRender.childCount; i++)
+        {
+            UIRender.GetChild(i).gameObject.SetActive(false);
+        }
+        switch (collectibleToRender)
+        {
+            case Collectibles.medal:
+                UIRender.GetChild(0).gameObject.SetActive(true);
+                UIRender.GetComponent<RotateDrag>().collectible = UIRender.GetChild(0);
+                break;
+
+            case Collectibles.placeholder:
+                UIRender.GetChild(1).gameObject.SetActive(true);
+                UIRender.GetComponent<RotateDrag>().collectible = UIRender.GetChild(1);
+                break;
+
+            default:
+                break;
+        }
     }
 }

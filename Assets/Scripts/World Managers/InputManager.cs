@@ -20,6 +20,7 @@ public class InputManager : MonoBehaviour
     public float horizontalInput;
 
     public static bool isPaused;
+    public static bool canPause = true;
 
     private void OnEnable()
     {
@@ -90,6 +91,7 @@ public class InputManager : MonoBehaviour
         if (pauseInput)
         {
             pauseInput = false;
+            if (canPause)
             if (GameObject.FindGameObjectWithTag("HUD").TryGetComponent<PauseMenu>(out PauseMenu pauseMenu))
             {
                 if (!isPaused) pauseMenu.Pause();

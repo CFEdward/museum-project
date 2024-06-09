@@ -50,6 +50,7 @@ public class MainMenu : MonoBehaviour
     public void OnDeleteSaveClicked()
     {
         DataPersistenceManager.Instance.DeleteSave();
+        newGameButton.Select();
         resumeGameButton.interactable = false;
         deleteSaveButton.interactable = false;
     }
