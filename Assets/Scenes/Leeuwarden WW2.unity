@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.028953645, g: 0.03987095, b: 0.0735156, a: 1}
+  m_IndirectSpecularColor: {r: 0.028967623, g: 0.039897595, b: 0.07357914, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7833,6 +7833,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8539002945713618182, guid: 307c7b3c5712e7e408d75a6a87a0fbbf,
     type: 3}
   m_PrefabInstance: {fileID: 980779956}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &593644668 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 600545742368164214, guid: d01cec484754b1c46a6924fb104d210e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1515237181790620399}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &610227666
 PrefabInstance:
@@ -24958,7 +24964,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 593644668}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &2023764434
@@ -27534,7 +27540,7 @@ PrefabInstance:
     - target: {fileID: 1590924058793675563, guid: ed5ca67e5bfb50e4196c8598f05adc08,
         type: 3}
       propertyPath: initializeDataIfNull
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7460834104637493859, guid: ed5ca67e5bfb50e4196c8598f05adc08,
         type: 3}

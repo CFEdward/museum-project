@@ -51,6 +51,7 @@ public class MainMenu : MonoBehaviour
     {
         DataPersistenceManager.Instance.DeleteSave();
         resumeGameButton.interactable = false;
+        deleteSaveButton.interactable = false;
     }
 
     private void DisableMenuButtons()

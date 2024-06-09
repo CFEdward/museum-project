@@ -23,6 +23,7 @@ public class AnimationEvents : MonoBehaviour
         //{
             parent.SetActive(true);
             parent.transform.GetChild(4).transform.position = playerManager.target.transform.position + new Vector3(0f, 2f, 0f);
+            // what the actual fuck unity
             arcPos = playerManager.target.gameObject.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(2).GetChild(0).GetChild(0);
             arcPos.localPosition = Vector3.zero;
             stunning = true;
