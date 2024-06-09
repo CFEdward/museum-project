@@ -11,6 +11,11 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private Button loadGameButton;
     private float remainingCooldown;
 
+    private void Start()
+    {
+        pauseMenu.GetComponentInChildren<Button>().Select();
+    }
+
     private void Update()
     {
         if (!DataPersistenceManager.Instance.dataHandler.CheckSaveExists())

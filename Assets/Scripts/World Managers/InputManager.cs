@@ -9,6 +9,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] private Vector2 cameraInput;
     [SerializeField] private bool interactInput;
     public event Action Interacted;
+    public event Action NextDialogue;
     [SerializeField] private bool pauseInput;
     [SerializeField] private bool nextDialogueInput;
 
@@ -102,7 +103,7 @@ public class InputManager : MonoBehaviour
         if (nextDialogueInput)
         {
             nextDialogueInput = false;
-            DialogueManager.Instance.DisplayNextDialogueLine();
+            NextDialogue?.Invoke();
         }
     }
 }

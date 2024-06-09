@@ -21,6 +21,7 @@ public class DialogueManager : MonoBehaviour
     public float typingSpeed = 0.2f;
 
     public Animator animator;
+    private InputManager inputManager;
 
     private void Awake()
     {
@@ -29,6 +30,13 @@ public class DialogueManager : MonoBehaviour
 
         lines = new Queue<DialogueLine>();
         lastLine = null;
+
+        inputManager = FindObjectOfType<InputManager>();
+    }
+
+    private void Start()
+    {
+        inputManager.NextDialogue += DisplayNextDialogueLine;
     }
 
     public void StartDialogue(Dialogue dialogue)
@@ -89,7 +97,12 @@ public class DialogueManager : MonoBehaviour
 
     void EndDialogue()
     {
+        if (isDialogueActive) animator.Play("hide");
         isDialogueActive = false;
-        animator.Play("hide");
+    }
+
+    private void OnDisable()
+    {
+        inputManager.NextDialogue -= DisplayNextDialogueLine;
     }
 }
