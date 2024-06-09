@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class FootstepManager : MonoBehaviour
 {
-    public AudioClip[] footstepSounds;
+    [SerializeField] private AudioClip[] footstepSounds;
 
     private AudioSource source;
 
@@ -15,6 +15,7 @@ public class FootstepManager : MonoBehaviour
     {
         AudioClip clip = footstepSounds[(int)Random.Range(0, footstepSounds.Length)];
         source.clip = clip;
+        source.loop = false;
         source.volume = Random.Range(0.02f, 0.05f);
         source.pitch = Random.Range(0.8f, 1.2f);
         source.Play();
