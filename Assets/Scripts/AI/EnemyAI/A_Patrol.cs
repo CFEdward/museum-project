@@ -9,7 +9,7 @@ public class A_Patrol : ActionBase
     private NavMeshAgent agent;
     private int currentWaypointIndex = 0;
 
-    public Transform[] waypoints;
+    public Transform[] waypoints = null;
 
     protected override void OnInit()
     {
@@ -19,12 +19,14 @@ public class A_Patrol : ActionBase
 
     protected override void OnStart()
     {
+        if (waypoints != null)
         agent.SetDestination(waypoints[currentWaypointIndex].position);
         agent.speed = 1.5f;
     }
 
     protected override TaskStatus OnUpdate()
     {
+        if (waypoints == null) return TaskStatus.Failure;
         Transform wp = waypoints[currentWaypointIndex];
         if (Vector3.Distance(self.position, wp.position) < 0.1f) // path end
         {

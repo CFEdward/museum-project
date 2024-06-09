@@ -99,6 +99,7 @@ public class PlayerManager : MonoBehaviour, IDataPersistence
                     //enemyManager.KnockDown();
                     FindFirstObjectByType<WatchHUD>().ResetCooldown();
                     stunOnCooldown = true;
+                    break;
                 }
             }
         }
