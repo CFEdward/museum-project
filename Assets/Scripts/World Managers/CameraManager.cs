@@ -17,10 +17,10 @@ public class CameraManager : MonoBehaviour
     [SerializeField] private float minimumCollisionOffset = 0.2f;
     [SerializeField] private float cameraCollisionRadius = 0.2f;
     [SerializeField] private float cameraFollowSpeed = 0.2f;
-    [SerializeField] private float cameraMouseLookSpeed = 2f;
-    [SerializeField] private float cameraMousePivotSpeed = 2f;
-    [SerializeField] private float cameraControllerLookSpeed = 2f;
-    [SerializeField] private float cameraControllerPivotSpeed = 2f;
+    [Range(0.1f, 5f)] public float cameraMouseLookSpeed = 2f;
+    [Range(0.1f, 5f)] public float cameraMousePivotSpeed = 2f;
+    [Range(0.1f, 5f)] public float cameraControllerLookSpeed = 2f;
+    [Range(0.1f, 5f)] public float cameraControllerPivotSpeed = 2f;
 
     private float lookAngle; // Camera look up-down
     private float pivotAngle;    // Camera look left-right

@@ -10,11 +10,13 @@ public class ChangeUISymbols : MonoBehaviour
     private void Awake()
     {
         textComponent = GetComponent<TextMeshProUGUI>();
+        if (PlayerData.bIsUsingKBM) textComponent.SetText(kbmText);
+        else textComponent.SetText(controllerText);
     }
 
     private void Update()
     {
-        if (PlayerData.bIsUsingKBM) textComponent.text = kbmText;
-        else textComponent.text = controllerText;
+        if (PlayerData.bIsUsingKBM) textComponent.SetText(kbmText);
+        else textComponent.SetText(controllerText);
     }
 }

@@ -38,8 +38,6 @@ public class InputManager : MonoBehaviour
             playerControls.PlayerMovement.Camera.performed += i => cameraInput = i.ReadValue<Vector2>();
             playerControls.PlayerMovement.Camera.canceled += i => cameraInput = Vector2.zero;
 
-            //playerControls.PlayerMovement.Click.performed += i => bClickInput = true;
-            //playerControls.PlayerMovement.Click.canceled += i => bClickInput = false;
             playerControls.PlayerMovement.Interact.performed += i => interactInput = true;
             playerControls.Menu.Pause.performed += i => pauseInput = true;
             playerControls.Menu.NextDialogue.performed += i => nextDialogueInput = true;
