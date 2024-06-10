@@ -49,7 +49,7 @@ public class DialogueManager : MonoBehaviour
             {
                 lines.Enqueue(dialogueLine);
             }
-                return;
+            return;
         }
 
         isDialogueActive = true;
@@ -79,7 +79,7 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
-        if (lines.Count == 0)
+        if (isDialogueActive && lines.Count == 0)
         {
             EndDialogue();
             return;

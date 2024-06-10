@@ -41,8 +41,11 @@ public class PauseMenu : MonoBehaviour
 
     private void ResumeOrBack()
     {
-        if (settingsPanel.activeInHierarchy) OnBackClicked();
-        else OnResumeGameClicked();
+        if (InputManager.bIsPaused)
+        {
+            if (settingsPanel.activeInHierarchy) OnBackClicked();
+            else OnResumeGameClicked();
+        }
     }
 
     public void Pause()
@@ -62,7 +65,6 @@ public class PauseMenu : MonoBehaviour
         {
             settingsPanel.SetActive(false);
             pausePanel.SetActive(true);
-
         }
         pauseMenu.SetActive(false);
         notificationText.gameObject.SetActive(false);

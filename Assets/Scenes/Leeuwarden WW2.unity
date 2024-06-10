@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.028721083, g: 0.039279852, b: 0.07186956, a: 1}
+  m_IndirectSpecularColor: {r: 0.028969709, g: 0.03990114, b: 0.07359261, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -31566,6 +31566,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6459713467293553643, guid: 0709d7fe7f5bef64dacaff271a94f20b,
+        type: 3}
+      propertyPath: bLogLightValue
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

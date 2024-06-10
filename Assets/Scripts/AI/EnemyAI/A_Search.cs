@@ -44,8 +44,11 @@ public class A_Search : ActionBase
             return TaskStatus.Continue;
         }
 
-        Transform centerPoint = GameObject.FindGameObjectWithTag("Outline").transform;
-        if (initialCenterPoint != centerPoint) { agent.ResetPath(); initialCenterPoint = centerPoint; }
+        if (GameObject.FindGameObjectWithTag("Outline") != null)
+        {
+            Transform centerPoint = GameObject.FindGameObjectWithTag("Outline").transform;
+            if (initialCenterPoint != centerPoint) { agent.ResetPath(); initialCenterPoint = centerPoint; }
+        }
         if (enemyManager.alertStage == AlertStage.Intrigued)
         {
             if (agent.remainingDistance <= agent.stoppingDistance) // done with path

@@ -54,7 +54,7 @@ public class FieldOfView : MonoBehaviour
                 target = c.transform;
                 Vector3 directionToTarget = (target.position - transform.position).normalized;
                 float signedAngle = Vector3.Angle(transform.forward, directionToTarget);
-                if ((Mathf.Abs(signedAngle) < fovAngle / 2f) && (LightDetection.lightValue >= 0.2f))
+                if ((Mathf.Abs(signedAngle) < fovAngle / 2f) && (LightDetection.lightValue >= 0.11f))
                 {
                     float distanceToTarget = Vector3.Distance(transform.position, target.position);
                     if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))

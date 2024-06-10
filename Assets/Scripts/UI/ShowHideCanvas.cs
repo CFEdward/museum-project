@@ -10,7 +10,7 @@ public class ShowHideCanvas : MonoBehaviour
             Collider[] colliderArray = Physics.OverlapSphere(transform.position, range);
             foreach (Collider collider in colliderArray)
             {
-            if (collider.TryGetComponent(out PlayerManager playerManager) && !PlayerManager.stunOnCooldown && !PlayerData.bIsPursued)
+            if (collider.TryGetComponent(out PlayerManager playerManager) && !PlayerManager.stunOnCooldown && !PlayerData.bIsPursued && GetComponent<EnemyManager>().alertStage == AlertStage.Peaceful)
                 { canvas.SetActive(true); break; }
                 else canvas.SetActive(false);
             }
