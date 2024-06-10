@@ -6,7 +6,9 @@ public class CollectibleScript : MonoBehaviour, IDataPersistence
     public enum Collectibles
     {
         medal,
-        placeholder
+        polaroid,
+        bullet,
+        poster
     }
 
     public Collectibles collectibleToRender;
@@ -136,9 +138,19 @@ public class CollectibleScript : MonoBehaviour, IDataPersistence
                 UIRender.GetComponent<RotateDrag>().collectible = UIRender.GetChild(0);
                 break;
 
-            case Collectibles.placeholder:
+            case Collectibles.polaroid:
                 UIRender.GetChild(1).gameObject.SetActive(true);
                 UIRender.GetComponent<RotateDrag>().collectible = UIRender.GetChild(1);
+                break;
+
+            case Collectibles.bullet:
+                UIRender.GetChild(2).gameObject.SetActive(true);
+                UIRender.GetComponent<RotateDrag>().collectible = UIRender.GetChild(2);
+                break;
+
+            case Collectibles.poster:
+                UIRender.GetChild(3).gameObject.SetActive(true);
+                UIRender.GetComponent<RotateDrag>().collectible = UIRender.GetChild(3);
                 break;
 
             default:

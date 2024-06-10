@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 7661646793988339893}
   - component: {fileID: 7292326631857492053}
   m_Layer: 2
-  m_Name: CollectibleTest
+  m_Name: Collectible
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
