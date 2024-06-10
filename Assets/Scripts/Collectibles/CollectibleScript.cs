@@ -10,6 +10,7 @@ public class CollectibleScript : MonoBehaviour, IDataPersistence
         polaroid,
         bullet,
         poster,
+        shrapnel,
         suitcase
     }
 
@@ -116,11 +117,13 @@ public class CollectibleScript : MonoBehaviour, IDataPersistence
     {
         if (collectibleToRender == Collectibles.suitcase)
         {
-            InputManager.bIsPaused = false;
-            Time.timeScale = 1f;
-            InputManager.bCanPause = false;
-            SceneManager.LoadSceneAsync(3);
-            return;
+            //InputManager.bIsPaused = false;
+            //Time.timeScale = 1f;
+            //InputManager.bCanPause = false;
+            //SceneManager.LoadSceneAsync(3);
+            //return;
+
+
         }
         collectiblePickUpCanvas.SetActive(false);
         watch.SetActive(true);

@@ -4,7 +4,7 @@ using UnityEngine;
 public class HowManyCollected : MonoBehaviour
 {
     private TextMeshProUGUI textComponent;
-    [SerializeField] private int collToFind = 5;
+    [SerializeField] private int collToFind = 6;
 
     private void Awake()
     {
@@ -17,7 +17,7 @@ public class HowManyCollected : MonoBehaviour
         foreach (var item in uncollected)
         {
             collToFind--;
-            textComponent.text = "You have found " + (collToFind + 1) + " / 5 Collectibles!";
+            textComponent.text = "You have found " + (collToFind + 2) + " / 6 Collectibles!";
         }
     }
 }
