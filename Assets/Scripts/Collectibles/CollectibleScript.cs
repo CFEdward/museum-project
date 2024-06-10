@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class CollectibleScript : MonoBehaviour, IDataPersistence
@@ -8,7 +9,8 @@ public class CollectibleScript : MonoBehaviour, IDataPersistence
         medal,
         polaroid,
         bullet,
-        poster
+        poster,
+        suitcase
     }
 
     public Collectibles collectibleToRender;
@@ -112,6 +114,14 @@ public class CollectibleScript : MonoBehaviour, IDataPersistence
 
     private void ResumeAfterPickUp()
     {
+        if (collectibleToRender == Collectibles.suitcase)
+        {
+            InputManager.bIsPaused = false;
+            Time.timeScale = 1f;
+            InputManager.bCanPause = false;
+            SceneManager.LoadSceneAsync(3);
+            return;
+        }
         collectiblePickUpCanvas.SetActive(false);
         watch.SetActive(true);
         watch.GetComponent<WatchHUD>().progressImage.fillAmount = remainingCooldown;
@@ -151,6 +161,11 @@ public class CollectibleScript : MonoBehaviour, IDataPersistence
             case Collectibles.poster:
                 UIRender.GetChild(3).gameObject.SetActive(true);
                 UIRender.GetComponent<RotateDrag>().collectible = UIRender.GetChild(3);
+                break;
+
+            case Collectibles.suitcase:
+                UIRender.GetChild(4).gameObject.SetActive(true);
+                UIRender.GetComponent<RotateDrag>().collectible = UIRender.GetChild(4);
                 break;
 
             default:

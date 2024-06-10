@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Leeuwarden WW2.unity
     guid: 5599b750e6ff77342b5fd4f38524fb85
+  - enabled: 1
+    path: Assets/Scenes/Outro Scene.unity
+    guid: 87ba936e9b3c6584e974fd0a80327225
   m_configObjects: {}

@@ -2,9 +2,8 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using static Unity.VisualScripting.Member;
 
-public class IntroOutroManager : MonoBehaviour
+public class IntroManager : MonoBehaviour
 {
     [SerializeField] private float fadeRate;
     [SerializeField] private GameObject[] screens;
@@ -29,6 +28,7 @@ public class IntroOutroManager : MonoBehaviour
             currentColor.a = 0f;
             image.color = currentColor;
         }
+        StartNextImage();
     }
 
     private void Update()
@@ -40,15 +40,18 @@ public class IntroOutroManager : MonoBehaviour
     {
         switch (imageToFadeIndex)
         {
-            case 3:
+            case 0:
+                StartCoroutine(FadeIn(images[imageToFadeIndex]));
+                break;
+            case 4:
                 screens[0].SetActive(false);
                 screens[1].SetActive(true);
                 break;
-            case 7:
+            case 8:
                 screens[1].SetActive(false);
                 screens[2].SetActive(true);
                 break;
-            case 9:
+            case 10:
                 InputManager.bCanPause = true;
                 bgMusic.StartCoroutine(bgMusic.Fade(false, bgMusic.source, 1f, 0f));
                 SceneManager.LoadSceneAsync(2);

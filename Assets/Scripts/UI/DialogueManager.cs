@@ -116,9 +116,13 @@ public class DialogueManager : MonoBehaviour
         isCoroutineRunning = false;
     }
 
-    void EndDialogue()
+    public void EndDialogue()
     {
-        if (isDialogueActive) animator.Play("hide");
+        if (isDialogueActive)
+        {
+            StopAllCoroutines();
+            animator.Play("hide");
+        }
         if (audioSource.isPlaying) audioSource.Stop();
         isDialogueActive = false;
     }

@@ -35,7 +35,11 @@ public class GameOverScreen : MonoBehaviour
             PlayerData.livesLeft = 3;
             DataPersistenceManager.Instance.NewGame();
         }
-        else DataPersistenceManager.Instance.SaveGame();
+        else
+        {
+            DialogueManager.Instance.EndDialogue();
+            DataPersistenceManager.Instance.SaveGame();
+        }
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
     }
 
