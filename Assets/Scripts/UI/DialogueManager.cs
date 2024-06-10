@@ -15,13 +15,14 @@ public class DialogueManager : MonoBehaviour
     private Queue<DialogueLine> lines;
     private DialogueLine lastLine;
 
-    public bool isDialogueActive = false;
+    static public bool isDialogueActive = false;
     public bool isCoroutineRunning = false;
 
-    public float typingSpeed = 0.2f;
+    public float typingSpeed = 0.05f;
 
     public Animator animator;
     private InputManager inputManager;
+    private AudioSource audioSource;
 
     private void Awake()
     {
@@ -37,10 +38,20 @@ public class DialogueManager : MonoBehaviour
     private void Start()
     {
         inputManager.NextDialogue += DisplayNextDialogueLine;
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void StartDialogue(Dialogue dialogue)
     {
+        if (isDialogueActive)
+        {
+            foreach (DialogueLine dialogueLine in dialogue.dialogueLines)
+            {
+                lines.Enqueue(dialogueLine);
+            }
+                return;
+        }
+
         isDialogueActive = true;
 
         animator.Play("show");
@@ -52,6 +63,7 @@ public class DialogueManager : MonoBehaviour
             lines.Enqueue(dialogueLine);
         }
 
+        if (audioSource.isPlaying) audioSource.Stop();
         DisplayNextDialogueLine();
     }
 
@@ -77,6 +89,13 @@ public class DialogueManager : MonoBehaviour
 
         characterIcon.sprite = currentLine.character.icon;
         characterName.text = currentLine.character.name;
+        typingSpeed = currentLine.typingSpeed;
+        if (currentLine.dialogueClip != null)
+        {
+            audioSource.clip = currentLine.dialogueClip;
+            audioSource.loop = false;
+            audioSource.Play();
+        }
 
         lastLine = currentLine;
 
@@ -100,6 +119,7 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue()
     {
         if (isDialogueActive) animator.Play("hide");
+        if (audioSource.isPlaying) audioSource.Stop();
         isDialogueActive = false;
     }
 

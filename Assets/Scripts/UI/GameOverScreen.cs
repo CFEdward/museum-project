@@ -12,7 +12,7 @@ public class GameOverScreen : MonoBehaviour
 
     private void Awake()
     {
-        StopAllCoroutines();
+        //StopAllCoroutines();
         dialogueHUD.SetActive(false);
         triesLeftText.text = "Tries left: " + PlayerData.livesLeft;
         tryAgainButton.Select();

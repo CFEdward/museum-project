@@ -11,9 +11,11 @@ public class DialogueCharacter
 [System.Serializable]
 public class DialogueLine
 {
+    public AudioClip dialogueClip;
     public DialogueCharacter character;
     [TextArea(3, 10)]
     public string line;
+    public float typingSpeed = .2f;
 }
 
 [System.Serializable]
