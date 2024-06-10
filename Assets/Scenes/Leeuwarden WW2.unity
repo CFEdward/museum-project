@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.028972391, g: 0.03990749, b: 0.07360483, a: 1}
+  m_IndirectSpecularColor: {r: 0.028939057, g: 0.03984377, b: 0.0734138, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3620,6 +3620,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 805010049}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &234634589 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1005048714415735520, guid: 0709d7fe7f5bef64dacaff271a94f20b,
+    type: 3}
+  m_PrefabInstance: {fileID: 7162720648293412124}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &237815591
 GameObject:
   m_ObjectHideFlags: 0
@@ -7835,10 +7841,66 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 7162720648293412124}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 234634589}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1bf88084754cba44daf56f13c914cdef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &537887562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234634589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd80a53b02fde9a4c92f6fe93cb8ac1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    dialogueLines:
+    - dialogueClip: {fileID: 8300000, guid: e58b34e50f14e7a4f8bb8474d5bc7325, type: 3}
+      character:
+        name: Marcus
+        icon: {fileID: 21300000, guid: 6cf26de1307fa0e409b3934f7ee99042, type: 3}
+      line: Ah! You got caught...
+      endTheGame: 0
+      typingSpeed: 0.05
+    - dialogueClip: {fileID: 8300000, guid: 9c69b6a1d2ef44d47a63487954bfe993, type: 3}
+      character:
+        name: Marcus
+        icon: {fileID: 21300000, guid: 6cf26de1307fa0e409b3934f7ee99042, type: 3}
+      line: I turned back time for you, so you can try again.
+      endTheGame: 0
+      typingSpeed: 0.05
+    - dialogueClip: {fileID: 8300000, guid: c48b7ad54105d4f4aa6d057f8aa7c91d, type: 3}
+      character:
+        name: Marcus
+        icon: {fileID: 21300000, guid: 6cf26de1307fa0e409b3934f7ee99042, type: 3}
+      line: Keep in mind I can only do this a couple times.
+      endTheGame: 0
+      typingSpeed: 0.05
+    - dialogueClip: {fileID: 8300000, guid: eddb89bf80d6ec34e863362989064b76, type: 3}
+      character:
+        name: Marcus
+        icon: {fileID: 21300000, guid: 6cf26de1307fa0e409b3934f7ee99042, type: 3}
+      line: Otherwise, the timeline will get corrupted and you'll have to start all
+        over again!
+      endTheGame: 0
+      typingSpeed: 0.05
+  id: 
+--- !u!114 &537887563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234634589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38214f3e584665146989c9e463dd720a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &540931456
@@ -32483,15 +32545,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6459713467293553643, guid: 0709d7fe7f5bef64dacaff271a94f20b,
-        type: 3}
-      propertyPath: bLogLightValue
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1005048714415735520, guid: 0709d7fe7f5bef64dacaff271a94f20b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 537887563}
+    - targetCorrespondingSourceObject: {fileID: 1005048714415735520, guid: 0709d7fe7f5bef64dacaff271a94f20b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 537887562}
   m_SourcePrefab: {fileID: 100100000, guid: 0709d7fe7f5bef64dacaff271a94f20b, type: 3}
 --- !u!23 &7297788140144070208
 MeshRenderer:

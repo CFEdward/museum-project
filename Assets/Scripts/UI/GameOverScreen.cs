@@ -37,7 +37,8 @@ public class GameOverScreen : MonoBehaviour
         }
         else
         {
-            DialogueManager.Instance.EndDialogue();
+            //DialogueManager.Instance.EndDialogue();
+            DialogueManager.isDialogueActive = false;
             DataPersistenceManager.Instance.SaveGame();
         }
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);

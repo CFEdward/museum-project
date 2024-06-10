@@ -40,6 +40,7 @@ public class DialogueManager : MonoBehaviour
     {
         inputManager.NextDialogue += DisplayNextDialogueLine;
         audioSource = GetComponent<AudioSource>();
+        lastLine = null;
     }
 
     public void StartDialogue(Dialogue dialogue)
@@ -71,6 +72,7 @@ public class DialogueManager : MonoBehaviour
     public void DisplayNextDialogueLine()
     {
         if (InputManager.bIsPaused) return;
+        if (!isDialogueActive) return;
 
         if (isCoroutineRunning && lastLine != null)
         {
@@ -79,7 +81,6 @@ public class DialogueManager : MonoBehaviour
             isCoroutineRunning = false;
             return;
         }
-
         if (isDialogueActive && lines.Count == 0)
         {
             EndDialogue();
@@ -101,6 +102,7 @@ public class DialogueManager : MonoBehaviour
         lastLine = currentLine;
 
         StopAllCoroutines();
+        isCoroutineRunning = false;
 
         StartCoroutine(TypeSentence(currentLine));
     }
@@ -122,6 +124,7 @@ public class DialogueManager : MonoBehaviour
         if (isDialogueActive)
         {
             StopAllCoroutines();
+            isCoroutineRunning= false;
             animator.Play("hide");
         }
         if (audioSource.isPlaying) audioSource.Stop();

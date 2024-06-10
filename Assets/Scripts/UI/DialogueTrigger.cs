@@ -64,11 +64,10 @@ public class DialogueTrigger : MonoBehaviour, IDataPersistence
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.CompareTag("Player") && !alreadyTriggered && !CompareTag("Collectible"))
+        if (!CompareTag("Player") && !CompareTag("Collectible") && collision.CompareTag("Player") && !alreadyTriggered)
         {
             TriggerDialogue();
+            alreadyTriggered = true;
         }
-
-        alreadyTriggered = true;
     }
 }

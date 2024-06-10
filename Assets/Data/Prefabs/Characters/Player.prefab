@@ -319,8 +319,6 @@ GameObject:
   - component: {fileID: 8932066029572572767}
   - component: {fileID: 5703125688403389656}
   - component: {fileID: 8652150717140085823}
-  - component: {fileID: 1894364676377865490}
-  - component: {fileID: 8617100848440432299}
   - component: {fileID: 5518320530285696896}
   - component: {fileID: 3437501367271939275}
   m_Layer: 8
@@ -451,33 +449,6 @@ MonoBehaviour:
   sneakMoveSpeed: 4
   pursuedMoveSpeed: 12
   rotationSpeed: 15
---- !u!114 &1894364676377865490
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1005048714415735520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccbf42cf91889e749b515ea751646b7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &8617100848440432299
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1005048714415735520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 137777317b362054aa35ec42ccdd7769, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthMax: 0
-  health: 100
-  attack: 10
 --- !u!81 &5518320530285696896
 AudioListener:
   m_ObjectHideFlags: 0
@@ -753,7 +724,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camLightScan: {fileID: 806936489050434279}
-  bLogLightValue: 0
+  bLogLightValue: 1
   updateTime: 0.1
 --- !u!1001 &967236913439754408
 PrefabInstance:

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class CollectibleScript : MonoBehaviour, IDataPersistence
@@ -117,6 +118,13 @@ public class CollectibleScript : MonoBehaviour, IDataPersistence
     {
         Time.timeScale = 1f;
         InputManager.bIsPaused = false;
+        collectiblePickUpCanvas.SetActive(false);
+        watch.SetActive(true);
+        watch.GetComponent<WatchHUD>().progressImage.fillAmount = remainingCooldown;
+        if (remainingCooldown < 1f) watch.GetComponent<WatchHUD>().SetProgress(1f);
+        InputManager.bCanPause = true;
+        pickupCanvasActive = false;
+        pickedUp = true;
         if (collectibleToRender == Collectibles.suitcase)
         {
             //InputManager.bIsPaused = false;
@@ -126,14 +134,8 @@ public class CollectibleScript : MonoBehaviour, IDataPersistence
             //return;
 
             dialogueTrigger.TriggerDialogue();
+            //return;
         }
-        collectiblePickUpCanvas.SetActive(false);
-        watch.SetActive(true);
-        watch.GetComponent<WatchHUD>().progressImage.fillAmount = remainingCooldown;
-        if (remainingCooldown < 1f) watch.GetComponent<WatchHUD>().SetProgress(1f);
-        InputManager.bCanPause = true;
-        pickupCanvasActive = false;
-        pickedUp = true;
         //Debug.Log("Ready to move on");
         Destroy(gameObject);
     }
