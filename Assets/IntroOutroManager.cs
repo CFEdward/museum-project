@@ -2,12 +2,14 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using static Unity.VisualScripting.Member;
 
 public class IntroOutroManager : MonoBehaviour
 {
     [SerializeField] private float fadeRate;
     [SerializeField] private GameObject[] screens;
     [SerializeField] private Image[] images;
+    private BackgroundMusic bgMusic;
     private int imageToFadeIndex = 0;
     private float targetAlpha = 1f;
     private InputManager inputManager;
@@ -15,6 +17,7 @@ public class IntroOutroManager : MonoBehaviour
     private void Awake()
     {
         inputManager = FindObjectOfType<InputManager>();
+        bgMusic = FindObjectOfType<BackgroundMusic>();
     }
 
     private void Start()
@@ -47,6 +50,7 @@ public class IntroOutroManager : MonoBehaviour
                 break;
             case 9:
                 InputManager.bCanPause = true;
+                bgMusic.StartCoroutine(bgMusic.Fade(false, bgMusic.source, 1f, 0f));
                 SceneManager.LoadSceneAsync(2);
                 return;
             default:
