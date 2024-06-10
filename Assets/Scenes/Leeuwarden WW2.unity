@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.028957043, g: 0.03987554, b: 0.07352818, a: 1}
+  m_IndirectSpecularColor: {r: 0.028972391, g: 0.03990749, b: 0.07360483, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6766,6 +6766,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b40fc337dfb06df4fb4414ffebecb69d, type: 3}
+--- !u!1 &458587979 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 874440275861559843, guid: b4241b60f9e9a4a4fa6272a5e5ffdae1,
+    type: 3}
+  m_PrefabInstance: {fileID: 671951181}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &463640175
 GameObject:
   m_ObjectHideFlags: 0
@@ -8991,13 +8997,30 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Collectible
       objectReference: {fileID: 0}
+    - target: {fileID: 5012507057841036185, guid: b4241b60f9e9a4a4fa6272a5e5ffdae1,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5012507057841036185, guid: b4241b60f9e9a4a4fa6272a5e5ffdae1,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.18515491
+      objectReference: {fileID: 0}
+    - target: {fileID: 5012507057841036185, guid: b4241b60f9e9a4a4fa6272a5e5ffdae1,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5012507057841036185, guid: b4241b60f9e9a4a4fa6272a5e5ffdae1,
+        type: 3}
+      propertyPath: m_ColorTemperature
+      value: 6000
+      objectReference: {fileID: 0}
     - target: {fileID: 6704104074556335281, guid: b4241b60f9e9a4a4fa6272a5e5ffdae1,
         type: 3}
       propertyPath: m_text
-      value: 'You have found a Medal.
-
-        It seems to be one awarded for bravery
-        in combat.'
+      value: You did it! You found the suitcase!
       objectReference: {fileID: 0}
     - target: {fileID: 6704104074556335281, guid: b4241b60f9e9a4a4fa6272a5e5ffdae1,
         type: 3}
@@ -9032,7 +9055,7 @@ PrefabInstance:
     - target: {fileID: 7976780270194656545, guid: b4241b60f9e9a4a4fa6272a5e5ffdae1,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 351.99
+      value: 351.53
       objectReference: {fileID: 0}
     - target: {fileID: 7976780270194656545, guid: b4241b60f9e9a4a4fa6272a5e5ffdae1,
         type: 3}
@@ -9042,7 +9065,7 @@ PrefabInstance:
     - target: {fileID: 7976780270194656545, guid: b4241b60f9e9a4a4fa6272a5e5ffdae1,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 425.75
+      value: 425.7
       objectReference: {fileID: 0}
     - target: {fileID: 7976780270194656545, guid: b4241b60f9e9a4a4fa6272a5e5ffdae1,
         type: 3}
@@ -9086,7 +9109,11 @@ PrefabInstance:
         type: 3}
       insertIndex: 0
       addedObject: {fileID: 376502493}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 874440275861559843, guid: b4241b60f9e9a4a4fa6272a5e5ffdae1,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 671951185}
   m_SourcePrefab: {fileID: 100100000, guid: b4241b60f9e9a4a4fa6272a5e5ffdae1, type: 3}
 --- !u!4 &671951182 stripped
 Transform:
@@ -9094,6 +9121,49 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 671951181}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &671951185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 458587979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd80a53b02fde9a4c92f6fe93cb8ac1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    dialogueLines:
+    - dialogueClip: {fileID: 8300000, guid: b2a574fa11012bc48a33211fbf69b29d, type: 3}
+      character:
+        name: Marcus
+        icon: {fileID: 21300000, guid: 6cf26de1307fa0e409b3934f7ee99042, type: 3}
+      line: Yes, you got it! That's one of the Artifacts found.
+      endTheGame: 0
+      typingSpeed: 0.05
+    - dialogueClip: {fileID: 8300000, guid: dd7bafd8a9c1d35439b9b172df1082f6, type: 3}
+      character:
+        name: Marcus
+        icon: {fileID: 21300000, guid: 6cf26de1307fa0e409b3934f7ee99042, type: 3}
+      line: You can come on back now!
+      endTheGame: 0
+      typingSpeed: 0.05
+    - dialogueClip: {fileID: 8300000, guid: 0df8d48e3bb9dcd449196fd02c25f600, type: 3}
+      character:
+        name: Marcus
+        icon: {fileID: 21300000, guid: 6cf26de1307fa0e409b3934f7ee99042, type: 3}
+      line: Next up... Ah, the Golden Age!
+      endTheGame: 0
+      typingSpeed: 0.05
+    - dialogueClip: {fileID: 8300000, guid: 4a72d3b3d159ad043919b19df93ea9ab, type: 3}
+      character:
+        name: Marcus
+        icon: {fileID: 21300000, guid: 6cf26de1307fa0e409b3934f7ee99042, type: 3}
+      line: I'll see you soon!
+      endTheGame: 1
+      typingSpeed: 0.05
+  id: 
 --- !u!4 &675135360 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e14b9b385728ae2478e9052bda66db50,
@@ -9516,6 +9586,7 @@ MonoBehaviour:
         name: Marcus
         icon: {fileID: 21300000, guid: 6cf26de1307fa0e409b3934f7ee99042, type: 3}
       line: Euhm... Hello? Is this thing working?...
+      endTheGame: 0
       typingSpeed: 0.05
     - dialogueClip: {fileID: 8300000, guid: b9561f15aabddaf469829ac87c47e945, type: 3}
       character:
@@ -9523,6 +9594,7 @@ MonoBehaviour:
         icon: {fileID: 21300000, guid: 6cf26de1307fa0e409b3934f7ee99042, type: 3}
       line: Ah yes. I seem to have put some guards on high alert after pulling my
         little stunt...
+      endTheGame: 0
       typingSpeed: 0.05
     - dialogueClip: {fileID: 8300000, guid: 86f8c4b412a8de948af902c2d503f43c, type: 3}
       character:
@@ -9530,18 +9602,21 @@ MonoBehaviour:
         icon: {fileID: 21300000, guid: 6cf26de1307fa0e409b3934f7ee99042, type: 3}
       line: Your objective is to get to the artifact I left behind without the guards
         catching you...
+      endTheGame: 0
       typingSpeed: 0.05
     - dialogueClip: {fileID: 8300000, guid: 5d844302274c288489995230898b6b1c, type: 3}
       character:
         name: Marcus
         icon: {fileID: 21300000, guid: 6cf26de1307fa0e409b3934f7ee99042, type: 3}
       line: The artifact is a Suitcase, so look out for that!
+      endTheGame: 0
       typingSpeed: 0.05
     - dialogueClip: {fileID: 8300000, guid: 9edd6dad4a774bb4eb136347e646ad81, type: 3}
       character:
         name: Marcus
         icon: {fileID: 21300000, guid: 6cf26de1307fa0e409b3934f7ee99042, type: 3}
       line: Use WASD to move around and sneak past the guards without alerting them!
+      endTheGame: 0
       typingSpeed: 0.05
   id: 10fde488-e89f-4430-95f6-0df8f680a559
 --- !u!65 &734120211
@@ -9574,7 +9649,7 @@ Transform:
   m_GameObject: {fileID: 734120209}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 358.661, y: 0.517, z: 426.081}
+  m_LocalPosition: {x: 357.19, y: 0.517, z: 426.081}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -20334,6 +20409,7 @@ MonoBehaviour:
         name: Marcus
         icon: {fileID: 21300000, guid: 6cf26de1307fa0e409b3934f7ee99042, type: 3}
       line: Watch out! Don't get caught!
+      endTheGame: 0
       typingSpeed: 0.05
     - dialogueClip: {fileID: 8300000, guid: 0827955d6eb68bd4ab3bab6057f9a4a0, type: 3}
       character:
@@ -20341,12 +20417,14 @@ MonoBehaviour:
         icon: {fileID: 21300000, guid: 6cf26de1307fa0e409b3934f7ee99042, type: 3}
       line: If you spend too much time around the light, they'll be able to spot
         you...
+      endTheGame: 0
       typingSpeed: 0.05
     - dialogueClip: {fileID: 8300000, guid: 8256154aaf2e62f469cbbc0cbdcc314d, type: 3}
       character:
         name: Marcus
         icon: {fileID: 21300000, guid: 6cf26de1307fa0e409b3934f7ee99042, type: 3}
       line: Though I might have a trick up my sleeve, or actually... up your sleeve...
+      endTheGame: 0
       typingSpeed: 0.05
     - dialogueClip: {fileID: 8300000, guid: ebdb25936eb0c104dacfaaf4cb85a281, type: 3}
       character:
@@ -20354,18 +20432,21 @@ MonoBehaviour:
         icon: {fileID: 21300000, guid: 99f2241b75ab75e45bc93f0d354a3040, type: 3}
       line: When you get close enough to a guard and you see the LIGHTNING symbol,
         press F to use the gauntlet on your wrist to electrocute them!
+      endTheGame: 0
       typingSpeed: 0.05
     - dialogueClip: {fileID: 8300000, guid: 4496cf170dcd0ac449353409cee0436e, type: 3}
       character:
         name: Marcus
         icon: {fileID: 21300000, guid: 6cf26de1307fa0e409b3934f7ee99042, type: 3}
       line: If you do use it, be aware that it needs time to recharge afterwards.
+      endTheGame: 0
       typingSpeed: 0.05
     - dialogueClip: {fileID: 8300000, guid: f10450b26b9da3343b9e872afb0a88bf, type: 3}
       character:
         name: Marcus
         icon: {fileID: 21300000, guid: 6cf26de1307fa0e409b3934f7ee99042, type: 3}
       line: So use it sparingly.
+      endTheGame: 0
       typingSpeed: 0.05
   id: adcba609-1619-49e0-9647-172241aa2534
 --- !u!65 &1562436861

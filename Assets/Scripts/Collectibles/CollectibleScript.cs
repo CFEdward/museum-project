@@ -1,6 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class CollectibleScript : MonoBehaviour, IDataPersistence
 {
@@ -18,6 +16,7 @@ public class CollectibleScript : MonoBehaviour, IDataPersistence
     [SerializeField] private GameObject collectibleCanvas;
     [SerializeField] private GameObject collectiblePickUpCanvas;
     [SerializeField] private Transform UIRender;
+    private DialogueTrigger dialogueTrigger;
     private GameObject watch;
     private InputManager inputManager;
     private float remainingCooldown;
@@ -39,6 +38,7 @@ public class CollectibleScript : MonoBehaviour, IDataPersistence
     {
         inputManager = FindObjectOfType<InputManager>();
         watch = FindFirstObjectByType<WatchHUD>().gameObject;
+        dialogueTrigger = GetComponent<DialogueTrigger>();
         interactCanvasActive = false;
         pickupCanvasActive = false;
         pickedUp = false;
@@ -80,7 +80,7 @@ public class CollectibleScript : MonoBehaviour, IDataPersistence
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.CompareTag("Player"))
         {
             collectibleCanvas.SetActive(true);
             interactCanvasActive = true;
@@ -89,7 +89,7 @@ public class CollectibleScript : MonoBehaviour, IDataPersistence
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.CompareTag("Player"))
         {
             collectibleCanvas.SetActive(false);
             interactCanvasActive = false;
@@ -115,6 +115,8 @@ public class CollectibleScript : MonoBehaviour, IDataPersistence
 
     private void ResumeAfterPickUp()
     {
+        Time.timeScale = 1f;
+        InputManager.bIsPaused = false;
         if (collectibleToRender == Collectibles.suitcase)
         {
             //InputManager.bIsPaused = false;
@@ -123,14 +125,12 @@ public class CollectibleScript : MonoBehaviour, IDataPersistence
             //SceneManager.LoadSceneAsync(3);
             //return;
 
-
+            dialogueTrigger.TriggerDialogue();
         }
         collectiblePickUpCanvas.SetActive(false);
         watch.SetActive(true);
         watch.GetComponent<WatchHUD>().progressImage.fillAmount = remainingCooldown;
         if (remainingCooldown < 1f) watch.GetComponent<WatchHUD>().SetProgress(1f);
-        Time.timeScale = 1f;
-        InputManager.bIsPaused = false;
         InputManager.bCanPause = true;
         pickupCanvasActive = false;
         pickedUp = true;
@@ -166,9 +166,14 @@ public class CollectibleScript : MonoBehaviour, IDataPersistence
                 UIRender.GetComponent<RotateDrag>().collectible = UIRender.GetChild(3);
                 break;
 
-            case Collectibles.suitcase:
+            case Collectibles.shrapnel:
                 UIRender.GetChild(4).gameObject.SetActive(true);
                 UIRender.GetComponent<RotateDrag>().collectible = UIRender.GetChild(4);
+                break;
+
+            case Collectibles.suitcase:
+                UIRender.GetChild(5).gameObject.SetActive(true);
+                UIRender.GetComponent<RotateDrag>().collectible = UIRender.GetChild(5);
                 break;
 
             default:

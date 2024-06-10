@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
@@ -125,6 +126,14 @@ public class DialogueManager : MonoBehaviour
         }
         if (audioSource.isPlaying) audioSource.Stop();
         isDialogueActive = false;
+        if (lastLine.endTheGame)
+        {
+            InputManager.bIsPaused = false;
+            Time.timeScale = 1f;
+            InputManager.bCanPause = false;
+            SceneManager.LoadSceneAsync(3);
+            return;
+        }
     }
 
     private void OnDisable()

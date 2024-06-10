@@ -15,6 +15,7 @@ public class DialogueLine
     public DialogueCharacter character;
     [TextArea(3, 10)]
     public string line;
+    public bool endTheGame = false;
     public float typingSpeed = .2f;
 }
 
@@ -29,7 +30,7 @@ public class DialogueTrigger : MonoBehaviour, IDataPersistence
     public Dialogue dialogue;
     private bool alreadyTriggered = false;
 
-    [SerializeField] private string id;
+    [SerializeField] private string id = "";
     [ContextMenu("Generate guid for id")]
     private void GenerateGuid()
     {
@@ -38,16 +39,22 @@ public class DialogueTrigger : MonoBehaviour, IDataPersistence
 
     public void LoadData(GameData data)
     {
-        data.dialoguesTriggered.TryGetValue(id, out alreadyTriggered);
+        if (id != "")
+        {
+            data.dialoguesTriggered.TryGetValue(id, out alreadyTriggered);
+        }
     }
 
     public void SaveData(GameData data)
     {
-        if (data.dialoguesTriggered.ContainsKey(id))
+        if (id != "")
         {
-            data.dialoguesTriggered.Remove(id);
+            if (data.dialoguesTriggered.ContainsKey(id))
+            {
+                data.dialoguesTriggered.Remove(id);
+            }
+            data.dialoguesTriggered.Add(id, alreadyTriggered);
         }
-        data.dialoguesTriggered.Add(id, alreadyTriggered);
     }
 
     public void TriggerDialogue()
@@ -57,7 +64,7 @@ public class DialogueTrigger : MonoBehaviour, IDataPersistence
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.tag == "Player" && !alreadyTriggered)
+        if (collision.CompareTag("Player") && !alreadyTriggered && !CompareTag("Collectible"))
         {
             TriggerDialogue();
         }
