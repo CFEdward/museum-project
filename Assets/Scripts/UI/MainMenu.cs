@@ -34,6 +34,7 @@ public class MainMenu : MonoBehaviour
         DataPersistenceManager.Instance.SaveGame();
         // Load the gameplay scene - which will in turn save the game because of
         // OnSceneUnloaded() in the DataPersistenceManager
+        InputManager.bCanPause = false;
         SceneManager.LoadSceneAsync(1);
     }
 

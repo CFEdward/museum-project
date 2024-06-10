@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: 747de6b5605cd6b44b46b65224afc8be
   - enabled: 1
+    path: Assets/Scenes/Intro Scene.unity
+    guid: 86d4f4bb107b1fc4aa3d3069291f9ba7
+  - enabled: 1
     path: Assets/Scenes/Leeuwarden WW2.unity
     guid: 5599b750e6ff77342b5fd4f38524fb85
   m_configObjects: {}
