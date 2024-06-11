@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8231765876786763568
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9190420795164688702}
+  - component: {fileID: 3088311330438399926}
+  - component: {fileID: 8521489615119460384}
+  m_Layer: 2
+  m_Name: Tutorial 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9190420795164688702
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8231765876786763568}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 357.19, y: 0.517, z: 426.081}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3088311330438399926
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8231765876786763568}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.56, y: 2.83, z: 47.84}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8521489615119460384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8231765876786763568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd80a53b02fde9a4c92f6fe93cb8ac1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    dialogueLines:
+    - dialogueClip: {fileID: 8300000, guid: 373566759d6b317449852debc9265b05, type: 3}
+      character:
+        name: Marcus
+        icon: {fileID: 21300000, guid: 6cf26de1307fa0e409b3934f7ee99042, type: 3}
+      line: Euhm... Hello? Is this thing working?...
+      endTheGame: 0
+      typingSpeed: 0.05
+    - dialogueClip: {fileID: 8300000, guid: b9561f15aabddaf469829ac87c47e945, type: 3}
+      character:
+        name: Marcus
+        icon: {fileID: 21300000, guid: 6cf26de1307fa0e409b3934f7ee99042, type: 3}
+      line: Ah yes. I seem to have put some guards on high alert after pulling my
+        little stunt...
+      endTheGame: 0
+      typingSpeed: 0.05
+    - dialogueClip: {fileID: 8300000, guid: 86f8c4b412a8de948af902c2d503f43c, type: 3}
+      character:
+        name: Marcus
+        icon: {fileID: 21300000, guid: 6cf26de1307fa0e409b3934f7ee99042, type: 3}
+      line: Your objective is to get to the artifact I left behind without the guards
+        catching you...
+      endTheGame: 0
+      typingSpeed: 0.05
+    - dialogueClip: {fileID: 8300000, guid: 5d844302274c288489995230898b6b1c, type: 3}
+      character:
+        name: Marcus
+        icon: {fileID: 21300000, guid: 6cf26de1307fa0e409b3934f7ee99042, type: 3}
+      line: The artifact is a Suitcase, so look out for that!
+      endTheGame: 0
+      typingSpeed: 0.05
+    - dialogueClip: {fileID: 8300000, guid: 9edd6dad4a774bb4eb136347e646ad81, type: 3}
+      character:
+        name: Marcus
+        icon: {fileID: 21300000, guid: 6cf26de1307fa0e409b3934f7ee99042, type: 3}
+      line: Use WASD to move around and sneak past the guards without alerting them!
+      endTheGame: 0
+      typingSpeed: 0.05
+  id: 10fde488-e89f-4430-95f6-0df8f680a559

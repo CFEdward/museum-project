@@ -17,7 +17,7 @@ public class HowManyCollected : MonoBehaviour
         foreach (var item in uncollected)
         {
             collToFind--;
-            textComponent.text = "You have found " + (collToFind + 2) + " / 6 Collectibles!";
+            textComponent.text = "You have found " + (collToFind + 1) + " / 6 Collectibles!";
         }
     }
 }
