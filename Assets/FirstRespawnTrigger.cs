@@ -8,6 +8,7 @@ public class FirstRespawnTrigger : MonoBehaviour
 
     private void Awake()
     {
+        if (SceneManager.GetActiveScene().buildIndex == 2)
         dialogueTrigger = GetComponent<DialogueTrigger>();
     }
 
@@ -18,12 +19,13 @@ public class FirstRespawnTrigger : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        if (SceneManager.GetActiveScene().buildIndex == 2)
         StartCoroutine(PlayDialogue());
     }
 
     private IEnumerator PlayDialogue()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
 
         if (PlayerData.livesLeft == 2)
         {

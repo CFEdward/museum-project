@@ -31,9 +31,14 @@ public class GameOverScreen : MonoBehaviour
         PlayerData.bIsRespawning = true;
         if (PlayerData.livesLeft == 0)
         {
-            PlayerManager.lastCheckpoint = Vector3.zero;
+            //PlayerManager.lastCheckpoint = Vector3.zero;
+            //PlayerData.livesLeft = 3;
+            //DataPersistenceManager.Instance.NewGame();
+            DataPersistenceManager.Instance.DeleteSave();
             PlayerData.livesLeft = 3;
-            DataPersistenceManager.Instance.NewGame();
+            DialogueManager.isDialogueActive = false;
+            SceneManager.LoadSceneAsync(0);
+            return;
         }
         else
         {
